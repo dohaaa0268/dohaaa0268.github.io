@@ -98,7 +98,7 @@ img {
 
 .anchor {
     position-anchor: --corners;
-    position: absolute;
+    position: fixed;
     --size: 15px;
     rotate: 15deg;
 }
@@ -146,10 +146,10 @@ img {
     filter: drop-shadow(0px 0px 10px var(--BLUE-5))
 }
 
-html,
 body {
-    margin: 0;
-    padding: 0;
+    height:100%;
+    display: grid;
+    /* width:100% */
 }
 
 html {
