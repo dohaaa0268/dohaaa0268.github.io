@@ -51,7 +51,7 @@ iframe {
 
 .jellyfish::before,
 .jellyfish::after {
-    background-image: url(../../cute-emojis/emojis/1225795001838211134.gif);
+    background-image: url(https://addsoupbase.github.io/cute-emojis/emojis/1225795001838211134.gif);
     content: '';
     alt: '';
     display: inline-block;
