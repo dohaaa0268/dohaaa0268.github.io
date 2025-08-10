@@ -1,0 +1,10 @@
+main {
+    padding:5px;
+}
+html {
+    overflow: auto;
+}
+#controls {
+    margin: 5px;
+    font-size: larger;
+}

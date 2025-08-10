@@ -1,0 +1,228 @@
+:root {
+    --RED-1: #EEBAB7;
+    --RED-2: #E68A8D;
+    --RED-3: #C96068;
+    --RED-4: #AB4543;
+    --RED-5: #9B4443;
+
+    --ORANGE-1: #EEE1B7;
+    --ORANGE-2: #E6B58A;
+    --ORANGE-3: #C98860;
+    --ORANGE-4: #AB7543;
+    --ORANGE-5: #9B6B43;
+
+    --YELLOW-1: #EEE1B7;
+    --YELLOW-2: #E6CB8A;
+    --YELLOW-3: #C9AF60;
+    --YELLOW-4: #AB9943;
+    --YELLOW-5: #9B8943;
+
+    --GREEN-1: #E1E9B7;
+    --GREEN-2: #BDD299;
+    --GREEN-3: #7A9B57;
+    --GREEN-4: #5E7F19;
+    --GREEN-5: #466D1D;
+
+    --BLUE-1: #A8C7D6;
+    --BLUE-2: #84AABC;
+    --BLUE-3: #5C93AA;
+    --BLUE-4: #4B7A90;
+    --BLUE-5: #355C7D;
+
+    --PURPLE-1: #A8AFD6;
+    --PURPLE-2: #848EBC;
+    --PURPLE-3: #5C6BAA;
+    --PURPLE-4: #4B5390;
+    --PURPLE-5: #35387D;
+
+    --CREAMY-BERRY: hsl(324, 33%, 72%);
+    --SALMON-GLOW: hsl(9, 73%, 51%);
+    --CREAM-PUFF: hsl(18, 96%, 60%);
+    font-family: pixel1, monospace;
+
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    --user-select: none
+}
+
+.jellyfish::before,
+.jellyfish::after {
+    background-image: url(../../cute-emojis/emojis/1225795001838211134.gif);
+    content: '';
+    alt: '';
+    display: inline-block;
+    vertical-align: middle;
+    width: 25px;
+    image-rendering: pixelated;
+    height: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-size: cover;
+}
+
+.jellyfish::after {
+    transform: scaleX(-1)
+}
+
+@font-face {
+    font-family: "pixel1";
+    src: url('../fonts/pixel1.woff2') format('woff2');
+    font-display: swap;
+}
+
+img {
+    --user-select: none
+}
+
+@font-face {
+    font-family: "pixel2";
+    src: url("../fonts/pixel2.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@supports not (anchor-name: --corners) {
+    .anchor {
+        display: none;
+    }
+}
+
+#frameholder {
+    anchor-name: --corners;
+    overflow: hidden;
+}
+
+.anchor {
+    position-anchor: --corners;
+    position: absolute;
+    --size: 15px;
+    rotate: 15deg;
+}
+
+#topright {
+    left: calc(anchor(right) - var(--size));
+    top: calc(anchor(top) - var(--size));
+    transform: scaleY(-1);
+}
+
+#bottomleft {
+    left: calc(anchor(left) - var(--size));
+    top: calc(anchor(bottom) - var(--size));
+    transform: scaleX(-1)
+}
+
+#topleft {
+    left: calc(anchor(left) - var(--size));
+    top: calc(anchor(top) - var(--size));
+    /* transform: scaleX(-1) */
+}
+
+#bottomright {
+    left: calc(anchor(right) - var(--size));
+    top: calc(anchor(bottom) - var(--size));
+    transform: scale(-1, -1);
+}
+
+.sprite {
+    image-rendering: pixelated;
+}
+
+.purple {
+    background-color: var(--CREAMY-BERRY);
+    border: 5px solid var(--PURPLE-3);
+    /* border-radius: 5px; */
+}
+
+.avatar {
+    border-radius: 100%;
+    margin: 10px
+}
+
+.glow {
+    filter: drop-shadow(0px 0px 10px var(--BLUE-5))
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scrollbar-width: thin;
+    overflow: hidden;
+    scrollbar-color: var(--PURPLE-2) var(--PURPLE-4);
+}
+@supports not (scrollbar-width: thin) {
+    html::-webkit-scrollbar {
+        width: 10px;
+        background-color: var(--PURPLE-2);
+    }
+    
+    html::-webkit-scrollbar-thumb {
+        background-color: var(--PURPLE-4);
+        border-radius: 5px;
+    }
+    
+    html::-moz-scrollbar {
+        width: 10px;
+        background-color: var(--PURPLE-2);
+    }
+    
+    html::-moz-scrollbar-thumb {
+        background-color: var(--PURPLE-4);
+        border-radius: 5px;
+    }
+}
+
+.container {
+    box-shadow: 0px 0px 10px var(--CREAM-PUFF);
+    word-break: break-word;
+    overflow-y: scroll;
+    padding: 8px;
+    width: 600px;
+    border-style: outset;
+    border-radius: 2px;
+    max-width: 95vw;
+    height: 500px;
+}
+
+.button {
+    background-color: var(--PURPLE-1);
+    border: 3px solid var(--PURPLE-2);
+    display: inline-block;
+    text-align: center;
+    padding: 3px;
+    --touch-callout: none;
+    font-family: "pixel2";
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: dashed;
+    color: black;
+    font-size: larger;
+    padding-right: 1px;
+    margin: 5px;
+    transition: background .1s LINEAR, transform .2s ease;
+}
+
+.button:hover {
+    background-color: var(--PURPLE-2);
+}
+
+.button:active {
+    transform: scale(0.96, 0.96)
+}
+
+.other {
+    margin: 5px;
+    /* width:inherit; */
+    height: 60px;
+    display: flex;
+    place-content: center;
+    place-items: center;
+    /* border: 1px solid red; */
+}
