@@ -153,7 +153,7 @@ body {
 }
 
 html {
-    --scrollbar-color-thumb: var(--PURPLE-4);
+    --scrollbar-thumb-color: var(--PURPLE-1);
     --scrollbar-color: var(--PURPLE-4);
     scrollbar-width: thin;
     overflow: hidden;
