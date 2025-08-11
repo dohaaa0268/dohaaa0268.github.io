@@ -2,6 +2,12 @@
 <html lang="en">
 
 <head>
+    <script>
+        // Redirect requests to local server
+        origin === 'http://localhost:3000' && navigator.serviceWorker.register('./local.js', {
+            scope: './'
+        })
+    </script>
     <meta charset="UTF-8">
     <meta http-equiv="content-language" content="en">
     <meta property="og:locale" content="en_US">
@@ -86,8 +92,8 @@
         :root {
             /* background: #E0C2D4; */
             background: linear-gradient(0deg, rgba(224, 194, 212, 1) 0%, rgba(243, 187, 177, 1) 50%, rgba(253, 186, 157, 1) 100%);
-            height: 100%;
-            width: 100%;
+            height: 100vh;
+            width: 100vw;
         }
     </style>
     <main style="place-content: center;place-items: center;place-self: center;">
@@ -112,13 +118,13 @@
                 <!-- <a role="button" class="button" aria-label="Other stuff" target="content" href="main.html">Stuff</a> -->
             </div>
         </div>
-        <img src="https://addsoupbase.github.io/cute-emojis/emojis/94964-twinklingstar.gif" width="30" height="30" class="anchor"
+        <img src="https://addsoupbase.github.io/cute-emojis/emojis/94964-twinklingstar.gif" width="30" height="30" class="anchor1 anchor"
             draggable="false" id="topleft">
-        <img src="https://addsoupbase.github.io/cute-emojis/emojis/94964-twinklingstar.gif" width="30" height="30" class="anchor"
+        <img src="https://addsoupbase.github.io/cute-emojis/emojis/94964-twinklingstar.gif" width="30" height="30" class="anchor1 anchor"
             draggable="false" id="topright">
-        <img src="https://addsoupbase.github.io/cute-emojis/emojis/94964-twinklingstar.gif" width="30" height="30" class="anchor"
+        <img src="https://addsoupbase.github.io/cute-emojis/emojis/94964-twinklingstar.gif" width="30" height="30" class="anchor2 anchor"
             draggable="false" id="bottomleft">
-        <img src="https://addsoupbase.github.io/cute-emojis/emojis/94964-twinklingstar.gif" width="30" height="30" class="anchor"
+        <img src="https://addsoupbase.github.io/cute-emojis/emojis/94964-twinklingstar.gif" width="30" height="30" class="anchor2 anchor"
             draggable="false" id="bottomright">
     </main>
 </body>

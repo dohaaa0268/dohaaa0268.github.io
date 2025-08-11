@@ -95,9 +95,16 @@ img {
     anchor-name: --corners;
     overflow: hidden;
 }
-
-.anchor {
+#stuff {
+    anchor-name: --corners-bottom
+}
+.anchor2 {
+    position-anchor: --corners-bottom;
+}
+.anchor1{
     position-anchor: --corners;
+}
+.anchor {
     position: fixed;
     --size: 15px;
     rotate: 15deg;
@@ -153,6 +160,7 @@ body {
 }
 
 html {
+    --tap-highlight-color: rgba(75, 83, 144, 0.28);
     --scrollbar-thumb-color: var(--PURPLE-1);
     --scrollbar-color: var(--PURPLE-4);
     scrollbar-width: thin;
@@ -168,7 +176,7 @@ html {
     width: 600px;
     border-style: outset;
     border-radius: 2px;
-    max-width: 95vw;
+    max-width: 90vw;
     height: 500px;
 }
 
