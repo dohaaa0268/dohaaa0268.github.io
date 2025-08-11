@@ -153,31 +153,12 @@ body {
 }
 
 html {
+    --scrollbar-color-thumb: var(--PURPLE-4);
+    --scrollbar-color: var(--PURPLE-4);
     scrollbar-width: thin;
     overflow: hidden;
-    scrollbar-color: var(--PURPLE-2) var(--PURPLE-4);
 }
-@supports not (scrollbar-width: thin) {
-    html::-webkit-scrollbar {
-        width: 10px;
-        background-color: var(--PURPLE-2);
-    }
-    
-    html::-webkit-scrollbar-thumb {
-        background-color: var(--PURPLE-4);
-        border-radius: 5px;
-    }
-    
-    html::-moz-scrollbar {
-        width: 10px;
-        background-color: var(--PURPLE-2);
-    }
-    
-    html::-moz-scrollbar-thumb {
-        background-color: var(--PURPLE-4);
-        border-radius: 5px;
-    }
-}
+
 
 .container {
     box-shadow: 0px 0px 10px var(--CREAM-PUFF);
