@@ -80,10 +80,58 @@
     <link rel="preload" as="font" href="./fonts/pixel2.woff2" crossorigin="anonymous">
     <!--https://wiki.whatwg.org/wiki/MetaExtensions-->
     <!--[if IE]><script>alert('Please update your browser')</script><![endif]-->
+
+</head>
+
+<body>
+    <main class="centerx" style="padding:0;margin:0">
+        <div style="display: grid;place-content: center;place-items: center;">
+            <h1 style="font-size: x-large;" class="drawMeSomething">Draw me something!!</h1>
+            <img style="image-rendering: pixelated;" class="dragon" id="dragon"
+                src="https://addsoupbase.github.io/cute-emojis/emojis/1368436543739400222.gif" alt="Dragon with pencil"
+                width="40" height="40">
+            <script>
+                !function (e, x) {
+                    'use strict'
+                    e.addEventListener('animationiteration', function () {
+                        e.style.transform = 'scaleX(' + (x *= -1) + ')'
+                    })
+                }(document.getElementById('dragon'), 1)
+            </script>
+            <div style="overflow: hidden;">
+                <paper-canvas id="paper" width="250" height="250" id="can"></paper-canvas>
+            </div>
+            <div id="controls">
+                <label for="color">
+                    Color:
+                    <input type="color" id="color" title="Pick a color" aria-label="Pick a color">
+                </label>
+                <label for="undo">
+                    Undo:
+                    <button id="undo" aria-label="undo">↺</button>
+                </label>
+                <br>
+                <label for="brushsize" style="margin:5px;display: flex;place-items: center;">
+                    Brush Size:
+                    <input type="range" id="brushsize" min="1" max="40" value="1">
+                </label>
+            </div>
+            <aside>&lpar;you can&apos;t submit it yet&rpar;</aside>
+        </div>
+    </main>
     <script type="module">
         import $ from 'https://addsoupbase.github.io/yay.js'
-        addEventListener('load', load, {once:true})
-        function load(){
+        import { on } from 'https://addsoupbase.github.io/handle.js'
+        let { dragon } = $.id
+        on(document, {
+            visibilitychange(){
+                document.hidden?dragon.pauseAnims():dragon.resumeAnims()
+            }
+        })
+        on(window, {
+            _load:load
+        })
+        function load() {
             let { paper, undo, brushsize } = $.id
             $.id.color.on({
                 change() {
@@ -102,37 +150,6 @@
             })
         }
     </script>
-</head>
-
-<body>
-    <main class="centerx" style="padding:0;margin:0">
-        <div style="display: grid;place-content: center;place-items: center;">
-            <h1 style="font-size: x-large;">Draw me something!!</h1>
-            <img style="image-rendering: pixelated;"
-                src="https://addsoupbase.github.io/cute-emojis/emojis/1368436543739400222.gif" alt="Dragon with pencil"
-                width="40" height="40">
-                <div style="overflow: hidden;">
-                    <paper-canvas id="paper" width="250" height="250" id="can"></paper-canvas>
-                    <script>'currentCSSZoom'in Element.prototype && document.currentScript.previousElementSibling.setAttribute('style','--zoom:.9')</script>
-                </div>
-            <div id="controls">
-                <label for="color">
-                    Color:
-                    <input type="color" id="color" title="Pick a color" aria-label="Pick a color">
-                </label>
-                <label for="undo">
-                    Undo:
-                    <button id="undo" aria-label="undo">↺</button>
-                </label>
-                <br>
-                <label for="brushsize" style="margin:5px;display: block;">
-                    Brush Size:
-                    <input type="range" id="brushsize" min="1" max="40" value="1">
-                </label>
-            </div>
-            <aside>&lpar;you can&apos;t submit it yet&rpar;</aside>
-        </div>
-    </main>
 </body>
 
 </html>

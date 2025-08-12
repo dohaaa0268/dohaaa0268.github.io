@@ -1,3 +1,8 @@
+/*
+
+    For @Dohaaa0268 by @addsoupbase
+
+*/
 :root {
     --RED-1: #EEBAB7;
     --RED-2: #E68A8D;
@@ -41,9 +46,49 @@
     font-family: pixel1, monospace;
 
 }
-.radio[aria-checked="true"] {
-    filter: brightness(80%);
+
+.drawMeSomething::after,
+.drawMeSomething::before {
+    background-image: url(https://addsoupbase.github.io/cute-emojis/emojis/11246-purplecrayon.gif);
+    content: '';
+    height: 30px;
+    width: 30px;
+    margin-left: 5px;
+    margin-right: 5px;
+    background-size: contain;
+    display: inline-block;
 }
+
+.drawMeSomething::before {
+    transform: scaleX(-1)
+}
+
+@keyframes backnforth {
+    0% {
+        left: -40%;
+    }
+
+    100% {
+        left: 40%;
+    }
+}
+
+.dragon {
+    transition: transform .3s ease;
+    position: relative;
+    animation: backnforth 5s linear infinite alternate
+}
+
+input {
+    caret-color: var(--PURPLE-3);
+    accent-color: var(--PURPLE-3);
+}
+
+.radio[aria-checked="true"] {
+    filter: brightness(90%);
+    border-style: inset;
+}
+
 iframe {
     width: 100%;
     height: 100%;
@@ -69,6 +114,7 @@ iframe {
 .jellyfish::after {
     transform: scaleX(-1)
 }
+
 @font-face {
     font-family: "pixel1";
     src: url('../fonts/pixel1.woff2') format('woff2'), url('../fonts/pixel1.woff') format('woff'), url('../fonts/pixel1.ttf') format('ttf');
@@ -96,15 +142,19 @@ img {
     anchor-name: --corners;
     overflow: hidden;
 }
+
 #stuff {
     anchor-name: --corners-bottom
 }
+
 .anchor2 {
     position-anchor: --corners-bottom;
 }
-.anchor1{
+
+.anchor1 {
     position-anchor: --corners;
 }
+
 .anchor {
     position: fixed;
     --size: 15px;
@@ -141,7 +191,7 @@ img {
 
 .purple {
     background-color: var(--CREAMY-BERRY);
-    border: 5px solid var(--PURPLE-3);
+    border: 5px groove var(--PURPLE-3);
     /* border-radius: 5px; */
 }
 
@@ -155,7 +205,7 @@ img {
 }
 
 body {
-    height:100%;
+    height: 100%;
     display: grid;
     /* width:100% */
 }
@@ -175,15 +225,18 @@ html {
     overflow-y: scroll;
     padding: 8px;
     width: 600px;
-    border-style: outset;
     border-radius: 2px;
     max-width: 90vw;
     height: 500px;
 }
 
+.button::first-letter {
+    text-decoration: underline;
+}
+
 .button {
     background-color: var(--PURPLE-1);
-    border: 3px solid var(--PURPLE-2);
+    border: 3px outset var(--PURPLE-2);
     display: inline-block;
     text-align: center;
     padding: 3px;
@@ -193,7 +246,7 @@ html {
     letter-spacing: 1px;
     text-decoration: dashed;
     color: black;
-    font-size: larger;
+    font-size: 1.4em;
     padding-right: 1px;
     margin: 5px;
     transition: background .1s LINEAR, transform .2s ease;
