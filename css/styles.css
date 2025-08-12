@@ -199,14 +199,14 @@ img {
     border-radius: 100%;
     margin: 10px
 }
-
+.star {
+    filter: hue-rotate(342deg);
+}
 .glow {
     filter: drop-shadow(0px 0px 10px var(--BLUE-5))
 }
 
 body {
-    height: 100%;
-    display: grid;
     /* width:100% */
 }
 
