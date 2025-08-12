@@ -8,7 +8,15 @@ content.on({
     }
 })
 stuff.delegate({
-    click() {
+    $contextmenu(){}, // Prevent the 'open in new tab' thing
+    click(e) {
+        if (this.attr._checked === 'true') return e.preventDefault()
+        for(let n of stuff) {
+            n.attr._checked = 'false'
+            console.log(n)
+        }
+        this.attr._checked = 'true'
+        // console.log(this)
         content.hide(3)
     }
 })

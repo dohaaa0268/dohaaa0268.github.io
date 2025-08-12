@@ -107,11 +107,14 @@
 <body>
     <main class="centerx" style="padding:0;margin:0">
         <div style="display: grid;place-content: center;place-items: center;">
-            <h1>Draw me something!!</h1>
+            <h1 style="font-size: x-large;">Draw me something!!</h1>
             <img style="image-rendering: pixelated;"
                 src="https://addsoupbase.github.io/cute-emojis/emojis/1368436543739400222.gif" alt="Dragon with pencil"
                 width="40" height="40">
-            <paper-canvas id="paper"></paper-canvas>
+                <div style="overflow: hidden;">
+                    <paper-canvas id="paper" width="250" height="250" id="can"></paper-canvas>
+                    <script>'currentCSSZoom'in Element.prototype && document.currentScript.previousElementSibling.setAttribute('style','--zoom:.9')</script>
+                </div>
             <div id="controls">
                 <label for="color">
                     Color:
@@ -127,7 +130,7 @@
                     <input type="range" id="brushsize" min="1" max="40" value="1">
                 </label>
             </div>
-            <h1>&lpar;you can&apos;t submit it yet&rpar;</h1>
+            <aside>&lpar;you can&apos;t submit it yet&rpar;</aside>
         </div>
     </main>
 </body>
