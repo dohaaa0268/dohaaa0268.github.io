@@ -75,7 +75,7 @@
     <script src="https://addsoupbase.github.io/css_bad.js" nomodule></script>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/iframe.css">
-
+    <link rel="modulepreload" href="https://addsoupbase.github.io/webcomponents/paper-canvas.js">
     <title>Doha's page</title>
     <link rel="preload" as="font" href="./fonts/pixel2.woff2" crossorigin="anonymous">
     <!--https://wiki.whatwg.org/wiki/MetaExtensions-->
@@ -121,34 +121,31 @@
     </main>
     <script type="module">
         import $ from 'https://addsoupbase.github.io/yay.js'
+        import 'https://addsoupbase.github.io/webcomponents/paper-canvas.js'
         import { on } from 'https://addsoupbase.github.io/handle.js'
         let { dragon } = $.id
         on(document, {
-            visibilitychange(){
-                document.hidden?dragon.pauseAnims():dragon.resumeAnims()
+            visibilitychange() {
+                document.hidden ? dragon.pauseAnims() : dragon.resumeAnims()
             }
         })
-        on(window, {
-            _load:load
+        let { paper, undo, brushsize } = $.id
+        $.id.color.on({
+            change() {
+                paper.attr.color = this.value
+            }
         })
-        function load() {
-            let { paper, undo, brushsize } = $.id
-            $.id.color.on({
-                change() {
-                    paper.attr.color = this.value
-                }
-            })
-            brushsize.on({
-                change() {
-                    paper.attr.brushsize = parseFloat(this.value) || 1
-                }
-            })
-            undo.on({
-                click() {
-                    paper.undo()
-                }
-            })
-        }
+        brushsize.on({
+            change() {
+                paper.attr.brushsize = parseFloat(this.value) || 1
+            }
+        })
+        undo.on({
+            click() {
+                paper.undo()
+            }
+        })
+
     </script>
 </body>
 
