@@ -84,7 +84,7 @@ input {
     accent-color: var(--PURPLE-3);
 }
 
-.radio[aria-checked="true"] {
+.radio[aria-selected="true"] {
     filter: brightness(90%);
     border-style: inset;
 }

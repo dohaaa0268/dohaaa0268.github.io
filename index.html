@@ -111,10 +111,10 @@
                     }(document.getElementById('content'))
                 </script>
             </div>
-            <div class="other purple" id="stuff" role="radiogroup" aria-label="Change the channel">
-                <a accesskey="d" role="radio" class="button radio draw" aria-label="Draw me something" target="content"
-                    href="draw.html" aria-checked="false">Draw</a>
-                <a accesskey="h"  role="radio" class="button radio" target="content" href="main.html" aria-checked="true">Home</a>
+            <div class="other purple" id="stuff" role="tablist" aria-label="Change the channel">
+                <a aria-controls="content" accesskey="d" role="tab" class="button radio draw" aria-label="Draw me something" target="content"
+                    href="draw.html" aria-selected="false">Draw</a>
+                <a aria-controls="content" accesskey="h"  role="tab" class="button radio" target="content" href="main.html" aria-selected="true">Home</a>
                 <!-- <a role="button" class="button" aria-label="Other stuff" target="content" href="main.html">Stuff</a> -->
             </div>
         </div>

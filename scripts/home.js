@@ -10,10 +10,10 @@ content.on({
 stuff.delegate({
     $contextmenu(){}, // Prevent the 'open in new tab' thing
     click(e) {
-        if (this.attr._checked === 'true') return e.preventDefault()
-        for(let n of stuff) n.attr._checked = 'false'
+        if (this.attr._selected === 'true') return e.preventDefault()
+        for(let n of stuff) n.attr._selected = 'false'
         
-        this.attr._checked = 'true'
+        this.attr._selected = 'true'
         // console.log(this)
         content.hide(3)
     }
