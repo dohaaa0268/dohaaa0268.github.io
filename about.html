@@ -2,12 +2,6 @@
 <html lang="en">
 
 <head>
-    <script>
-        // Redirect requests to local server
-        origin === 'http://localhost:3000' && navigator.serviceWorker.register('./local.js', {
-            scope: './'
-        })
-    </script>
     <meta charset="UTF-8">
     <meta http-equiv="content-language" content="en">
     <meta property="og:locale" content="en_US">
@@ -17,7 +11,7 @@
     <meta name="description" content="YOUR DESC HERE">
     <meta property="og:image:width" content="128">
     <meta property="og:image:height" content="128">
-    <meta property="og:image:type" content="image/webp">
+    <meta property="og:image:type" content="image/*">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://addsoupbase.github.io/media/avatars/Dohaaa.webp">
     <meta property="og:url" content="https://dohaaa0268.github.io">
@@ -80,61 +74,72 @@
     <script src="https://addsoupbase.github.io/css.js" blocking="render"></script>
     <script src="https://addsoupbase.github.io/css_bad.js" nomodule></script>
     <link rel="stylesheet" href="css/styles.css">
-    <title>Doha's page</title>
+    <link rel="stylesheet" href="css/iframe.css">
+    <link rel="modulepreload" href="https://addsoupbase.github.io/webcomponents/paper-canvas.js">
+    <title>Doha's page - About Me</title>
     <link rel="preload" as="font" href="./fonts/pixel2.woff2" crossorigin="anonymous">
-    <script src="scripts/home.js" type="module" async></script>
+    <style>
+        #poster {
+            cursor: pointer;
+            /* transition: transform 0.5s ease; */
+            transition: transform .2s linear;
+        }
+
+
+
+        .cam {
+            /* image-rendering: pixelated; */
+            margin: 5px
+        }
+    </style>
     <!--https://wiki.whatwg.org/wiki/MetaExtensions-->
     <!--[if IE]><script>alert('Please update your browser')</script><![endif]-->
 </head>
 
-<body style="overflow-y: scroll;scrollbar-width: none;margin:0">
-    <style>
-        body {
-            height: 100vh;
-            display: flex;
-        }
-        :root {
-            /* background: #E0C2D4; */
-            background: linear-gradient(0deg, rgba(224, 194, 212, 1) 0%, rgba(243, 187, 177, 1) 50%, rgba(253, 186, 157, 1) 100%);
-            height: 100vh;
-            width: 100vw;
-        }
-    </style>
-    <main class="centerx">
-        <div>
-            <div class="purple container" id="frameholder">
-                <iframe name="content" id="content" title="Main Content" src="main.html">
-                </iframe>
-                <script>
-                    !function (e) {
-                        'use strict'
-                        e.style.display = 'none'
-                        window.onload = function () {
-                            e.style.display = ''
-                        }
-                    }(document.getElementById('content'))
-                </script>
-            </div>
-            <div class="other purple" id="stuff" role="tablist" aria-label="Change the channel">
-                <a aria-controls="content" aria-keyshortcuts="Alt+Shift+D" role="tab" class="button radio draw"
-                    aria-label="Draw me something" target="content" href="draw.html" aria-selected="false">Draw</a>
-                <a aria-controls="content" aria-keyshortcuts="Alt+Shift+H" role="tab" class="button radio"
-                    target="content" href="main.html" aria-selected="true">Home</a>
-                <a aria-controls="content" aria-keyshortcuts="Alt+Shift+A" role="tab" class="button radio draw"
-                    aria-label="About Me" target="content" href="about.html" aria-selected="false">About</a>
-
-                <!-- <a role="button" class="button" aria-label="Other stuff" target="content" href="main.html">Stuff</a> -->
-            </div>
+<body>
+    <main class="centerx" style="padding:0;margin:0">
+        <div style="display: grid;place-content: center;place-items: center;">
+            <h1 style="font-size: x-large;place-items: center;display:flex"><img alt width="30" class="cam"
+                    src="https://addsoupbase.github.io/cute-emojis/emojis/1225821658225577984.gif">Movies that I
+                like<img alt width="30" class="cam"
+                    src="https://addsoupbase.github.io/cute-emojis/emojis/1225821603527524482.gif"></h1>
+            <img alt="Movie poster" aria-live="polite" aria-atomic="true" tabindex="0" id="poster"
+                src="./media/charlie.webp" width="300">
         </div>
-        <img alt aria-hidden="true" src="https://addsoupbase.github.io/cute-emojis/emojis/94964-twinklingstar.gif"
-            width="30" height="30" class="anchor1 anchor star" draggable="false" id="topleft">
-        <img alt aria-hidden="true" src="https://addsoupbase.github.io/cute-emojis/emojis/94964-twinklingstar.gif"
-            width="30" height="30" class="anchor1 anchor star" draggable="false" id="topright">
-        <img alt aria-hidden="true" src="https://addsoupbase.github.io/cute-emojis/emojis/94964-twinklingstar.gif"
-            width="30" height="30" class="anchor2 anchor star" draggable="false" id="bottomleft">
-        <img alt aria-hidden="true" src="https://addsoupbase.github.io/cute-emojis/emojis/94964-twinklingstar.gif"
-            width="30" height="30" class="anchor2 anchor star" draggable="false" id="bottomright">
     </main>
+    <script type="module">
+        import $ from 'https://addsoupbase.github.io/yay.js'
+        import 'https://addsoupbase.github.io/webcomponents/paper-canvas.js'
+        import ran from 'https://addsoupbase.github.io/random.js'
+        import { cycleFrom } from 'https://addsoupbase.github.io/num.js'
+        import { wait, until } from 'https://addsoupbase.github.io/handle.js'
+        let { poster } = $.id,
+            { width } = poster.attr
+        poster.on({
+            load() {
+                poster.attr.inert = false
+            }
+        })
+        let sources = ['up.webp', 'train.webp', 'karatekid.webp', 'hungergames.webp', 'wicked.webp', 'kpopdemonhunters.webp', 'mazerunner.webp', 'harrypotter.webp', 'homealone.webp', 'littleprince.webp', 'corpse.webp', 'showman.webp', 'coraline.webp', 'jumanji.webp', 'narnia.webp', 'charlie.webp', 'enola.webp', 'damsel.webp', 'littlewomen.webp', 'saiyaara.webp', 'school.webp']
+        let t = cycleFrom(sources)
+        for (; ;) 
+            try {
+                console.clear()
+                await Promise.race([wait(8e3), poster.until('click')])
+                poster.attr.inert = true
+                poster.styles.transform = `rotateY(90deg)`
+                await poster.until('transitionend', 'transitioncancel')
+                poster.src = `./media/${t.next}`
+                poster.styles.transform = `rotateY(0deg)`
+            }
+            catch {
+                poster.styles.transform=''
+                poster.attr.inert=false
+            }
+            // console.clear()
+        
+
+    </script>
 </body>
 
 </html>

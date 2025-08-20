@@ -12,9 +12,7 @@ stuff.delegate({
     click(e) {
         if (this.attr._selected === 'true') return e.preventDefault()
         for(let n of stuff) n.attr._selected = 'false'
-        
         this.attr._selected = 'true'
-        // console.log(this)
         content.hide(3)
     }
 })
