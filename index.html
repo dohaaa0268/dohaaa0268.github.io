@@ -82,6 +82,8 @@
     <link rel="stylesheet" href="css/styles.css">
     <title>Doha's page</title>
     <link rel="preload" as="font" href="./fonts/pixel2.woff2" crossorigin="anonymous">
+    <link rel="prefetch" as="document" href="about.html" fetchpriority="low">
+    <link rel="prefetch" as="document" href="draw.html" fetchpriority="low">
     <script src="scripts/home.js" type="module" async></script>
     <!--https://wiki.whatwg.org/wiki/MetaExtensions-->
     <!--[if IE]><script>alert('Please update your browser')</script><![endif]-->
@@ -93,6 +95,7 @@
             height: 100vh;
             display: flex;
         }
+
         :root {
             /* background: #E0C2D4; */
             background: linear-gradient(0deg, rgba(224, 194, 212, 1) 0%, rgba(243, 187, 177, 1) 50%, rgba(253, 186, 157, 1) 100%);

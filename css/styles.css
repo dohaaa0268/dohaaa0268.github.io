@@ -224,10 +224,10 @@ html {
     word-break: break-word;
     overflow-y: scroll;
     padding: 8px;
-    width: 600px;
+    width: 720px;
     border-radius: 2px;
     max-width: 90vw;
-    height: 500px;
+    height: 570px;
 }
 
 .button::first-letter {
