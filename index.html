@@ -89,10 +89,10 @@
     <!--[if IE]><script>alert('Please update your browser')</script><![endif]-->
 </head>
 
-<body style="overflow-y: scroll;scrollbar-width: none;margin:0">
+<body style="overflow-y: scroll;scrollbar-width: none;margin:0" class="center">
     <style>
         body {
-            height: 100vh;
+            height: 100%;
             display: flex;
         }
 
@@ -119,11 +119,11 @@
                 </script>
             </div>
             <div class="other purple" id="stuff" role="tablist" aria-label="Change the channel">
-                <a aria-controls="content" aria-keyshortcuts="Alt+Shift+D" role="tab" class="button radio draw"
+                <a draggable="false" aria-controls="content" aria-keyshortcuts="Alt+Shift+D" role="tab" class="button radio draw"
                     aria-label="Draw me something" target="content" href="draw.html" aria-selected="false">Draw</a>
-                <a aria-controls="content" aria-keyshortcuts="Alt+Shift+H" role="tab" class="button radio"
+                <a draggable="false" aria-controls="content" aria-keyshortcuts="Alt+Shift+H" role="tab" class="button radio"
                     target="content" href="main.html" aria-selected="true">Home</a>
-                <a aria-controls="content" aria-keyshortcuts="Alt+Shift+A" role="tab" class="button radio draw"
+                <a draggable="false" aria-controls="content" aria-keyshortcuts="Alt+Shift+A" role="tab" class="button radio draw"
                     aria-label="About Me" target="content" href="about.html" aria-selected="false">About</a>
 
                 <!-- <a role="button" class="button" aria-label="Other stuff" target="content" href="main.html">Stuff</a> -->
