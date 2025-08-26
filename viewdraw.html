@@ -107,7 +107,8 @@
                 'use strict'
                 var region = document.getElementById('drawings')
                 var req = new XMLHttpRequest
-                req.open('get', 'https://dohaaa0268-mail.deno.dev')
+                req.open('get', 'https://dohaaa0268.deno.dev')
+                // req.setRequestHeader('Access-Control-Allow-Origin','*')
                 req.onerror = function() {
                     region.textContent='It didnt work'
                 }
