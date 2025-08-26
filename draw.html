@@ -80,7 +80,13 @@
     <link rel="preload" as="font" href="./fonts/pixel2.woff2" crossorigin="anonymous">
     <!--https://wiki.whatwg.org/wiki/MetaExtensions-->
     <!--[if IE]><script>alert('Please update your browser')</script><![endif]-->
-
+    <style>
+        #ty img {
+            width: 50%;
+            width: 15%;
+            margin: 5px;
+        }
+    </style>
 </head>
 
 <body>
@@ -98,55 +104,31 @@
                     })
                 }(document.getElementById('dragon'), 1)
             </script>
-            <div style="overflow: hidden;">
-                <paper-canvas id="paper" width="250" height="250" id="can"></paper-canvas>
+            <div id="form" role="form" data-action="http://localhost:3002/">
+                <div style="overflow: hidden;">
+                    <paper-canvas id="paper" width="250" height="250" id="can" name="sketch"></paper-canvas>
+                </div>
+                <div id="controls">
+                    <label for="color">
+                        Color:
+                        <input type="color" id="color" title="Pick a color" aria-label="Pick a color">
+                    </label>
+                    <label for="undo">
+                        Undo:
+                        <button id="undo" aria-label="undo">↺</button>
+                    </label>
+                    <br>
+                    <label for="brushsize" style="margin:5px;display: flex;place-items: center;">
+                        Brush Size:
+                        <input type="range" id="brushsize" min="1" max="40" value="1">
+                    </label>
+                </div>
+                <button id="submit">Submit</button>
             </div>
-            <div id="controls">
-                <label for="color">
-                    Color:
-                    <input type="color" id="color" title="Pick a color" aria-label="Pick a color">
-                </label>
-                <label for="undo">
-                    Undo:
-                    <button id="undo" aria-label="undo">↺</button>
-                </label>
-                <br>
-                <label for="brushsize" style="margin:5px;display: flex;place-items: center;">
-                    Brush Size:
-                    <input type="range" id="brushsize" min="1" max="40" value="1">
-                </label>
-            </div>
-            <aside>&lpar;you can&apos;t submit it yet&rpar;</aside>
         </div>
     </main>
-    <script type="module">
-        import $ from 'https://addsoupbase.github.io/yay.js'
-        import 'https://addsoupbase.github.io/webcomponents/paper-canvas.js'
-        import { on } from 'https://addsoupbase.github.io/handle.js'
-        let { dragon } = $.id
-        on(document, {
-            visibilitychange() {
-                document.hidden ? dragon.pauseAnims() : dragon.resumeAnims()
-            }
-        })
-        let { paper, undo, brushsize } = $.id
-        $.id.color.on({
-            change() {
-                paper.attr.color = this.value
-            }
-        })
-        brushsize.on({
-            change() {
-                paper.attr.brushsize = parseFloat(this.value) || 1
-            }
-        })
-        undo.on({
-            click() {
-                paper.undo()
-            }
-        })
+    <script type="module" src="scripts/draw.js" async></script>
 
-    </script>
 </body>
 
 </html>
