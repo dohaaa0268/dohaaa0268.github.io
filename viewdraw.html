@@ -108,6 +108,9 @@
                 var region = document.getElementById('drawings')
                 var req = new XMLHttpRequest
                 req.open('get', 'https://dohaaa0268-mail.deno.dev')
+                req.onerror = function() {
+                    region.textContent='It didnt work'
+                }
                 req.onload = function () {
                     var data = (JSON.parse || eval)(req.responseText),
                         len = data.length
