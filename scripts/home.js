@@ -8,6 +8,7 @@ content.on({
     }
 })
 stuff.delegate({
+    $auxclick(){},
     $contextmenu(){}, // Prevent the 'open in new tab' thing
     click(e) {
         if (this.attr._selected === 'true') return e.preventDefault()

@@ -255,6 +255,7 @@ html {
     font-size: 1.4em;
     padding-right: 1px;
     margin: 5px;
+    --user-select:none;
     transition: background .1s LINEAR, transform .2s ease;
 }
 
