@@ -9,8 +9,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
     <meta name="description" content="YOUR DESC HERE">
-    <meta property="og:image:width" content="128">
-    <meta property="og:image:height" content="128">
+    <meta property="og:image:width" content="256">
+    <meta property="og:image:height" content="256">
     <meta property="og:image:type" content="image/webp">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://addsoupbase.github.io/media/avatars/Dohaaa.webp">
@@ -30,8 +30,8 @@
     <meta name="creator" content="dohaaa0268">
     <meta name="designer" content="dohaaa0268">
     <meta name="twitter:image" content="https://addsoupbase.github.io/media/avatars/Dohaaa.webp">
-    <meta name="twitter:image:width" content="128">
-    <meta name="twitter:image:height" content="128">
+    <meta name="twitter:image:width" content="256">
+    <meta name="twitter:image:height" content="256">
     <meta name="msapplication-navbutton-color" content="#4B5390">
     <meta name="msapplication-TileColor" content="#4B5390">
     <meta name="msapplication-square150x150logo" content="./apple-touch-icon-152x152.png">
@@ -55,7 +55,7 @@
     <link rel="canonical" href="https://dohaaa0268.github.io">
     <!--
     <script 
-        type="application/ld+json">{"@context":"https://schema.org","@type": "WebSite","name":"dohaaa0268","url":"https://dohaaa0268.github.io","description":"YOUR DESC HERE","author":{"@type": "Person","name":"dohaaa0268","sameAs":["https://twitter.com/dohaaa0268"]},"mainEntityOfPage":{"@type":"WebPage","@id":"https://dohaaa0268.github.io"},"image":{"@type":"ImageObject","url":"https://addsoupbase.github.io/media/avatars/Dohaaa.webp","width":128,"height":128}}</script>
+        type="application/ld+json">{"@context":"https://schema.org","@type": "WebSite","name":"dohaaa0268","url":"https://dohaaa0268.github.io","description":"YOUR DESC HERE","author":{"@type": "Person","name":"dohaaa0268","sameAs":["https://twitter.com/dohaaa0268"]},"mainEntityOfPage":{"@type":"WebPage","@id":"https://dohaaa0268.github.io"},"image":{"@type":"ImageObject","url":"https://addsoupbase.github.io/media/avatars/Dohaaa.webp","width":256,"height":256}}</script>
     -->
     <link rel="apple-touch-icon" sizes="57x57" href="./apple-touch-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="./apple-touch-icon-60x60.png">
@@ -78,7 +78,6 @@
     <link rel="preload" as="font" href="./fonts/pixel2.woff2" crossorigin="anonymous">
     <link rel="prefetch" as="document" href="about.html" fetchpriority="low">
     <link rel="prefetch" as="document" href="draw.html" fetchpriority="low">
-    <script src="scripts/home.js" type="module" async></script>
     <!--https://wiki.whatwg.org/wiki/MetaExtensions-->
     <!--[if IE]><script>alert('Please update your browser')</script><![endif]-->
 </head>
@@ -110,13 +109,14 @@
                             e.style.display = ''
                         }
                         addEventListener('keydown', function (e) {
+                            e.stopImmediatePropagation()
                             if (e.altKey && e.shiftKey && !e.repeat) {
                                 var k = e.key.toUpperCase()
                                     , str = '[aria-keyshortcuts="Alt+Shift+' + k + '"]'
                                     , el = document.querySelector(str) || frames[0].document.querySelector(str)
                                 el && el.click()
                             }
-                        }, { passive: true })
+                        }, { passive: true, capture:true })
                     }(document.getElementById('content'))
                 </script>
             </div>
@@ -142,6 +142,8 @@
         <img alt aria-hidden="true" src="https://addsoupbase.github.io/cute-emojis/emojis/94964-twinklingstar.gif"
             width="30" height="30" class="anchor2 anchor star" draggable="false" id="bottomright">
     </main>
+        <script src="scripts/home.js" type="module" async></script>
+
 </body>
 
 </html>

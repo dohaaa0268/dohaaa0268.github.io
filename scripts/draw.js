@@ -35,7 +35,7 @@ submit.on({
                 <img src="https://addsoupbase.github.io/cute-emojis/emojis/1265963084305006692.png" alt="H">
                 <img src="https://addsoupbase.github.io/cute-emojis/emojis/1265962622805610559.png" alt="A">
                 </div>
-                <h2>Sketch Received.</h2>
+                <h2>Sketch Received!!</h2>
                 </section>`)
             note.replace(yours)
             yours.fadeIn()
