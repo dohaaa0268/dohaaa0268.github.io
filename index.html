@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <script>origin==='http://localhost:3000'&&navigator.serviceWorker.register('./local.js',{scope: './'})</script>
+    <script>origin === 'http://localhost:3000' && navigator.serviceWorker.register('./local.js', { scope: './' })</script>
     <meta charset="UTF-8">
     <meta http-equiv="content-language" content="en">
     <meta property="og:locale" content="en_US">
@@ -96,7 +97,7 @@
             width: 100vw;
         }
     </style>
-    <main class="centerx">
+    <main class="centerx" style="z-index: 2;">
         <div style="place-items: center;">
             <div class="purple container" id="frameholder">
                 <iframe name="content" id="content" title="Main Content" src="main.html">
@@ -116,7 +117,7 @@
                                     , el = document.querySelector(str) || frames[0].document.querySelector(str)
                                 el && el.click()
                             }
-                        }, { passive: true, capture:true })
+                        }, { passive: true, capture: true })
                     }(document.getElementById('content'))
                 </script>
             </div>
@@ -126,10 +127,10 @@
                     draggable="false" aria-controls="content" aria-keyshortcuts="Alt+Shift+G" role="tab"
                     class="button radio draw" aria-label="View other peoples drawings" target="content"
                     href="viewdraw.html" aria-selected="false">Gallery</a><a draggable="false" aria-controls="content"
-                    aria-keyshortcuts="Alt+Shift+H" role="tab" class="button radio" target="content" href="main.html"
-                    aria-selected="true">Home</a><a draggable="false" aria-controls="content"
                     aria-keyshortcuts="Alt+Shift+A" role="tab" class="button radio draw" aria-label="About Me"
-                    target="content" href="about.html" aria-selected="false">About</a>
+                    target="content" href="about.html" aria-selected="false">About</a><a draggable="false" aria-controls="content"
+                    aria-keyshortcuts="Alt+Shift+H" role="tab" class="button radio" target="content" href="main.html"
+                    aria-selected="true">Home</a>
                 <!-- <a role="button" class="button" aria-label="Other stuff" target="content" href="main.html">Stuff</a> -->
             </div>
         </div>
@@ -142,8 +143,8 @@
         <img alt aria-hidden="true" src="https://addsoupbase.github.io/cute-emojis/emojis/94964-twinklingstar.gif"
             width="30" height="30" class="anchor2 anchor star" draggable="false" id="bottomright">
     </main>
-        <script src="scripts/home.js" type="module" async></script>
-
+    <div id="background" role="presentation" aria-label="Jellyfish Swimming"></div>
+    <script src="scripts/home.js" type="module" async></script>
 </body>
 
 </html>

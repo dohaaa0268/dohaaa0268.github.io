@@ -144,8 +144,8 @@ img {
 }
 
 #stuff {
-    width:720px;
-    min-height:60px;
+    width: 720px;
+    min-height: 60px;
     overflow-y: hidden;
     max-width: 83vw;
     overflow-x: auto;
@@ -205,15 +205,39 @@ img {
     border-radius: 100%;
     margin: 10px
 }
+
 .star {
     filter: hue-rotate(342deg);
 }
+
 .glow {
     filter: drop-shadow(0px 0px 10px var(--BLUE-5))
 }
 
 body {
     /* width:100% */
+}
+
+.jelly {
+    /* background-image: url('../media/jellyfish.png'); */
+    image-rendering: pixelated;
+    /* background-size: contain; */
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    bottom: -50px;
+    left: -50px;
+    animation: 1s ease-in-out 0s infinite alternate-reverse both running wiggle
+}
+
+@keyframes wiggle {
+    0% {
+        transform: translateX(-10px);
+    }
+
+    100% {
+        transform: translateX(10px);
+    }
 }
 
 html {
@@ -255,7 +279,7 @@ html {
     font-size: 1.4em;
     padding-right: 1px;
     margin: 5px;
-    --user-select:none;
+    --user-select: none;
     transition: background .1s LINEAR, transform .2s ease;
 }
 
