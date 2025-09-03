@@ -8,3 +8,6 @@ html {
     margin: 5px;
     font-size: larger;
 }
+:not(img) {
+    max-width: 100%;
+}

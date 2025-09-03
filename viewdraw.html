@@ -87,11 +87,19 @@
             text-align: center;
             display: block;
         }
-       #drawings img {
+
+        #drawings img {
             border: 1px solid black;
-            width: 40%;
-            margin: 5px
+            width: 300px;
+            max-width: 100%;
+            margin: 5px;
+            background-color: white;
         }
+
+        #drawings a {
+            display: contents;
+        }
+
         #drawings {
             text-align: center;
         }
@@ -100,9 +108,10 @@
 
 <body>
     <main>
-        <div class="centerx">
+        <div class="centerx" style="width:100%">
             <h1>Submitted Drawings</h1>
-            <img alt aria-hidden="true" width="40" height="40" style="image-rendering: pixelated; margin: 7px;" src="https://addsoupbase.github.io/cute-emojis/emojis/1368436536005365782.gif">
+            <img alt aria-hidden="true" width="40" height="40" style="image-rendering: pixelated; margin: 7px;"
+                src="https://addsoupbase.github.io/cute-emojis/emojis/1368436536005365782.gif">
         </div>
         <div role="region" id="drawings"></div>
         <script>
@@ -115,16 +124,29 @@
                     region.textContent = "Something went wrong."
                 }
                 req.onload = function () {
+                    function go(len) {
+                        var img = document.createElement('img'),
+                            a = document.createElement('a'),
+                            src = data[len],
+                            req = new XMLHttpRequest
+                        req.responseType = 'blob'
+                        req.open('get', src)
+                        req.onload = function () {
+                            var src = URL.createObjectURL(req.response)
+                            a.appendChild(img)
+                            a.setAttribute('href', src)
+                            a.setAttribute('target', '_blank')
+                            img.setAttribute('src', src)
+                            img.setAttribute('loading', 'lazy')
+                            img.setAttribute('decoding', 'async')
+                            region.appendChild(a)
+                        }
+                        req.send()
+                    }
                     var data = (window.JSON ? JSON.parse : eval)(req.responseText),
                         len = data.length
                     if (!len) return region.textContent = 'No drawings yet. Submit one!'
-                    while (len--) {
-                        var img = document.createElement('img')
-                        img.setAttribute('src', data[len])
-                        img.setAttribute('loading', 'lazy')
-                        img.setAttribute('decoding', 'async')
-                        region.appendChild(img)
-                    }
+                    while (len--) go(len)
                 }
                 req.send()
             }()
