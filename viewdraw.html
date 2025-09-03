@@ -97,7 +97,8 @@
         }
 
         #drawings a {
-            display: contents;
+            /* display: contents; */
+            text-decoration: none;
         }
 
         #drawings {
@@ -143,8 +144,10 @@
                             img.setAttribute('src', src)
                             img.setAttribute('loading', 'lazy')
                             img.setAttribute('decoding', 'async')
-                            var d = document.createElement('time')
-                            d.textContent = new Date(date).toLocaleDateString()
+                            var d = document.createElement('time'),
+                            now = new Date(date)
+                            d.textContent = now.toLocaleDateString()
+                            d.setAttribute('datetime', now.toISOString().slice(0,10))
                             a.appendChild(d)
                             region.appendChild(a)
                         }
