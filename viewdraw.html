@@ -91,7 +91,7 @@
         #drawings img {
             border: 1px solid black;
             width: 300px;
-            max-width: 100%;
+            max-width: fit-content;
             margin: 5px;
             background-color: white;
         }
@@ -102,6 +102,9 @@
 
         #drawings {
             text-align: center;
+        }
+        time {
+            display: block;
         }
     </style>
 </head>
@@ -127,7 +130,8 @@
                     function go(len) {
                         var img = document.createElement('img'),
                             a = document.createElement('a'),
-                            src = data[len],
+                            src = data[len][0],
+                            date = data[len][1],
                             req = new XMLHttpRequest
                         req.responseType = 'blob'
                         req.open('get', src)
@@ -139,6 +143,9 @@
                             img.setAttribute('src', src)
                             img.setAttribute('loading', 'lazy')
                             img.setAttribute('decoding', 'async')
+                            var d = document.createElement('time')
+                            d.textContent = new Date(date).toLocaleDateString()
+                            a.appendChild(d)
                             region.appendChild(a)
                         }
                         req.send()
