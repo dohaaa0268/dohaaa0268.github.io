@@ -200,6 +200,11 @@ img {
     border: 5px groove var(--PURPLE-3);
     /* border-radius: 5px; */
 }
+.purple2 {
+    background-color: hwb(324 63% 19% / 0.85);
+    border: 5px groove hwb(228 36% 33% / 0.85);
+    /* border-radius: 5px; */
+}
 
 .avatar {
     border-radius: 100%;
