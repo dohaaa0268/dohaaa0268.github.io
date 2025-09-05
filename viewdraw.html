@@ -153,7 +153,7 @@
                         }
                         req.send()
                     }
-                    var data = (window.JSON ? JSON.parse : eval)(req.responseText),
+                    var data = (window.JSON ? JSON.parse : eval)(req.responseText).reverse(),
                         len = data.length
                     if (!len) return region.textContent = 'No drawings yet. Submit one!'
                     while (len--) go(len)
