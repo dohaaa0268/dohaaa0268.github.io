@@ -78,8 +78,6 @@
     <link rel="preload" as="font" href="./fonts/pixel2.woff2" crossorigin="anonymous">
     <link rel="prefetch" as="document" href="about.html" fetchpriority="low">
     <link rel="prefetch" as="document" href="draw.html" fetchpriority="low">
-    <!--https://wiki.whatwg.org/wiki/MetaExtensions-->
-    <!--[if IE]><script>alert('Please update your browser')</script><![endif]-->
     <style>
         #poster {
             cursor: pointer;
@@ -87,6 +85,7 @@
             transition: transform .2s linear;
             box-shadow: 5px 5px 0 black;
         }
+
         .cam {
             /* image-rendering: pixelated; */
             margin: 5px
@@ -99,15 +98,16 @@
 <body>
     <main class="centerx" style="padding:0;margin:0">
         <div style="display: grid;place-content: center;place-items: center;">
-            <h1 style="font-size: x-large;place-items: center;display:flex"><img draggable="false" alt width="30" class="cam"
-                    src="https://addsoupbase.github.io/cute-emojis/emojis/1225821658225577984.gif">Movies that I
+            <h1 style="font-size: x-large;place-items: center;display:flex"><img draggable="false" alt width="30"
+                    class="cam" src="https://addsoupbase.github.io/cute-emojis/emojis/1225821658225577984.gif">Movies
+                that I
                 like<img draggable="false" alt width="30" class="cam"
                     src="https://addsoupbase.github.io/cute-emojis/emojis/1225821603527524482.gif"></h1>
-                    <p style="display: contents;">Click to view the next one</p>
-            <img decoding="sync" loading="eager" draggable="false" alt="Charlie and the Chocolate Factory (2005)" title="Movie Poster" aria-live="polite"
-                aria-atomic="true" tabindex="0" id="poster" src="./media/charlie.webp" width="300"
-                style="max-width: 100%;">
-        </div>        
+            <p style="display: contents;">Click to view the next one</p>
+            <img decoding="sync" loading="eager" draggable="false" alt="Charlie and the Chocolate Factory (2005)"
+                title="Movie Poster" aria-live="polite" aria-atomic="true" tabindex="0" id="poster"
+                src="./media/charlie.webp" width="300" style="max-width: 100%;">
+        </div>
     </main>
     <script type="module">
         import $ from 'https://addsoupbase.github.io/yay.js'
@@ -118,6 +118,67 @@
         let { poster } = $.id,
             { width } = poster.attr
         let timeout = setTimeout(poster.click.bind(poster), 7e3)
+        let titles = new Map(Object.entries({
+            '10things': '10 Things I Hate About You',
+            alice: 'Alice in Wonderland (2010)',
+            whisker: 'A Whisker Away',
+            arrietty: 'The Secret World of Arrietty',
+            barbie: 'Barbie (2023)',
+            beautybeast: 'Beauty and the Beast (2017)',
+            brave: 'Brave (2012)',
+            catreturns: 'The Cat Returns',
+            charlie: "Charlie and the Chocolate Factory (2005)",
+            childrenvoices: 'Children Who Chase Lost Voices',
+            'coraline': 'Coraline',
+            corner: 'In This Corner of the World',
+            'corpse': 'Corpse Bride',
+            cruella: 'Cruella',
+            'damsel': 'Damsel (2024)',
+            deadpoets: 'Dead Poets Society',
+            'enola': 'Enola Holmes',
+            fireflies: 'Grave of the Fireflies',
+            frozen: 'Frozen (2013)',
+            'harrypotter': "Harry Potter and the Philosopher's Stone",
+            home: 'Home (2015)',
+            'homealone': 'Home Alone (1990)',
+            hotarubi: 'Hotarubi No Mori E',
+            'hungergames': 'The Hunger Games (2012)',
+            'jumanji': 'Jumanji (2019)',
+            'karatekid': 'The Karate Kid (2010)',
+            'kpopdemonhunters': 'Kpop Demon Hunters',
+            lalaland: 'La La Land',
+            legallyblonde: 'Legally Blonde',
+            'littleprince': 'The Little Prince',
+            'littlewomen': 'Little Women',
+            luca: 'Luca',
+            maleficent: 'Maleficent (2014)',
+            'mazerunner': 'The Maze Runner',
+            meangirls: 'Mean Girls (2004)',
+            mebeforeyou: 'Me Before You',
+            moana: 'Moana',
+            mononoke: 'Princess Mononoke',
+            moxie: 'Moxie (2021)',
+            mulan: 'Mulan (1998)',
+            'narnia': 'The Chronicles of Narnia (2005)',
+            oceanwaves: 'The Ocean Waves',
+            peregrine: "Miss Peregrine's Home for Peculiar Children",
+            pitchperfect: 'Pitch Perfect (2012)',
+            princessdiary: 'The Princess Diaries',
+            'saiyaara': 'Saiyaara',
+            'school': 'The School for Good and Evil',
+            shestheman: "She's The Man",
+            'showman': 'The Greatest Showman',
+            suzume: 'Suzume No Tojimari',
+            thedevil: 'The Devil Wears Prada',
+            thehelp: 'The Help',
+            'train': 'Train to Busan',
+            up: 'Up (2009)',
+            uptowngirls: 'Uptown Girls',
+            violet: 'Violet Evergarden',
+            'wind': 'The Wind Rises',
+            whisper: 'Whisper of the Heart',
+            'wicked': 'Wicked',
+        }))
         poster.debounce({
             async click() {
                 clearTimeout(timeout)
@@ -128,51 +189,7 @@
                 let load = poster.until('load', 'error'),
                     { next } = t
                 poster.src = `./media/${next}`
-                let alt = 'Movie'
-                switch (next.replace('.webp', '')) {
-                    case 'charlie': alt = "Charlie and the Chocolate Factory (2005)"
-                        break
-                    case 'up': alt = 'Up (2009)'
-                        break
-                    case 'coraline': alt = 'Coraline'
-                        break
-                    case 'corpse': alt = 'Corpse Bride'
-                        break
-                    case 'damsel': alt = 'Damsel (2024)'
-                        break
-                    case 'enola': alt = 'Enola Holmes'
-                        break
-                    case 'harrypotter': alt = 'Harry Potter and the Philosopher\'s Stone'
-                        break
-                    case 'homealone': alt = 'Home Alone (1990)'
-                        break
-                    case 'hungergames': alt = 'The Hunger Games (2012)'
-                        break
-                    case 'jumanji': alt = 'Jumanji (2019)'
-                        break
-                    case 'karatekid': alt = 'The Karate Kid (2010)'
-                        break
-                    case 'kpopdemonhunters': alt = 'Kpop Demon Hunters'
-                        break
-                    case 'littleprince': alt = 'The Little Prince'
-                        break
-                    case 'littlewomen': alt = 'Little Women'
-                        break
-                    case 'mazerunner': alt = 'The Maze Runner'
-                        break
-                    case 'narnia': alt = 'The Chronicles of Narnia (2005)'
-                        break
-                    case 'saiyaara': alt = 'Saiyaara'
-                        break
-                    case 'school': alt = 'The School for Good and Evil'
-                        break
-                    case 'showman': alt = 'The Greatest Showman'
-                        break
-                    case 'train': alt = 'Train to Busan'
-                        break
-                    case 'wicked': alt = 'Wicked'
-                        break
-                }
+                let alt = titles.get(next.replace('.webp', '')) || poster.src
                 poster.attr.alt = poster.attr.title = alt
                 try {
                     poster.loaded || await load
@@ -184,20 +201,10 @@
                     poster.attr.inert = false
                     poster.attr._busy = "false"
                     timeout = setTimeout(poster.click.bind(poster), 8e3)
-                    }
+                }
             }
         }, 500)
-        let sources = ['up.webp',
-            'train.webp', 'karatekid.webp',
-            'hungergames.webp', 'wicked.webp',
-            'kpopdemonhunters.webp', 'mazerunner.webp',
-            'harrypotter.webp', 'homealone.webp',
-            'littleprince.webp', 'corpse.webp',
-            'showman.webp', 'coraline.webp',
-            'jumanji.webp', 'narnia.webp',
-            'charlie.webp', 'enola.webp',
-            'damsel.webp', 'littlewomen.webp',
-            'saiyaara.webp', 'school.webp']
+        let sources = Array.from(titles.keys(), o => `${o}.webp`)
         let t = cycleFrom(sources)
         // console.clear()
     </script>
