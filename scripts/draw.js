@@ -12,6 +12,10 @@ let { paper, undo, brushsize, submit, form, restore } = $.id
 let content = $(top.document.getElementById('content'))
 let old = localStorage.drawing
 paper.on({
+    wheel({ deltaY }) {
+        deltaY = -Math.sign(deltaY) * 2
+        paper.attr.brushsize = parseFloat(brushsize.value = +brushsize.value + deltaY) || 1
+    },
     _pointerdown() {
         drew = true
     }
@@ -24,7 +28,7 @@ if (old) {
             restore.show(3)
             restore.on({
                 _click() {
-                    paper.canvas.getContext('2d').drawImage(n,0,0)
+                    paper.canvas.getContext('2d').drawImage(n, 0, 0)
                     localStorage.removeItem('drawing')
                     this.destroy()
                 }
@@ -67,7 +71,7 @@ submit.on({
         }
         catch (e) {
             localStorage.drawing = data
-            prompt('Message could not be sent', e.toString())
+            prompt('Sketch could not be sent, you may restore it later.', e.toString())
         }
         finally {
             drew = false
@@ -91,7 +95,7 @@ undo.on({
 })
 function canSend(req) {
     if (!req?.ok) {
-        paper.parent.parent.replace($(`<strong>Can't send drawings right now. Try again later</strong>`))
+        paper.parent.parent.replace($("<strong>Can't send drawings right now. Try again later</strong>"))
         dragon.src = 'https://addsoupbase.github.io/cute-emojis/emojis/58497-gummydragon-35.gif'
         dragon.cancelAnims()
     }

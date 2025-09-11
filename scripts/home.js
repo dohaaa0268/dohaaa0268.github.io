@@ -35,6 +35,7 @@ function spawnJellyFish() {
         filter: `hue-rotate(${ran.range(0, 360)}deg)`
     })
     jelly.animate([{ transform: 'translateY(0)' }, { transform: 'translateY(calc(-100vh - 50px))' }], { duration: 7000, iterations: 1, easing: 'linear', fill: 'forwards', composite: 'add' })
+    .finished.then(()=>jelly.destroy())
 }
 h.on(window, {
     _load() {
