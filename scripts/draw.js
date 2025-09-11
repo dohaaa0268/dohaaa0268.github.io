@@ -7,7 +7,31 @@ on(document, {
         document.hidden ? dragon.pauseAnims() : dragon.resumeAnims()
     }
 })
-let { paper, undo, brushsize, submit, form } = $.id
+let drew = false
+let { paper, undo, brushsize, submit, form, restore } = $.id
+let content = $(top.document.getElementById('content'))
+let old = localStorage.drawing
+paper.on({
+    _pointerdown() {
+        drew = true
+    }
+})
+if (old) {
+    let n = new Image
+    n.src = old
+    on(n, {
+        _load() {
+            restore.show(3)
+            restore.on({
+                _click() {
+                    paper.canvas.getContext('2d').drawImage(n,0,0)
+                    localStorage.removeItem('drawing')
+                    this.destroy()
+                }
+            })
+        }
+    })
+}
 submit.on({
     async _click() {
         form.fadeOut()
@@ -16,9 +40,9 @@ submit.on({
             form.after = note
             note.animate([{ transform: 'scale(.5, .5)', opacity: 0 }, { transform: '', opacity: 1 }], { duration: 500, easing: 'ease', iterations: 1 })
         })
+        let data = paper.dataURL()
         try {
-            let data = paper.dataURL()
-             let a = await fetch(form.attr.$action, {
+            let a = await fetch('https://dohaaa0268.deno.dev', {
                 method: 'POST',
                 body: data,
                 mode: 'cors',
@@ -26,7 +50,7 @@ submit.on({
                     'Content-Type': 'text/plain'
                 }
             })
-            if(!a.ok) throw `Error code ${a.status}`
+            if (!a.ok) throw `Error code ${a.status}`
             await note.animate([{ transform: '' }, { transform: 'translateX(300px)' }], { delay: 1000, iterations: 1, duration: 500, easing: 'ease-in', fill: 'forwards' }).finished
             let yours = $(`<section>
                 <div id="ty">
@@ -39,9 +63,14 @@ submit.on({
                 </section>`)
             note.replace(yours)
             yours.fadeIn()
+            localStorage.removeItem('drawing')
         }
         catch (e) {
+            localStorage.drawing = data
             prompt('Message could not be sent', e.toString())
+        }
+        finally {
+            drew = false
         }
     }
 })
@@ -60,3 +89,21 @@ undo.on({
         paper.undo()
     }
 })
+function canSend(req) {
+    if (!req?.ok) {
+        paper.parent.parent.replace($(`<strong>Can't send drawings right now. Try again later</strong>`))
+        dragon.src = 'https://addsoupbase.github.io/cute-emojis/emojis/58497-gummydragon-35.gif'
+        dragon.cancelAnims()
+    }
+}
+fetch('https://dohaaa0268.deno.dev', { method: 'HEAD' }).then(canSend, canSend)
+let drawButton = $(top.document.getElementById('drawbutton'))
+on(window, {
+    beforeunload(n) {
+        if (drew) {
+            content.show(3)
+            drawButton.click()
+            n.returnValue = !n.preventDefault()
+        }
+    }
+}, new AbortController)
