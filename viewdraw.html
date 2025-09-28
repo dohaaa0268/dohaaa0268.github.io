@@ -104,6 +104,7 @@
         #drawings {
             text-align: center;
         }
+
         time {
             display: block;
         }
@@ -121,49 +122,62 @@
         <script>
             !function () {
                 'use strict'
+                onerror = console.error
                 var region = document.getElementById('drawings')
-                var req = new XMLHttpRequest
-                req.open('get', 'https://dohaaa0268.deno.dev')
-                req.onerror = function () {
-                    region.textContent = "Something went wrong."
+                var res
+                var url = 'https://dohaaa0268.deno.dev'
+                if (window.fetch) {
+                    fetch(url, { mode: "cors" }).then(function (n) {
+                        n.json().then(function (n) {
+                            res = n
+                            gah()
+                        })
+                    }).catch(function (n) {
+                        region.textContent = 'Something went wrong.'
+                    })
                 }
-                req.onload = function () {
-                    function go(len) {
+                else {
+                    var req = new XMLHttpRequest
+                    req.open('get', url)
+                    req.setRequestHeader('Access-Control-Allow-Origin', '*')
+                    req.onerror = function () {
+                        region.textContent = "Something went wrong."
+                    }
+                    req.send()
+                    req.onload = function () {
+                        res = (window.JSON ? JSON.parse : eval)(req.responseText)
+                        gah()
+                    }
+                }
+                function gah() {
+                    function go(i) {
                         var img = document.createElement('img'),
                             a = document.createElement('a'),
-                            src = data[len][0],
-                            date = data[len][1],
-                            req = new XMLHttpRequest
-                        req.responseType = 'blob'
-                        req.open('get', src)
-                        req.onload = function () {
-                            var src = URL.createObjectURL(req.response)
-                            a.appendChild(img)
-                            a.setAttribute('href', src)
-                            a.setAttribute('target', '_blank')
-                            img.setAttribute('src', src)
-                            img.setAttribute('loading', 'lazy')
-                            img.setAttribute('decoding', 'async')
-                            var d = document.createElement('time'),
+                            d = data[i],
+                            src = d[0],
+                            date = d[1]
+                        a.appendChild(img)
+                        a.setAttribute('href', src)
+                        a.setAttribute('target', '_blank')
+                        img.setAttribute('loading', 'lazy')
+                        img.setAttribute('decoding', 'async')
+                        img.setAttribute('src', src)
+                        var time = document.createElement('time'),
                             now = new Date(date)
-                            d.textContent = now.toLocaleDateString()
-                            d.setAttribute('datetime', now.toISOString().slice(0,10))
-                            a.appendChild(d)
-                            region.appendChild(a)
-                        }
-                        req.send()
+                        time.textContent = now.toLocaleDateString()
+                        time.setAttribute('datetime', now.toISOString().slice(0, 10))
+                        a.appendChild(time)
+                        region.appendChild(a)
                     }
-                    var data = (window.JSON ? JSON.parse : eval)(req.responseText).reverse(),
+                    var data = res.reverse(),
                         len = data.length
                     if (!len) return region.textContent = 'No drawings yet. Submit one!'
                     while (len--) go(len)
                 }
-                req.send()
             }()
         </script>
     </main>
-        <script type="module" src="frame.js"> </script>
-
+    <script type="module" src="frame.js"> </script>
 </body>
 
 </html>
