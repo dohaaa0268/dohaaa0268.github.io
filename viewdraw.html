@@ -129,8 +129,16 @@
                 if (window.fetch) {
                     fetch(url, { mode: "cors" }).then(function (n) {
                         n.json().then(function (n) {
-                            res = n
-                            gah()
+                            Promise.all(n.map(function (n) {
+                                return fetch(n[0]).then(function (a) {
+                                    return a.blob().then(function (blob) {
+                                        return[URL.createObjectURL(blob), n[1]]
+                                    })
+                                })
+                            })).then(function(n){
+                                res=n
+                                gah()
+                            })
                         })
                     }).catch(function (n) {
                         region.textContent = 'Something went wrong.'
