@@ -1,7 +1,7 @@
 import $ from 'https://addsoupbase.github.io/yay.js'
 import ran from 'https://addsoupbase.github.io/random.js'
 import 'https://addsoupbase.github.io/webcomponents/img-sprite.js'
-import * as h from 'https://addsoupbase.github.io/handle.js'
+const h = window[Symbol.for('[[HModule]]')]
 let { stuff, content, background } = $.id
 window.onload = null
 content.fadeIn()
@@ -13,7 +13,7 @@ function press(a) {
 }
 
 function load() {
-    content.fadeIn()
+    h.safari || content.fadeIn()
     // stuff.attr.inert = false
     press($(document.querySelector(`a[href="${content.contentWindow.location.href.split('/').at(-1)}"]`)))
     // if (this.attr._selected === 'true') return e.preventDefault()

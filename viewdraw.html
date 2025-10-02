@@ -147,7 +147,7 @@
                 else {
                     var req = new XMLHttpRequest
                     req.open('get', url)
-                    req.setRequestHeader('Access-Control-Allow-Origin', '*')
+                    // req.setRequestHeader('Access-Control-Allow-Origin', '*')
                     req.onerror = function () {
                         region.textContent = "Something went wrong."
                     }

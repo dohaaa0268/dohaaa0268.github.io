@@ -138,6 +138,12 @@ img {
     }
 }
 
+@supports (-webkit-touch-callout: inherit) {
+    #frameholder {
+        max-height: 60vh;
+    }
+}
+
 #frameholder {
     anchor-name: --corners;
     overflow: hidden;
@@ -200,6 +206,7 @@ img {
     border: 5px groove var(--PURPLE-3);
     /* border-radius: 5px; */
 }
+
 .purple2 {
     background-color: hwb(324 63% 19% / 0.85);
     border: 5px groove hwb(228 36% 33% / 0.85);
@@ -223,6 +230,21 @@ body {
     /* width:100% */
 }
 
+@supports (-webkit-touch-callout: initial) {
+    .glow {
+           filter: none
+    }
+
+    .jelly {
+        background-image: url("../media/jellyfish.webp");
+        background-size: contain;
+    }
+
+    img-sprite {
+        display: none
+    }
+}
+
 .jelly {
     /* background-image: url('../media/jellyfish.png'); */
     image-rendering: pixelated;
@@ -232,6 +254,7 @@ body {
     position: fixed;
     bottom: -50px;
     left: -50px;
+    z-index: -1;
     animation: 1s ease-in-out 0s infinite alternate-reverse both running wiggle
 }
 
