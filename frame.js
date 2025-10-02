@@ -1,6 +1,5 @@
 import $ from 'https://addsoupbase.github.io/yay.js'
 const h = window[Symbol.for('[[HModule]]')]
-onerror = alert
 let me = $(frameElement)
 h.compatOn({
     safari: [window, {
