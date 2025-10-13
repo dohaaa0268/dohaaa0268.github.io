@@ -94,6 +94,7 @@
         <div style="display: grid;place-content: center;place-items: center;">
             <h1 style="font-size: x-large;" class="drawMeSomething">Draw me something!!</h1>
             <img style="image-rendering: pixelated;" class="dragon" id="dragon"
+            decoding="async" loading="lazy"
                 src="https://addsoupbase.github.io/cute-emojis/emojis/1368436543739400222.gif" alt="Dragon with pencil"
                 width="40" height="40">
             <script>
@@ -128,8 +129,7 @@
                     <button id="restore" class="button" style="display: none;">Restore</button>
             </div>
         </div>
+        <script type="module" src="scripts/draw.js" async></script>
     </main>
-    <script type="module" src="scripts/draw.js" async></script>
-    <script type="module" src="frame.js"> </script>
 </body>
 </html>

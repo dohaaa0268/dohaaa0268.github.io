@@ -54,7 +54,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="author" content="dohaaa0268">
     <link rel="canonical" href="https://dohaaa0268.github.io">
-     <link rel="preconnect" href="https://addsoupbase.github.io">
+    <link rel="preconnect" href="https://addsoupbase.github.io">
     <!--
     <script 
         type="application/ld+json">{"@context":"https://schema.org","@type": "WebSite","name":"dohaaa0268","url":"https://dohaaa0268.github.io","description":"This page was made for dohaaa0268","author":{"@type": "Person","name":"dohaaa0268","sameAs":["https://twitter.com/dohaaa0268"]},"mainEntityOfPage":{"@type":"WebPage","@id":"https://dohaaa0268.github.io"},"image":{"@type":"ImageObject","url":"https://addsoupbase.github.io/media/avatars/Dohaaa.webp","width":256,"height":256}}</script>
@@ -89,27 +89,81 @@
         body {
             height: 100%;
             display: flex;
+            background: linear-gradient(0deg, rgba(224, 194, 212, 1) 0%, rgba(243, 187, 177, 1) 50%, rgba(253, 186, 157, 1) 100%);
         }
 
         :root {
             /* background: #E0C2D4; */
-            background: linear-gradient(0deg, rgba(224, 194, 212, 1) 0%, rgba(243, 187, 177, 1) 50%, rgba(253, 186, 157, 1) 100%);
             height: 100vh;
             width: 100vw;
         }
     </style>
-    <main class="centerx" style="z-index: 2;">
+    <main class="centerx" style="z-index: 2;--user-select:none;">
         <div style="place-items: center;">
             <div class="purple2 container" id="frameholder">
                 <iframe loading="lazy" name="content" id="content" title="Main Content" src="main.html">
                 </iframe>
+                <script type="module">
+                    import $, { h } from 'https://addsoupbase.github.io/yay.js'
+                    import ran from 'https://addsoupbase.github.io/random.js'
+                    import 'https://addsoupbase.github.io/webcomponents/img-sprite.js'
+                    let { stuff, content, background } = $.id
+                    function press(a) {
+                        for (let n of stuff) {
+                            if (n === a) n.attr._selected = 'true'
+                            else n.attr._selected = "false"
+                        }
+                    }
+                    content.on({
+                        load,
+                        error: load
+                    })
+                    function hide() {
+                        content.hide(3)
+                    }
+                    function rething() {
+                        let a = new AbortController
+                        let window = content.contentWindow
+
+                    }
+                    function load() {
+                        if (document.readyState === 'complete')
+                            content.fadeIn()
+                        rething()
+                        press($(document.querySelector(`a[href="${content.contentWindow.location.href.split('/').at(-1)}"]`)))
+                    }
+                    stuff.delegate({
+                        $auxclick() { },
+                        $contextmenu() { }, // Prevent the 'open in new tab' thing
+                        click(e) {
+                            if (this.attr._selected === 'true') e.preventDefault()
+                            else hide()
+                            // else stuff.attr.inert = true
+                        }
+                    })
+                    function spawnJellyFish() {
+                        setTimeout(spawnJellyFish, ran.range(2000, 2500))
+                        let jelly = $('<div class="jelly" aria-hidden="true"><img-sprite  rows="1" cols="7" duration="80" width="50" height="50" src="./media/jellyfish.png"></img-sprite></div>', { parent: background })
+                        jelly.setStyle({
+                            left: `calc((100vw - 50px) * ${Math.random()})`,
+                            filter: `hue-rotate(${ran.range(0, 360)}deg)`
+                        })
+                        jelly.animate([{ transform: 'translateY(0)' }, { transform: 'translateY(calc(-100vh - 50px))' }], { duration: 7000, iterations: 1, easing: 'linear', fill: 'forwards', composite: 'add' })
+                            .finished.then(() => jelly.destroy())
+                    }
+                    h.on(window, {
+                        _load() {
+                            spawnJellyFish()
+                        }
+                    })
+                </script>
                 <script>
                     !function (e) {
                         'use strict'
-                        e.style.display = 'none'
-                        window.onload = function () {
-                            e.style.display = ''
-                        }
+                        /*  e.style.display = 'none'
+                          window.onload = function () {
+                              e.style.display = ''
+                          }*/
                         addEventListener('keydown', function (e) {
                             e.stopImmediatePropagation()
                             if (e.altKey && e.shiftKey && !e.repeat) {
@@ -146,6 +200,6 @@
             width="30" height="30" class="anchor2 anchor star" draggable="false" id="bottomright">
     </main>
     <div id="background" role="presentation" aria-label="Jellyfish Swimming"></div>
-    <script src="scripts/home.js" type="module" async></script>
 </body>
+
 </html>

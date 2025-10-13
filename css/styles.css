@@ -132,9 +132,9 @@ img {
     font-style: normal;
 }
 
-@supports not (anchor-name: --corners) {
+@supports (not (anchor-name: --corners)) or (-webkit-touch-callout: none) {
     .anchor {
-        display: none;
+        display: none !important;
     }
 }
 
@@ -171,6 +171,7 @@ img {
     position: fixed;
     --size: 15px;
     rotate: 15deg;
+    --user-select: none;
 }
 
 #topright {
