@@ -109,6 +109,7 @@
         time {
             display: block;
         }
+        .hi {}
     </style>
 </head>
 
@@ -176,6 +177,7 @@
                         time.textContent = now.toLocaleDateString()
                         time.setAttribute('datetime', now.toISOString().slice(0, 10))
                         a.appendChild(time)
+                        a.className='hi'
                         region.appendChild(a)
                     }
                     var data = res.reverse(),

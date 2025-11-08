@@ -51,8 +51,9 @@
 .drawMeSomething::before {
     background-image: url(https://addsoupbase.github.io/cute-emojis/emojis/11246-purplecrayon.gif);
     content: '';
-    height: 30px;
-    width: 30px;
+    height: 20px;
+    width: 20px;
+    position: relative;
     margin-left: 5px;
     margin-right: 5px;
     background-size: contain;
@@ -139,8 +140,17 @@ img {
 }
 
 @supports (-webkit-touch-callout: inherit) {
+    #paper {
+        transform: scale(0.9, 0.9);
+        margin-top: -10px
+    }
+
+    #form {
+        overflow: scroll !important;
+    }
+
     #frameholder {
-        max-height: 60vh;
+        max-height: 70vh;
     }
 }
 
@@ -233,7 +243,7 @@ body {
 
 @supports (-webkit-touch-callout: initial) {
     .glow {
-           filter: none
+        filter: none
     }
 
     .jelly {
