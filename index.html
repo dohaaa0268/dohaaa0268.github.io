@@ -2,13 +2,20 @@
 <html lang="en">
 
 <head>
-    <script>origin === 'http://localhost:3000' && navigator.serviceWorker.register('../local.js', { scope: './' })</script>
+    <script>
+        if (origin === 'http://localhost:3000') {
+            let a = new XMLHttpRequest
+            a.open('GET', '../local.js', false)
+            a.send()
+            navigator.serviceWorker.register('../../local.js', { scope: './' })
+        } 
+    </script>
     <meta charset="UTF-8">
     <meta http-equiv="content-language" content="en">
     <meta property="og:locale" content="en_US">
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+    <meta name="viewport"content="width=device-width, initial-scale=1, user-scalable=yes, viewport-fit=cover, interactive-widget=overlays-content">
     <meta name="description" content="This page was made for dohaaa0268">
     <meta property="og:image:width" content="256">
     <meta property="og:image:height" content="256">
@@ -106,7 +113,7 @@
                 <script type="module">
                     import $, { h } from 'https://addsoupbase.github.io/yay.js'
                     import ran from 'https://addsoupbase.github.io/random.js'
-                    import 'https://addsoupbase.github.io/webcomponents/img-sprite.js'
+                    import 'https://addsoupbase.github.io/webcomponents/sprite-runner.js'
                     let { stuff, content, background } = $.id
                     function press(a) {
                         for (let n of stuff) {
@@ -143,12 +150,12 @@
                     })
                     function spawnJellyFish() {
                         setTimeout(spawnJellyFish, ran.range(2000, 2500))
-                        let jelly = $('<div class="jelly" aria-hidden="true"><img-sprite  rows="1" cols="7" duration="80" width="50" height="50" src="./media/jellyfish.png"></img-sprite></div>', { parent: background })
+                        let jelly = $('<sprite-runner autoplay class="jelly" aria-hidden="true" rows="1" cols="7" dura="600" src="./media/jellyfish.png"></sprite-runner>', { parent: background })
                         jelly.setStyle({
                             left: `calc((100vw - 50px) * ${Math.random()})`,
                             filter: `hue-rotate(${ran.range(0, 360)}deg)`
                         })
-                        jelly.animate([{ transform: 'translateY(0)' }, { transform: 'translateY(calc(-100vh - 50px))' }], { duration: 7000, iterations: 1, easing: 'linear', fill: 'forwards', composite: 'add' })
+                        jelly.animate([{ transform: 'translateY(0)' }, { transform: 'translateY(-120vh)' }], { duration: 7000, iterations: 1, easing: 'linear', fill: 'forwards', composite: 'accumulate' })
                             .finished.then(() => jelly.destroy())
                     }
                     h.on(window, {
@@ -184,7 +191,9 @@
                     aria-label="View other peoples drawings" target="content" href="viewdraw.html"
                     aria-selected="false">Gallery</a><a draggable="false" aria-controls="content"
                     aria-keyshortcuts="Alt+Shift+A" role="tab" class="button radio draw" aria-label="About Me"
-                    target="content" href="about.html" aria-selected="false">About</a><a draggable="false"
+                    target="content" href="about.html" aria-selected="false">About</a><!--<a draggable="false"
+                    aria-controls="content" aria-keyshortcuts="Alt+Shift+H" role="tab" class="button radio"
+                    target="content" href="fun.html" aria-selected="false">Play</a>--><a draggable="false"
                     aria-controls="content" aria-keyshortcuts="Alt+Shift+H" role="tab" class="button radio"
                     target="content" href="main.html" aria-selected="true">Home</a>
                 <!-- <a role="button" class="button" aria-label="Other stuff" target="content" href="main.html">Stuff</a> -->

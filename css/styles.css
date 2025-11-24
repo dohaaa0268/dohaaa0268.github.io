@@ -246,10 +246,7 @@ body {
         filter: none
     }
 
-    .jelly {
-        background-image: url("../media/jellyfish.webp");
-        background-size: contain;
-    }
+ 
 
     img-sprite {
         display: none
@@ -260,22 +257,23 @@ body {
     /* background-image: url('../media/jellyfish.png'); */
     image-rendering: pixelated;
     /* background-size: contain; */
-    width: 50px;
-    height: 50px;
+
     position: fixed;
-    bottom: -50px;
+    bottom: -100px;
     left: -50px;
     z-index: -1;
+    /* scale:.5.5; */
+    transform:scale(.5);
     animation: 1s ease-in-out 0s infinite alternate-reverse both running wiggle
 }
 
 @keyframes wiggle {
     0% {
-        transform: translateX(-10px);
+        translate: -10px 0;
     }
 
     100% {
-        transform: translateX(10px);
+        translate: 10px 0;
     }
 }
 
@@ -329,7 +327,9 @@ html {
 .button:active {
     transform: scale(0.96, 0.96)
 }
-
+main {
+    width: 100%;
+}
 .other {
     margin: 5px;
     /* width:inherit; */
