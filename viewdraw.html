@@ -132,6 +132,7 @@
                     fetch(url, { mode: "cors" }).then(function (n) {
                         n.json().then(function (n) {
                             res = n
+                            gah()
                         }).catch(function (n) {
                             region.textContent = 'Something went wrong.'
                         })
