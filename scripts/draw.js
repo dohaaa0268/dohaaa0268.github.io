@@ -11,6 +11,12 @@ let drew = false
 let { paper, undo, brushsize, submit, form, restore } = $.id
 let content = $(top.document.getElementById('content'))
 let old = localStorage.drawing
+customElements.whenDefined('paper-canvas').then(o => {
+    let old = paper.ctx.fillStyle
+    paper.ctx.fillStyle='white'
+    paper.ctx.fillRect(0,0,paper.canvas.width,paper.canvas.height)
+    paper.ctx.fillStyle = old
+})
 paper.on({
     wheel({ deltaY }) {
         deltaY = -Math.sign(deltaY) * 2
