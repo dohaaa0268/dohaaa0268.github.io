@@ -102,7 +102,7 @@ function canSend(req) {
 }
 fetch('https://dohaaa0268.deno.dev', { method: 'HEAD' }).then(canSend, canSend)
 let drawButton = $(top.document.getElementById('drawbutton'))
-on(window, {
+origin !== 'http://localhost:3000' && on(window, {
     beforeunload(n) {
         if (drew) {
             content.show(3)

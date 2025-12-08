@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-    <script>origin === 'http://localhost:3000' && navigator.serviceWorker.register('./local.js', { scope: './' })</script>
     <meta charset="UTF-8">
     <meta http-equiv="content-language" content="en">
     <meta property="og:locale" content="en_US">
@@ -101,7 +100,7 @@
             /* display: contents; */
             text-decoration: none;
             display: inline-grid;
-            margin: 5px 
+            margin: 5px
         }
 
         #drawings {
@@ -132,19 +131,10 @@
                 if (window.fetch) {
                     fetch(url, { mode: "cors" }).then(function (n) {
                         n.json().then(function (n) {
-                            Promise.all(n.map(function (n) {
-                                return fetch(n[0]).then(function (a) {
-                                    return a.blob().then(function (blob) {
-                                        return[URL.createObjectURL(blob), n[1]]
-                                    })
-                                })
-                            })).then(function(n){
-                                res=n
-                                gah()
-                            })
+                            res = n
+                        }).catch(function (n) {
+                            region.textContent = 'Something went wrong.'
                         })
-                    }).catch(function (n) {
-                        region.textContent = 'Something went wrong.'
                     })
                 }
                 else {
@@ -178,7 +168,7 @@
                         time.textContent = now.toLocaleDateString()
                         time.setAttribute('datetime', now.toISOString().slice(0, 10))
                         a.appendChild(time)
-                        a.className='hi'
+                        a.className = 'hi'
                         region.appendChild(a)
                     }
                     var data = res.reverse(),
@@ -190,4 +180,5 @@
         </script>
     </main>
 </body>
+
 </html>

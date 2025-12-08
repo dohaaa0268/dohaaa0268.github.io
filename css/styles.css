@@ -131,6 +131,8 @@ img {
     src: url("../fonts/pixel2.woff2") format("woff2"), url("../fonts/pixel2.woff") format("woff"), url("../fonts/pixel2.ttf") format("ttf");
     font-weight: normal;
     font-style: normal;
+        font-display: swap;
+
 }
 
 @supports (not (anchor-name: --corners)) or (-webkit-touch-callout: none) {
