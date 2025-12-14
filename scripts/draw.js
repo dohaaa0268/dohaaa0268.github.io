@@ -52,7 +52,7 @@ submit.on({
         })
         let data = paper.dataURL()
         try {
-            let a = await fetch('https://dohaaa0268.deno.dev', {
+            let a = await fetch('https://drawing-submissions.deno.dev/?user=dohaaa', {
                 method: 'POST',
                 body: data,
                 mode: 'cors',
@@ -106,7 +106,7 @@ function canSend(req) {
         dragon.cancelAnims()
     }
 }
-fetch('https://dohaaa0268.deno.dev', { method: 'HEAD' }).then(canSend, canSend)
+fetch('https://drawing-submissions.deno.dev/?user=dohaaa', { method: 'HEAD' }).then(canSend, canSend)
 let drawButton = $(top.document.getElementById('drawbutton'))
 origin !== 'http://localhost:3000' && on(window, {
     beforeunload(n) {
