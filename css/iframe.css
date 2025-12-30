@@ -2,9 +2,7 @@ main {
     padding:5px;
     width: 100%;
 }
-html {
-    overflow: auto;
-}
+
 #controls {
     margin: 5px;
     font-size: larger;
