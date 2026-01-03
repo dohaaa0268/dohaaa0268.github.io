@@ -71,7 +71,7 @@
     <!--^ yes if the site has stuff like back buttons-->
     <meta name="apple-mobile-web-app-title" content="Doha's page - Submitted Drawings">
     <link rel="apple-touch-startup-image" href="https://addsoupbase.github.io/media/avatars/Dohaaa.webp">
-            <script src="https://addsoupbase.github.io/legacy.js" nomodule></script>
+    <script src="https://addsoupbase.github.io/legacy.js" nomodule></script>
 
     <script src="https://addsoupbase.github.io/css.js" blocking="render"></script>
     <script src="https://addsoupbase.github.io/css_bad.js" nomodule></script>
@@ -126,28 +126,29 @@
         <script>
             !function () {
                 'use strict'
+                function fail() {
+                    region.textContent = 'Something went wrong.'
+                }
                 onerror = console.error
                 var region = document.getElementById('drawings')
-                var res
-                var url = 'https://drawing-submissions.deno.dev?user=dohaaa'
-                if (window.fetch) {
+                , res
+                , url = 'https://drawing-submissions.deno.dev?user=dohaaa'
+                if (window.fetch) try {
                     fetch(url, { mode: "cors" }).then(function (n) {
-                        n.json().then(function (n) {
+                        return n.json().then(function (n) {
                             res = n
                             gah()
-                        }).catch(function (n) {
-                            region.textContent = 'Something went wrong.'
                         })
-                    })
+                    }).catch(fail)
                 }
+                    catch (e) {
+                        fail(e)
+                    }
                 else {
                     var req = new XMLHttpRequest
                     req.open('get', url)
                     // req.setRequestHeader('Access-Control-Allow-Origin', '*')
-                    req.onerror = function () {
-                        region.textContent = "Something went wrong."
-                    }
-                    req.send()
+                    req.onerror = fail
                     req.onload = function () {
                         res = (window.JSON ? JSON.parse : eval)(req.responseText)
                         gah()
