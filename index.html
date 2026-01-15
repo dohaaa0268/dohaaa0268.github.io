@@ -382,6 +382,10 @@
             }
         }
 
+        .mv {
+            display: contents
+        }
+
         body,
         html {
             view-transition-name: none;
@@ -439,7 +443,7 @@
 
         .drawing {
             border: 1px solid black;
-            width: 300px;
+            /* width: 300px; */
             max-width: fit-content;
             margin-top: 5px;
             margin-bottom: 5px;
@@ -595,6 +599,7 @@
             }
 
             #gallery,
+            .hint,
             #draw {
                 display: none !important;
             }
@@ -613,7 +618,7 @@
         </style>
     </noscript>
     <script nomodule>
-        document.write(document.getElementById('bad').textContent)
+        document.write(document.getElementById('bad').textContent + '<style>#gallery{display:block !important}</style>')
     </script>
 </head>
 
@@ -641,11 +646,16 @@
                         <p>
                             (There's nothing here yet but just wait, there will be so much awesome stuff to say about
                             dohaaa because she is so epic)</p>
-                        <img src="https://addsoupbase.github.io/cute-emojis/emojis/08034309497260039.gif" alt="strawberry milk"><img src="https://addsoupbase.github.io/cute-emojis/emojis/006161276202637889.gif" alt="milk"><img src="https://addsoupbase.github.io/cute-emojis/emojis/08034309497260039.gif" alt><img src="https://addsoupbase.github.io/cute-emojis/emojis/006161276202637889.gif" alt><img src="https://addsoupbase.github.io/cute-emojis/emojis/08034309497260039.gif" alt>
+                        <img src="https://addsoupbase.github.io/cute-emojis/emojis/08034309497260039.gif"
+                            alt="strawberry milk"><img
+                            src="https://addsoupbase.github.io/cute-emojis/emojis/006161276202637889.gif"
+                            alt="milk"><img src="https://addsoupbase.github.io/cute-emojis/emojis/08034309497260039.gif"
+                            alt><img src="https://addsoupbase.github.io/cute-emojis/emojis/006161276202637889.gif"
+                            alt><img src="https://addsoupbase.github.io/cute-emojis/emojis/08034309497260039.gif" alt>
                     </section>
                     <hr class="purple2">
                     <section class="topic" id="about">
-                        <h1 style="display: flex;font-size:1.3em;place-content: center;"><img draggable="false" alt=""
+                        <h1 style="display: flex;font-size:1.3em;justify-content: center;"><img draggable="false" alt=""
                                 width="30" height="30"
                                 src="https://addsoupbase.github.io/cute-emojis/emojis/1225821658225577984.gif"
                                 decoding="async" loading="lazy" style="margin:5px;width:30px;height:30px"
@@ -653,10 +663,10 @@
                                 src="https://addsoupbase.github.io/cute-emojis/emojis/1225821603527524482.gif"
                                 decoding="async" loading="lazy" style="margin:5px;width:30px;height:30px" class="pixel">
                         </h1>
-                        <aside>Click to view next</aside>
+                        <aside class="hint">Click to view next</aside>
                         <picture>
                             <source srcset="./media/movie/wicked.avif" type="image/avif">
-                            <img id="poster" tabindex="0" loading="lazy" width="300" height="400"
+                            <img role="button" id="poster" tabindex="0" loading="lazy" width="300" height="400"
                                 src="./media/movie/wicked.webp" alt="Wicked">
                         </picture>
                         <noscript id="f">
@@ -665,300 +675,359 @@
                                     display: none
                                 }
                             </style>
-                            <a style="display:contents" target="_blank" href="./media/movie/corner.webp">
+                            <a class="mv" target="_blank" href="./media/movie/corner.png">
                                 <picture>
-                                    <source srcset="./media/movie/corner.avif" type="image/avif"><img
-                                        src="./media/movie/corner.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/corner.avif" type="image/avif">
+                                    <source srcset="./media/movie/corner.webp" type="image/webp">
+                                    <img src="./media/movie/corner.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/whisper.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/whisper.png">
                                 <picture>
-                                    <source srcset="./media/movie/whisper.avif" type="image/avif"><img
-                                        src="./media/movie/whisper.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/whisper.avif" type="image/avif">
+                                    <source srcset="./media/movie/whisper.webp" type="image/webp">
+                                    <img src="./media/movie/whisper.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/charlie.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/charlie.png">
                                 <picture>
-                                    <source srcset="./media/movie/charlie.avif" type="image/avif"><img
-                                        src="./media/movie/charlie.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/charlie.avif" type="image/avif">
+                                    <source srcset="./media/movie/charlie.webp" type="image/webp">
+                                    <img src="./media/movie/charlie.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/oceanwaves.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/oceanwaves.png">
                                 <picture>
-                                    <source srcset="./media/movie/oceanwaves.avif" type="image/avif"><img
-                                        src="./media/movie/oceanwaves.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/oceanwaves.avif" type="image/avif">
+                                    <source srcset="./media/movie/oceanwaves.webp" type="image/webp">
+                                    <img src="./media/movie/oceanwaves.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/hotarubi.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/hotarubi.png">
                                 <picture>
-                                    <source srcset="./media/movie/hotarubi.avif" type="image/avif"><img
-                                        src="./media/movie/hotarubi.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/hotarubi.avif" type="image/avif">
+                                    <source srcset="./media/movie/hotarubi.webp" type="image/webp">
+                                    <img src="./media/movie/hotarubi.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/karatekid.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/karatekid.png">
                                 <picture>
-                                    <source srcset="./media/movie/karatekid.avif" type="image/avif"><img
-                                        src="./media/movie/karatekid.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/karatekid.avif" type="image/avif">
+                                    <source srcset="./media/movie/karatekid.webp" type="image/webp">
+                                    <img src="./media/movie/karatekid.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/suzume.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/suzume.png">
                                 <picture>
-                                    <source srcset="./media/movie/suzume.avif" type="image/avif"><img
-                                        src="./media/movie/suzume.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/suzume.avif" type="image/avif">
+                                    <source srcset="./media/movie/suzume.webp" type="image/webp">
+                                    <img src="./media/movie/suzume.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/barbie.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/barbie.png">
                                 <picture>
-                                    <source srcset="./media/movie/barbie.avif" type="image/avif"><img
-                                        src="./media/movie/barbie.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/barbie.avif" type="image/avif">
+                                    <source srcset="./media/movie/barbie.webp" type="image/webp">
+                                    <img src="./media/movie/barbie.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/violet.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/violet.png">
                                 <picture>
-                                    <source srcset="./media/movie/violet.avif" type="image/avif"><img
-                                        src="./media/movie/violet.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/violet.avif" type="image/avif">
+                                    <source srcset="./media/movie/violet.webp" type="image/webp">
+                                    <img src="./media/movie/violet.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/up.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/up.png">
                                 <picture>
-                                    <source srcset="./media/movie/up.avif" type="image/avif"><img
-                                        src="./media/movie/up.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/up.avif" type="image/avif">
+                                    <source srcset="./media/movie/up.webp" type="image/webp">
+                                    <img src="./media/movie/up.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/fireflies.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/fireflies.png">
                                 <picture>
-                                    <source srcset="./media/movie/fireflies.avif" type="image/avif"><img
-                                        src="./media/movie/fireflies.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/fireflies.avif" type="image/avif">
+                                    <source srcset="./media/movie/fireflies.webp" type="image/webp">
+                                    <img src="./media/movie/fireflies.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/uptowngirls.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/uptowngirls.png">
                                 <picture>
-                                    <source srcset="./media/movie/uptowngirls.avif" type="image/avif"><img
-                                        src="./media/movie/uptowngirls.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/uptowngirls.avif" type="image/avif">
+                                    <source srcset="./media/movie/uptowngirls.webp" type="image/webp">
+                                    <img src="./media/movie/uptowngirls.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/brave.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/brave.png">
                                 <picture>
-                                    <source srcset="./media/movie/brave.avif" type="image/avif"><img
-                                        src="./media/movie/brave.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/brave.avif" type="image/avif">
+                                    <source srcset="./media/movie/brave.webp" type="image/webp">
+                                    <img src="./media/movie/brave.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/hungergames.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/hungergames.png">
                                 <picture>
-                                    <source srcset="./media/movie/hungergames.avif" type="image/avif"><img
-                                        src="./media/movie/hungergames.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/hungergames.avif" type="image/avif">
+                                    <source srcset="./media/movie/hungergames.webp" type="image/webp">
+                                    <img src="./media/movie/hungergames.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/mononoke.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/mononoke.png">
                                 <picture>
-                                    <source srcset="./media/movie/mononoke.avif" type="image/avif"><img
-                                        src="./media/movie/mononoke.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/mononoke.avif" type="image/avif">
+                                    <source srcset="./media/movie/mononoke.webp" type="image/webp">
+                                    <img src="./media/movie/mononoke.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/shestheman.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/shestheman.png">
                                 <picture>
-                                    <source srcset="./media/movie/shestheman.avif" type="image/avif"><img
-                                        src="./media/movie/shestheman.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/shestheman.avif" type="image/avif">
+                                    <source srcset="./media/movie/shestheman.webp" type="image/webp">
+                                    <img src="./media/movie/shestheman.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/childrenvoices.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/childrenvoices.png">
                                 <picture>
-                                    <source srcset="./media/movie/childrenvoices.avif" type="image/avif"><img
-                                        src="./media/movie/childrenvoices.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/childrenvoices.avif" type="image/avif">
+                                    <source srcset="./media/movie/childrenvoices.webp" type="image/webp">
+                                    <img src="./media/movie/childrenvoices.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/narnia.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/narnia.png">
                                 <picture>
-                                    <source srcset="./media/movie/narnia.avif" type="image/avif"><img
-                                        src="./media/movie/narnia.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/narnia.avif" type="image/avif">
+                                    <source srcset="./media/movie/narnia.webp" type="image/webp">
+                                    <img src="./media/movie/narnia.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/harrypotter.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/harrypotter.png">
                                 <picture>
-                                    <source srcset="./media/movie/harrypotter.avif" type="image/avif"><img
-                                        src="./media/movie/harrypotter.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/harrypotter.avif" type="image/avif">
+                                    <source srcset="./media/movie/harrypotter.webp" type="image/webp">
+                                    <img src="./media/movie/harrypotter.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/peregrine.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/peregrine.png">
                                 <picture>
-                                    <source srcset="./media/movie/peregrine.avif" type="image/avif"><img
-                                        src="./media/movie/peregrine.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/peregrine.avif" type="image/avif">
+                                    <source srcset="./media/movie/peregrine.webp" type="image/webp">
+                                    <img src="./media/movie/peregrine.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/lalaland.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/lalaland.png">
                                 <picture>
-                                    <source srcset="./media/movie/lalaland.avif" type="image/avif"><img
-                                        src="./media/movie/lalaland.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/lalaland.avif" type="image/avif">
+                                    <source srcset="./media/movie/lalaland.webp" type="image/webp">
+                                    <img src="./media/movie/lalaland.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/princessdiary.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/princessdiary.png">
                                 <picture>
-                                    <source srcset="./media/movie/princessdiary.avif" type="image/avif"><img
-                                        src="./media/movie/princessdiary.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/princessdiary.avif" type="image/avif">
+                                    <source srcset="./media/movie/princessdiary.webp" type="image/webp">
+                                    <img src="./media/movie/princessdiary.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/catreturns.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/catreturns.png">
                                 <picture>
-                                    <source srcset="./media/movie/catreturns.avif" type="image/avif"><img
-                                        src="./media/movie/catreturns.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/catreturns.avif" type="image/avif">
+                                    <source srcset="./media/movie/catreturns.webp" type="image/webp">
+                                    <img src="./media/movie/catreturns.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/littlewomen.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/littlewomen.png">
                                 <picture>
-                                    <source srcset="./media/movie/littlewomen.avif" type="image/avif"><img
-                                        src="./media/movie/littlewomen.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/littlewomen.avif" type="image/avif">
+                                    <source srcset="./media/movie/littlewomen.webp" type="image/webp">
+                                    <img src="./media/movie/littlewomen.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/thehelp.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/thehelp.png">
                                 <picture>
-                                    <source srcset="./media/movie/thehelp.avif" type="image/avif"><img
-                                        src="./media/movie/thehelp.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/thehelp.avif" type="image/avif">
+                                    <source srcset="./media/movie/thehelp.webp" type="image/webp">
+                                    <img src="./media/movie/thehelp.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/jumanji.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/jumanji.png">
                                 <picture>
-                                    <source srcset="./media/movie/jumanji.avif" type="image/avif"><img
-                                        src="./media/movie/jumanji.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/jumanji.avif" type="image/avif">
+                                    <source srcset="./media/movie/jumanji.webp" type="image/webp">
+                                    <img src="./media/movie/jumanji.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/train.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/train.png">
                                 <picture>
-                                    <source srcset="./media/movie/train.avif" type="image/avif"><img
-                                        src="./media/movie/train.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/train.avif" type="image/avif">
+                                    <source srcset="./media/movie/train.webp" type="image/webp">
+                                    <img src="./media/movie/train.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/showman.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/showman.png">
                                 <picture>
-                                    <source srcset="./media/movie/showman.avif" type="image/avif"><img
-                                        src="./media/movie/showman.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/showman.avif" type="image/avif">
+                                    <source srcset="./media/movie/showman.webp" type="image/webp">
+                                    <img src="./media/movie/showman.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/frozen.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/frozen.png">
                                 <picture>
-                                    <source srcset="./media/movie/frozen.avif" type="image/avif"><img
-                                        src="./media/movie/frozen.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/frozen.avif" type="image/avif">
+                                    <source srcset="./media/movie/frozen.webp" type="image/webp">
+                                    <img src="./media/movie/frozen.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/coraline.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/coraline.png">
                                 <picture>
-                                    <source srcset="./media/movie/coraline.avif" type="image/avif"><img
-                                        src="./media/movie/coraline.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/coraline.avif" type="image/avif">
+                                    <source srcset="./media/movie/coraline.webp" type="image/webp">
+                                    <img src="./media/movie/coraline.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/home.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/home.png">
                                 <picture>
-                                    <source srcset="./media/movie/home.avif" type="image/avif"><img
-                                        src="./media/movie/home.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/home.avif" type="image/avif">
+                                    <source srcset="./media/movie/home.webp" type="image/webp">
+                                    <img src="./media/movie/home.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/wind.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/wind.png">
                                 <picture>
-                                    <source srcset="./media/movie/wind.avif" type="image/avif"><img
-                                        src="./media/movie/wind.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/wind.avif" type="image/avif">
+                                    <source srcset="./media/movie/wind.webp" type="image/webp">
+                                    <img src="./media/movie/wind.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/littleprince.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/littleprince.png">
                                 <picture>
-                                    <source srcset="./media/movie/littleprince.avif" type="image/avif"><img
-                                        src="./media/movie/littleprince.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/littleprince.avif" type="image/avif">
+                                    <source srcset="./media/movie/littleprince.webp" type="image/webp">
+                                    <img src="./media/movie/littleprince.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/maleficent.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/maleficent.png">
                                 <picture>
-                                    <source srcset="./media/movie/maleficent.avif" type="image/avif"><img
-                                        src="./media/movie/maleficent.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/maleficent.avif" type="image/avif">
+                                    <source srcset="./media/movie/maleficent.webp" type="image/webp">
+                                    <img src="./media/movie/maleficent.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/pitchperfect.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/pitchperfect.png">
                                 <picture>
-                                    <source srcset="./media/movie/pitchperfect.avif" type="image/avif"><img
-                                        src="./media/movie/pitchperfect.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/pitchperfect.avif" type="image/avif">
+                                    <source srcset="./media/movie/pitchperfect.webp" type="image/webp">
+                                    <img src="./media/movie/pitchperfect.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/mazerunner.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/mazerunner.png">
                                 <picture>
-                                    <source srcset="./media/movie/mazerunner.avif" type="image/avif"><img
-                                        src="./media/movie/mazerunner.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/mazerunner.avif" type="image/avif">
+                                    <source srcset="./media/movie/mazerunner.webp" type="image/webp">
+                                    <img src="./media/movie/mazerunner.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/moxie.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/moxie.png">
                                 <picture>
-                                    <source srcset="./media/movie/moxie.avif" type="image/avif"><img
-                                        src="./media/movie/moxie.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/moxie.avif" type="image/avif">
+                                    <source srcset="./media/movie/moxie.webp" type="image/webp">
+                                    <img src="./media/movie/moxie.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/enola.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/enola.png">
                                 <picture>
-                                    <source srcset="./media/movie/enola.avif" type="image/avif"><img
-                                        src="./media/movie/enola.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/enola.avif" type="image/avif">
+                                    <source srcset="./media/movie/enola.webp" type="image/webp">
+                                    <img src="./media/movie/enola.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/thedevil.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/thedevil.png">
                                 <picture>
-                                    <source srcset="./media/movie/thedevil.avif" type="image/avif"><img
-                                        src="./media/movie/thedevil.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/thedevil.avif" type="image/avif">
+                                    <source srcset="./media/movie/thedevil.webp" type="image/webp">
+                                    <img src="./media/movie/thedevil.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/legallyblonde.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/legallyblonde.png">
                                 <picture>
-                                    <source srcset="./media/movie/legallyblonde.avif" type="image/avif"><img
-                                        src="./media/movie/legallyblonde.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/legallyblonde.avif" type="image/avif">
+                                    <source srcset="./media/movie/legallyblonde.webp" type="image/webp">
+                                    <img src="./media/movie/legallyblonde.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/kpopdemonhunters.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/kpopdemonhunters.png">
                                 <picture>
-                                    <source srcset="./media/movie/kpopdemonhunters.avif" type="image/avif"><img
-                                        src="./media/movie/kpopdemonhunters.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/kpopdemonhunters.avif" type="image/avif">
+                                    <source srcset="./media/movie/kpopdemonhunters.webp" type="image/webp">
+                                    <img src="./media/movie/kpopdemonhunters.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/homealone.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/homealone.png">
                                 <picture>
-                                    <source srcset="./media/movie/homealone.avif" type="image/avif"><img
-                                        src="./media/movie/homealone.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/homealone.avif" type="image/avif">
+                                    <source srcset="./media/movie/homealone.webp" type="image/webp">
+                                    <img src="./media/movie/homealone.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/corpse.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/corpse.png">
                                 <picture>
-                                    <source srcset="./media/movie/corpse.avif" type="image/avif"><img
-                                        src="./media/movie/corpse.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/corpse.avif" type="image/avif">
+                                    <source srcset="./media/movie/corpse.webp" type="image/webp">
+                                    <img src="./media/movie/corpse.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/saiyaara.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/saiyaara.png">
                                 <picture>
-                                    <source srcset="./media/movie/saiyaara.avif" type="image/avif"><img
-                                        src="./media/movie/saiyaara.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/saiyaara.avif" type="image/avif">
+                                    <source srcset="./media/movie/saiyaara.webp" type="image/webp">
+                                    <img src="./media/movie/saiyaara.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/arrietty.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/arrietty.png">
                                 <picture>
-                                    <source srcset="./media/movie/arrietty.avif" type="image/avif"><img
-                                        src="./media/movie/arrietty.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/arrietty.avif" type="image/avif">
+                                    <source srcset="./media/movie/arrietty.webp" type="image/webp">
+                                    <img src="./media/movie/arrietty.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/damsel.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/damsel.png">
                                 <picture>
-                                    <source srcset="./media/movie/damsel.avif" type="image/avif"><img
-                                        src="./media/movie/damsel.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/damsel.avif" type="image/avif">
+                                    <source srcset="./media/movie/damsel.webp" type="image/webp">
+                                    <img src="./media/movie/damsel.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/moana.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/moana.png">
                                 <picture>
-                                    <source srcset="./media/movie/moana.avif" type="image/avif"><img
-                                        src="./media/movie/moana.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/moana.avif" type="image/avif">
+                                    <source srcset="./media/movie/moana.webp" type="image/webp">
+                                    <img src="./media/movie/moana.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/whisker.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/whisker.png">
                                 <picture>
-                                    <source srcset="./media/movie/whisker.avif" type="image/avif"><img
-                                        src="./media/movie/whisker.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/whisker.avif" type="image/avif">
+                                    <source srcset="./media/movie/whisker.webp" type="image/webp">
+                                    <img src="./media/movie/whisker.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/mulan.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/mulan.png">
                                 <picture>
-                                    <source srcset="./media/movie/mulan.avif" type="image/avif"><img
-                                        src="./media/movie/mulan.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/mulan.avif" type="image/avif">
+                                    <source srcset="./media/movie/mulan.webp" type="image/webp">
+                                    <img src="./media/movie/mulan.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/luca.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/luca.png">
                                 <picture>
-                                    <source srcset="./media/movie/luca.avif" type="image/avif"><img
-                                        src="./media/movie/luca.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/luca.avif" type="image/avif">
+                                    <source srcset="./media/movie/luca.webp" type="image/webp">
+                                    <img src="./media/movie/luca.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/wicked.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/wicked.png">
                                 <picture>
-                                    <source srcset="./media/movie/wicked.avif" type="image/avif"><img
-                                        src="./media/movie/wicked.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/wicked.avif" type="image/avif">
+                                    <source srcset="./media/movie/wicked.webp" type="image/webp">
+                                    <img src="./media/movie/wicked.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/school.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/school.png">
                                 <picture>
-                                    <source srcset="./media/movie/school.avif" type="image/avif"><img
-                                        src="./media/movie/school.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/school.avif" type="image/avif">
+                                    <source srcset="./media/movie/school.webp" type="image/webp">
+                                    <img src="./media/movie/school.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/deadpoets.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/deadpoets.png">
                                 <picture>
-                                    <source srcset="./media/movie/deadpoets.avif" type="image/avif"><img
-                                        src="./media/movie/deadpoets.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/deadpoets.avif" type="image/avif">
+                                    <source srcset="./media/movie/deadpoets.webp" type="image/webp">
+                                    <img src="./media/movie/deadpoets.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/10things.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/10things.png">
                                 <picture>
-                                    <source srcset="./media/movie/10things.avif" type="image/avif"><img
-                                        src="./media/movie/10things.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/10things.avif" type="image/avif">
+                                    <source srcset="./media/movie/10things.webp" type="image/webp">
+                                    <img src="./media/movie/10things.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/alice.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/alice.png">
                                 <picture>
-                                    <source srcset="./media/movie/alice.avif" type="image/avif"><img
-                                        src="./media/movie/alice.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/alice.avif" type="image/avif">
+                                    <source srcset="./media/movie/alice.webp" type="image/webp">
+                                    <img src="./media/movie/alice.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/meangirls.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/meangirls.png">
                                 <picture>
-                                    <source srcset="./media/movie/meangirls.avif" type="image/avif"><img
-                                        src="./media/movie/meangirls.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/meangirls.avif" type="image/avif">
+                                    <source srcset="./media/movie/meangirls.webp" type="image/webp">
+                                    <img src="./media/movie/meangirls.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/mebeforeyou.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/mebeforeyou.png">
                                 <picture>
-                                    <source srcset="./media/movie/mebeforeyou.avif" type="image/avif"><img
-                                        src="./media/movie/mebeforeyou.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/mebeforeyou.avif" type="image/avif">
+                                    <source srcset="./media/movie/mebeforeyou.webp" type="image/webp">
+                                    <img src="./media/movie/mebeforeyou.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/cruella.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/cruella.png">
                                 <picture>
-                                    <source srcset="./media/movie/cruella.avif" type="image/avif"><img
-                                        src="./media/movie/cruella.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/cruella.avif" type="image/avif">
+                                    <source srcset="./media/movie/cruella.webp" type="image/webp">
+                                    <img src="./media/movie/cruella.png" width="100" height="200" class="n">
                                 </picture>
-                            </a><a style="display:contents" target="_blank" href="./media/movie/beautybeast.webp">
+                            </a><a class="mv" target="_blank" href="./media/movie/beautybeast.png">
                                 <picture>
-                                    <source srcset="./media/movie/beautybeast.avif" type="image/avif"><img
-                                        src="./media/movie/beautybeast.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/beautybeast.avif" type="image/avif">
+                                    <source srcset="./media/movie/beautybeast.webp" type="image/webp">
+                                    <img src="./media/movie/beautybeast.png" width="100" height="200" class="n">
                                 </picture>
                             </a>
                         </noscript>
@@ -989,14 +1058,14 @@
                 </div>
             </div>
         </main>
-        <div alt aria-hidden="true" width="30" height="30" class="anchor1 anchor star"
-            draggable="false" id="topleft"></div>
-        <div alt aria-hidden="true" width="30" height="30" class="anchor1 anchor star"
-            draggable="false" id="topright"></div>
-        <div alt aria-hidden="true" width="30" height="30" class="anchor2 anchor star"
-            draggable="false" id="bottomleft"></div>
-        <div alt aria-hidden="true" width="30" height="30" class="anchor2 anchor star"
-            draggable="false" id="bottomright"></div>
+        <div alt aria-hidden="true" width="30" height="30" class="anchor1 anchor star" draggable="false" id="topleft">
+        </div>
+        <div alt aria-hidden="true" width="30" height="30" class="anchor1 anchor star" draggable="false" id="topright">
+        </div>
+        <div alt aria-hidden="true" width="30" height="30" class="anchor2 anchor star" draggable="false"
+            id="bottomleft"></div>
+        <div alt aria-hidden="true" width="30" height="30" class="anchor2 anchor star" draggable="false"
+            id="bottomright"></div>
         <div class="other purple2" id="stuff" role="tablist" aria-label="Change the channel"><button draggable="false"
                 aria-controls="content" role="tab" class="goodbrowser button" aria-label="Draw me something"
                 data-transitions="draw" aria-selected="false">Draw</button><button draggable="false"
@@ -1005,20 +1074,38 @@
                 aria-controls="content" role="tab" class="goodbrowser button radio" aria-label="About Me"
                 data-transitions="about" aria-selected="false">About</button><button draggable="false"
                 aria-controls="content" role="tab" class="goodbrowser button" data-transitions="home"
-                aria-selected="true">Home</button><a role="tab" class="badbrowser button" href="#about">About</a><a
-                role="tab" class="badbrowser button" href="#home">Home</a></div>
+                aria-selected="true">Home</button><a role="tab" class="badbrowser button" href="#about"
+                data-fallback-transitions="about">About</a><a role="tab" class="badbrowser button" href="#home"
+                data-fallback-transitions="home">Home</a><a role="tab" class="badbrowser button" href="#gallery"
+                data-fallback-transitions="gallery">Gallery</a></div>
     </div>
     <script src="https://addsoupbase.github.io/h.js"></script>
     <script>
         !function (D, h) {
             'use strict'
+            var CreateEvent = function () {
+                function New(type) {
+                    return new Event(type)
+                }
+                try {
+                    New('')
+                    return New
+                }
+                catch (e) {
+                    return function (type) {
+                        var n = D.createEvent('Event')
+                        n.initEvent(type, false, false)
+                        return n
+                    }
+                }
+            }()
             var tabHolder = D.getElementById('stuff')
             var tabs = D.getElementsByClassName('topic')
             var startViewTransition = document.startViewTransition ? document.startViewTransition.bind(document) : function (callback) { setTimeout(callback) }
             h.delegate(tabHolder, {
                 click: function () {
                     if (this.ariaSelected === 'true') return
-                    currentTab = this.getAttribute('data-transitions')
+                    currentTab = this.getAttribute('data-transitions') || this.getAttribute('data-fallback-transitions')
                     tabHolder.querySelector('[aria-selected="true"]').ariaSelected = 'false'
                     this.ariaSelected = 'true'
                     startViewTransition(updateDom)
@@ -1030,14 +1117,18 @@
                 for (var i = tabs.length; i--;) {
                     var tab = tabs[i]
                     var type = 'topic-leave'
+                    console.log(tab.id, currentTab)
                     if (tab.id === currentTab) {
                         type = 'topic-enter'
                         tab.classList.add('active')
                     }
                     else tab.classList.remove('active')
-                    queueMicrotask(function (type) {
-                        this.dispatchEvent(new Event(type))
-                    }.bind(tab, type))
+                    !function (tab, type) {
+                        queueMicrotask(function () {
+                            console.log(type)
+                            tab.dispatchEvent(CreateEvent(type))
+                        })
+                    }(tab, type)
                 }
             }
             h.on(D.getElementById('gallery'), {
@@ -1069,6 +1160,7 @@
                             res = (window.JSON ? JSON.parse : eval)(req.responseText)
                             gah()
                         }
+                        req.send()
                     }
                     function gah() {
                         function go(i) {
@@ -1105,6 +1197,10 @@
                     var poster = D.getElementById('poster')
                     var source = poster.previousElementSibling
                     h.on(poster, {
+                        _load: function () {
+                            format =  poster.currentSrc.split(/\.(?=avif|webp|png)/)[1]
+                            preloadNextImage(0)
+                        },
                         animationend: function () {
                             if (this.complete) {
                                 this.classList.remove('animate')
@@ -1117,9 +1213,9 @@
                         },
                         click: function () {
                             if (this.classList.contains('animate')) return
-                            ++i
+                            preloadNextImage(++i)
                             var cur = titles[i % titles.length]
-                            var src = cur[0]
+                            , src = cur[0]
                             setTimeout(function () {
                                 source.srcset = './media/movie/' + src + '.avif'
                                 poster.src = './media/movie/' + src + '.webp'
@@ -1189,9 +1285,22 @@
                         whisper: 'Whisper of the Heart',
                         'wicked': 'Wicked',
                     })
-                    var i = titles.length
+                    , i = titles.length
+                    , format
+                    function preloadNextImage(i) {
+                        var a = titles[(i + 1) % titles.length][0]
+                        , link = './media/movie/' + a + '.' + format
+                        if (!D.head.querySelector('link[rel="preload"][as="image"][href="' + link + '"]')) {
+                            var l = D.createElement('link')
+                            l.rel = 'preload'
+                            l.as = 'image'
+                            l.href = link
+                            D.head.appendChild(l)
+                        }
+                    }
                 }
             })
+
         }(document, window[Symbol.for('[[HModule]]')])
     </script>
     <div id="background" role="img" class="center_screen"

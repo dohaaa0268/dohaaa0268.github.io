@@ -382,6 +382,10 @@
             }
         }
 
+        .mv {
+            display: contents
+        }
+
         body,
         html {
             view-transition-name: none;
@@ -439,7 +443,7 @@
 
         .drawing {
             border: 1px solid black;
-            width: 300px;
+            /* width: 300px; */
             max-width: fit-content;
             margin-top: 5px;
             margin-bottom: 5px;
@@ -595,6 +599,7 @@
             }
 
             #gallery,
+            .hint,
             #draw {
                 display: none !important;
             }
@@ -613,7 +618,7 @@
         </style>
     </noscript>
     <script nomodule>
-        document.write(document.getElementById('bad').textContent)
+        document.write(document.getElementById('bad').textContent + '<style>#gallery{display:block !important}</style>')
     </script>
 </head>
 
@@ -641,11 +646,16 @@
                         <p>
                             (There's nothing here yet but just wait, there will be so much awesome stuff to say about
                             dohaaa because she is so epic)</p>
-                        <img src="https://addsoupbase.github.io/cute-emojis/emojis/08034309497260039.gif" alt="strawberry milk"><img src="https://addsoupbase.github.io/cute-emojis/emojis/006161276202637889.gif" alt="milk"><img src="https://addsoupbase.github.io/cute-emojis/emojis/08034309497260039.gif" alt><img src="https://addsoupbase.github.io/cute-emojis/emojis/006161276202637889.gif" alt><img src="https://addsoupbase.github.io/cute-emojis/emojis/08034309497260039.gif" alt>
+                        <img src="https://addsoupbase.github.io/cute-emojis/emojis/08034309497260039.gif"
+                            alt="strawberry milk"><img
+                            src="https://addsoupbase.github.io/cute-emojis/emojis/006161276202637889.gif"
+                            alt="milk"><img src="https://addsoupbase.github.io/cute-emojis/emojis/08034309497260039.gif"
+                            alt><img src="https://addsoupbase.github.io/cute-emojis/emojis/006161276202637889.gif"
+                            alt><img src="https://addsoupbase.github.io/cute-emojis/emojis/08034309497260039.gif" alt>
                     </section>
                     <hr class="purple2">
                     <section class="topic" id="about">
-                        <h1 style="display: flex;font-size:1.3em;place-content: center;"><img draggable="false" alt=""
+                        <h1 style="display: flex;font-size:1.3em;justify-content: center;"><img draggable="false" alt=""
                                 width="30" height="30"
                                 src="https://addsoupbase.github.io/cute-emojis/emojis/1225821658225577984.gif"
                                 decoding="async" loading="lazy" style="margin:5px;width:30px;height:30px"
@@ -653,10 +663,10 @@
                                 src="https://addsoupbase.github.io/cute-emojis/emojis/1225821603527524482.gif"
                                 decoding="async" loading="lazy" style="margin:5px;width:30px;height:30px" class="pixel">
                         </h1>
-                        <aside>Click to view next</aside>
+                        <aside class="hint">Click to view next</aside>
                         <picture>
                             <source srcset="./media/movie/wicked.avif" type="image/avif">
-                            <img id="poster" tabindex="0" loading="lazy" width="300" height="400"
+                            <img role="button" id="poster" tabindex="0" loading="lazy" width="300" height="400"
                                 src="./media/movie/wicked.webp" alt="Wicked">
                         </picture>
                         <noscript id="f">
@@ -666,10 +676,11 @@
                                 }
                             </style>
                             [:dir('./media/movie').filter(o=>o.endsWith('.avif')).map(o=>o.split('.avif')[0])
-                            .map(o=>`<a style="display:contents" target="_blank" href="./media/movie/${o}.webp">
+                            .map(o=>`<a class="mv" target="_blank" href="./media/movie/${o}.png">
                                 <picture>
-                                    <source srcset="./media/movie/${o}.avif" type="image/avif"><img
-                                        src="./media/movie/${o}.webp" width="100" height="200" class="n">
+                                    <source srcset="./media/movie/${o}.avif" type="image/avif">
+                                    <source srcset="./media/movie/${o}.webp" type="image/webp">
+                                    <img src="./media/movie/${o}.png" width="100" height="200" class="n">
                                 </picture>
                             </a>`).join('')
                             :]
@@ -701,14 +712,14 @@
                 </div>
             </div>
         </main>
-        <div alt aria-hidden="true" width="30" height="30" class="anchor1 anchor star"
-            draggable="false" id="topleft"></div>
-        <div alt aria-hidden="true" width="30" height="30" class="anchor1 anchor star"
-            draggable="false" id="topright"></div>
-        <div alt aria-hidden="true" width="30" height="30" class="anchor2 anchor star"
-            draggable="false" id="bottomleft"></div>
-        <div alt aria-hidden="true" width="30" height="30" class="anchor2 anchor star"
-            draggable="false" id="bottomright"></div>
+        <div alt aria-hidden="true" width="30" height="30" class="anchor1 anchor star" draggable="false" id="topleft">
+        </div>
+        <div alt aria-hidden="true" width="30" height="30" class="anchor1 anchor star" draggable="false" id="topright">
+        </div>
+        <div alt aria-hidden="true" width="30" height="30" class="anchor2 anchor star" draggable="false"
+            id="bottomleft"></div>
+        <div alt aria-hidden="true" width="30" height="30" class="anchor2 anchor star" draggable="false"
+            id="bottomright"></div>
         <div class="other purple2" id="stuff" role="tablist" aria-label="Change the channel"><button draggable="false"
                 aria-controls="content" role="tab" class="goodbrowser button" aria-label="Draw me something"
                 data-transitions="draw" aria-selected="false">Draw</button><button draggable="false"
@@ -717,20 +728,38 @@
                 aria-controls="content" role="tab" class="goodbrowser button radio" aria-label="About Me"
                 data-transitions="about" aria-selected="false">About</button><button draggable="false"
                 aria-controls="content" role="tab" class="goodbrowser button" data-transitions="home"
-                aria-selected="true">Home</button><a role="tab" class="badbrowser button" href="#about">About</a><a
-                role="tab" class="badbrowser button" href="#home">Home</a></div>
+                aria-selected="true">Home</button><a role="tab" class="badbrowser button" href="#about"
+                data-fallback-transitions="about">About</a><a role="tab" class="badbrowser button" href="#home"
+                data-fallback-transitions="home">Home</a><a role="tab" class="badbrowser button" href="#gallery"
+                data-fallback-transitions="gallery">Gallery</a></div>
     </div>
     <script src="https://addsoupbase.github.io/h.js"></script>
     <script>
         !function (D, h) {
             'use strict'
+            var CreateEvent = function () {
+                function New(type) {
+                    return new Event(type)
+                }
+                try {
+                    New('')
+                    return New
+                }
+                catch (e) {
+                    return function (type) {
+                        var n = D.createEvent('Event')
+                        n.initEvent(type, false, false)
+                        return n
+                    }
+                }
+            }()
             var tabHolder = D.getElementById('stuff')
             var tabs = D.getElementsByClassName('topic')
             var startViewTransition = document.startViewTransition ? document.startViewTransition.bind(document) : function (callback) { setTimeout(callback) }
             h.delegate(tabHolder, {
                 click: function () {
                     if (this.ariaSelected === 'true') return
-                    currentTab = this.getAttribute('data-transitions')
+                    currentTab = this.getAttribute('data-transitions') || this.getAttribute('data-fallback-transitions')
                     tabHolder.querySelector('[aria-selected="true"]').ariaSelected = 'false'
                     this.ariaSelected = 'true'
                     startViewTransition(updateDom)
@@ -742,14 +771,18 @@
                 for (var i = tabs.length; i--;) {
                     var tab = tabs[i]
                     var type = 'topic-leave'
+                    console.log(tab.id, currentTab)
                     if (tab.id === currentTab) {
                         type = 'topic-enter'
                         tab.classList.add('active')
                     }
                     else tab.classList.remove('active')
-                    queueMicrotask(function (type) {
-                        this.dispatchEvent(new Event(type))
-                    }.bind(tab, type))
+                    !function (tab, type) {
+                        queueMicrotask(function () {
+                            console.log(type)
+                            tab.dispatchEvent(CreateEvent(type))
+                        })
+                    }(tab, type)
                 }
             }
             h.on(D.getElementById('gallery'), {
@@ -781,6 +814,7 @@
                             res = (window.JSON ? JSON.parse : eval)(req.responseText)
                             gah()
                         }
+                        req.send()
                     }
                     function gah() {
                         function go(i) {
@@ -817,6 +851,10 @@
                     var poster = D.getElementById('poster')
                     var source = poster.previousElementSibling
                     h.on(poster, {
+                        _load: function () {
+                            format =  poster.currentSrc.split(/\.(?=avif|webp|png)/)[1]
+                            preloadNextImage(0)
+                        },
                         animationend: function () {
                             if (this.complete) {
                                 this.classList.remove('animate')
@@ -829,9 +867,9 @@
                         },
                         click: function () {
                             if (this.classList.contains('animate')) return
-                            ++i
+                            preloadNextImage(++i)
                             var cur = titles[i % titles.length]
-                            var src = cur[0]
+                            , src = cur[0]
                             setTimeout(function () {
                                 source.srcset = './media/movie/' + src + '.avif'
                                 poster.src = './media/movie/' + src + '.webp'
@@ -901,9 +939,22 @@
                         whisper: 'Whisper of the Heart',
                         'wicked': 'Wicked',
                     })
-                    var i = titles.length
+                    , i = titles.length
+                    , format
+                    function preloadNextImage(i) {
+                        var a = titles[(i + 1) % titles.length][0]
+                        , link = './media/movie/' + a + '.' + format
+                        if (!D.head.querySelector('link[rel="preload"][as="image"][href="' + link + '"]')) {
+                            var l = D.createElement('link')
+                            l.rel = 'preload'
+                            l.as = 'image'
+                            l.href = link
+                            D.head.appendChild(l)
+                        }
+                    }
                 }
             })
+
         }(document, window[Symbol.for('[[HModule]]')])
     </script>
     <div id="background" role="img" class="center_screen"
