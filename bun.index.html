@@ -850,7 +850,8 @@
             h.on(D.getElementById('about'), {
                 '_topic-enter': function () {
                     var poster = D.getElementById('poster')
-                    var source = poster.previousElementSibling
+                    var source2 = poster.previousElementSibling
+                    var source1 = source2.previousElementSibling
                     h.on(poster, {
                         _load: function () {
                             format = poster.currentSrc.split(/\.(?=avif|webp|png)/)[1]
@@ -872,8 +873,9 @@
                             var cur = titles[i % titles.length]
                                 , src = cur[0]
                             setTimeout(function () {
-                                source.srcset = './media/movie/' + src + '.avif'
-                                poster.src = './media/movie/' + src + '.webp'
+                                source1.srcset = './media/movie/' + src + '.avif'
+                                source2.srcset = './media/movie/' + src + '.webp'
+                                poster.src = './media/movie/' + src + '.jpg'
                                 poster.alt = cur[1]
                             }, 300)
                             poster.classList.add('animate')
