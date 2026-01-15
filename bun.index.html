@@ -666,8 +666,9 @@
                         <aside class="hint">Click to view next</aside>
                         <picture>
                             <source srcset="./media/movie/wicked.avif" type="image/avif">
+                            <source srcset="./media/movie/wicked.webp" type="image/webp">
                             <img role="button" id="poster" tabindex="0" loading="lazy" width="300" height="400"
-                                src="./media/movie/wicked.webp" alt="Wicked">
+                                src="./media/movie/wicked.jpg" alt="Wicked">
                         </picture>
                         <noscript id="f">
                             <style>
@@ -676,11 +677,11 @@
                                 }
                             </style>
                             [:dir('./media/movie').filter(o=>o.endsWith('.avif')).map(o=>o.split('.avif')[0])
-                            .map(o=>`<a class="mv" target="_blank" href="./media/movie/${o}.png">
+                            .map(o=>`<a class="mv" target="_blank" href="./media/movie/${o}.jpg">
                                 <picture>
                                     <source srcset="./media/movie/${o}.avif" type="image/avif">
                                     <source srcset="./media/movie/${o}.webp" type="image/webp">
-                                    <img src="./media/movie/${o}.png" width="100" height="200" class="n">
+                                    <img src="./media/movie/${o}.jpg" width="100" height="200" class="n">
                                 </picture>
                             </a>`).join('')
                             :]
@@ -852,7 +853,7 @@
                     var source = poster.previousElementSibling
                     h.on(poster, {
                         _load: function () {
-                            format =  poster.currentSrc.split(/\.(?=avif|webp|png)/)[1]
+                            format = poster.currentSrc.split(/\.(?=avif|webp|png)/)[1]
                             preloadNextImage(0)
                         },
                         animationend: function () {
@@ -869,7 +870,7 @@
                             if (this.classList.contains('animate')) return
                             preloadNextImage(++i)
                             var cur = titles[i % titles.length]
-                            , src = cur[0]
+                                , src = cur[0]
                             setTimeout(function () {
                                 source.srcset = './media/movie/' + src + '.avif'
                                 poster.src = './media/movie/' + src + '.webp'
@@ -939,11 +940,11 @@
                         whisper: 'Whisper of the Heart',
                         'wicked': 'Wicked',
                     })
-                    , i = titles.length
-                    , format
+                        , i = titles.length
+                        , format
                     function preloadNextImage(i) {
                         var a = titles[(i + 1) % titles.length][0]
-                        , link = './media/movie/' + a + '.' + format
+                            , link = './media/movie/' + a + '.' + format
                         if (!D.head.querySelector('link[rel="preload"][as="image"][href="' + link + '"]')) {
                             var l = D.createElement('link')
                             l.rel = 'preload'
