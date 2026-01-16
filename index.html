@@ -1045,13 +1045,15 @@
                         <form enctype="text/plain" id="submitdrawing"
                             action="https://drawing-submissions.deno.dev?user=dohaaa" method="POST"
                             style="display: grid;">
-                            <paper-canvas name="drawing" style="width:fit-content;place-self: center;"></paper-canvas>
+                            <paper-canvas name="drawing" style="width:fit-content;place-self: center;"
+                                id="paper"></paper-canvas>
                         </form>
                         <script>document.currentScript.previousElementSibling.onsubmit = function (e) { e.submitter.setAttribute('disabled', true) }</script>
                         <div style="margin: 10px;display:flex;gap:10px;place-content:center">
                             <label style="width:min-content;place-self:center">Brush Size<input style="display:block"
-                                    type="range" value="1" max="50" step=".5"></label>
-                            <label style="display: grid;">Color<input type="color" value="#000000"></label>
+                                    type="range" value="1" max="50" step=".5" id="brushsize"></label>
+                            <label style="display: grid;">Color<input type="color" value="#000000" id="color"></label>
+                            <label style="display: grid;">Undo <button id="undo">↩️</button></label>
                         </div>
                         <div><button form="submitdrawing" class="button" style="font-size: 1.1em;">Submit</button></div>
                     </section>
@@ -1305,12 +1307,31 @@
 
         }(document, window[Symbol.for('[[HModule]]')])
     </script>
-    <div id="background" role="img" 
+    <div id="background" role="img"
         style="position:fixed;z-index:0;background: linear-gradient(0deg, rgba(224, 194, 212, 1) 0%, rgba(243, 187, 177, 1) 50%, rgba(253, 186, 157, 1) 100%);position:fixed;width:100vw;height:100vh;overflow:hidden"
         role="presentation" aria-label="Jellyfish Swimming"></div>
 </body>
 <script async type="module" src="https://addsoupbase.github.io/webcomponents/paper-canvas.js"></script>
 <script type="module" src="background.js">
+</script>
+<script type="module">
+    import * as v from 'https://addsoupbase.github.io/v4.js'
+    const { paper, undo, color, brushsize } = v.id
+    undo.on({
+        click() {
+            paper.undo()
+        }
+    })
+    color.on({
+        change() {
+            paper.color = this.value
+        }
+    })
+    brushsize.on({
+        change() {
+            paper.brushsize = this.value
+        }
+    })
 </script>
 
 </html>
