@@ -3,7 +3,7 @@
 
 <head>
     <script>
-        origin === 'http://localhost:3000' && navigator.serviceWorker.register('../../local.js', { scope: './' })
+        origin === 'http://localhost:3000' || origin === 'http://192.168.1.221:3000' && navigator.serviceWorker.register('../../local.js', { scope: './' }).then(alert)
     </script>
     <meta charset="UTF-8">
     <meta http-equiv="content-language" content="en">
@@ -626,31 +626,38 @@
     <div class="center_screen" style="text-align: center;height: auto;">
         <main style="view-transition-name: topic;">
             <div style="place-items: center;width: fit-content;margin:auto">
-                <div class="purple2 container" id="frameholder">
+                <div class="purple2 container" id="frameholder" role="tabpanel">
                     <section class="topic active" id="home">
-                        <picture>
-                            <source srcset="https://addsoupbase.github.io/media/avatars/Dohaaa.avif" type="image/avif">
-                            <source srcset="https://addsoupbase.github.io/media/avatars/Dohaaa.webp" type="image/webp">
-                            <img width="130" height="130" src="https://addsoupbase.github.io/media/avatars/Dohaaa.jpg"
-                                class="avatar glow">
-                        </picture>
-                        <h1 class="jellyfish"><span style="text-decoration: underline;">Doha</span>'s page</h1>
-                        <p>hello i am dohaaa0268 and i am a super cool person yay dohaaa is so epic and everyone loves
-                            you!!!!</p>
-                        <div>
-                            <img class="pixel" style="width:100px;height:auto"
-                                src="data:image/gif;base64,R0lGODlhMAAoAPMAAAAAAMzMzHYwR+aeOv///+q9YLxQXouUi6Q+TLVlOlAAKC0zN2BgXyQkMQAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQJSwAOACwAAAAAMAAoAAAE/9DJSau9OOuNAf9g54UkB5zBOJ0leQLCABAp6wBpa8KFYBQzwgH2Cgx1GdhvYBgACbShAIHLISsnwbTXxEGjxIBQhTwlpggBDAEUf42AA9R6K53Sa4NBDTDExTUvM3A3ZCYFZ2sJiwkzJwdwjQAJTjhDjiEwMQAKApQFoF5xgkB8QEM0hkkIrGpoeqxxUCcyBTIAQJNeR4dneFOMi1RiuLgDiwPHCiepH5rHAimeyaCIowDHtgna243NJqxpBwucAwiwCLe429nHyY3LdEk+adGcnOd6L0PulMcLCxIsU3Pgkg0LAM6lCUBOSyeFXgjAYPQPwAItYdzIW+Fjz7gsrL86CVgmCtSATRZbKaDyRpUEJcNGTJoiiIGZRQbSwBJw4GGQjRSUYFOxToC2XNUKhAsJSUqcS/OoAFnRoOKAhnr0mGt1LEANSCfIrbJFlByABg0TwloZ0mgCsFVSNHD5EpiMlyxArtESLoYkBkMKCqJbl43LvUNpNUIkJvBBZzQ70CzghjEzaY9BaKKbkKCYBG/gUCmTmaPZpl4dXyR85eXca6MKzW1t4uWKoLRz697Nu7fv38CDCx9OvLjx4xQiAAAh+QQJSwAOACwAAAAAMAAoAAAE/9DJSau9OOutAf8gBnhh+QEBWakmOI5Eusrt9grIABDEMUqAA612GQkKAkMhyEsJRkIfcWVEFAaGQQLV9D0DPVZtlMAhqoUtuMuMiUsjxBNnMMzPQvcLFpA63h1pdwmEWwAGQX0AhgkDS4p/gCICAjoKAo0FmjtQe0tPAEs+nC4IpncIdQZnayM6VyNLi0xDgWVyADiFhG2hoVqNWgowYRy5lWVOwZppKK4JV9DAzW4npnIHCwAKA6mrOUGh0uMDWtvOxklyAinDCt6rw89a5QkLCwkKl0F+GQCpcgJoo3QJ4AsvhbRoW0Dwi6IfFnLVEZCtCoJLAoa10jSg0ogFp7fe7eBRLaI6dH9u7WFAhtCqJC8PFBwJqUgSADomiDuiRRazAtdMKYiSix9Em2eW6GygEOdAVVmuIQuQItFHSX+s5ASiDUCDgf/qXLx2KY2QEVRTNMCaC0EjEi8i4WhLSao5AAx8HBgV1x8OpSZx6XgmDozeoyfmTkq6Jk1VN6BaHJP070meBCSp+jhDpK/JrlE0h2OIdQqQteE6RVpr2hgQnRRKt55Nu7bt27hz697Nu7fv38B3RwAAOw=="
-                                alt="tyrantrum" width="48" height="40">
-                        </div>
-                        <p>
-                            (There's nothing here yet but just wait, there will be so much awesome stuff to say about
-                            dohaaa because she is so epic)</p>
-                        <img src="https://addsoupbase.github.io/cute-emojis/emojis/08034309497260039.gif"
-                            alt="strawberry milk"><img
-                            src="https://addsoupbase.github.io/cute-emojis/emojis/006161276202637889.gif"
-                            alt="milk"><img src="https://addsoupbase.github.io/cute-emojis/emojis/08034309497260039.gif"
-                            alt><img src="https://addsoupbase.github.io/cute-emojis/emojis/006161276202637889.gif"
-                            alt><img src="https://addsoupbase.github.io/cute-emojis/emojis/08034309497260039.gif" alt>
+                        <article>
+                            <picture>
+                                <source srcset="https://addsoupbase.github.io/media/avatars/Dohaaa.avif"
+                                    type="image/avif">
+                                <source srcset="https://addsoupbase.github.io/media/avatars/Dohaaa.webp"
+                                    type="image/webp">
+                                <img alt="Dohaaa's avatar" fetchpriority="high" width="130" height="130"
+                                    src="https://addsoupbase.github.io/media/avatars/Dohaaa.jpg" class="avatar glow">
+                            </picture>
+                            <h1 class="jellyfish"><span style="text-decoration: underline;">Doha</span>'s page</h1>
+                            <p>hello i am dohaaa0268 and i am a super cool person yay dohaaa is so epic and everyone
+                                loves
+                                you!!!!</p>
+                            <div>
+                                <img class="pixel" style="width:100px;height:auto"
+                                    src="data:image/gif;base64,R0lGODlhMAAoAPMAAAAAAMzMzHYwR+aeOv///+q9YLxQXouUi6Q+TLVlOlAAKC0zN2BgXyQkMQAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQJSwAOACwAAAAAMAAoAAAE/9DJSau9OOuNAf9g54UkB5zBOJ0leQLCABAp6wBpa8KFYBQzwgH2Cgx1GdhvYBgACbShAIHLISsnwbTXxEGjxIBQhTwlpggBDAEUf42AA9R6K53Sa4NBDTDExTUvM3A3ZCYFZ2sJiwkzJwdwjQAJTjhDjiEwMQAKApQFoF5xgkB8QEM0hkkIrGpoeqxxUCcyBTIAQJNeR4dneFOMi1RiuLgDiwPHCiepH5rHAimeyaCIowDHtgna243NJqxpBwucAwiwCLe429nHyY3LdEk+adGcnOd6L0PulMcLCxIsU3Pgkg0LAM6lCUBOSyeFXgjAYPQPwAItYdzIW+Fjz7gsrL86CVgmCtSATRZbKaDyRpUEJcNGTJoiiIGZRQbSwBJw4GGQjRSUYFOxToC2XNUKhAsJSUqcS/OoAFnRoOKAhnr0mGt1LEANSCfIrbJFlByABg0TwloZ0mgCsFVSNHD5EpiMlyxArtESLoYkBkMKCqJbl43LvUNpNUIkJvBBZzQ70CzghjEzaY9BaKKbkKCYBG/gUCmTmaPZpl4dXyR85eXca6MKzW1t4uWKoLRz697Nu7fv38CDCx9OvLjx4xQiAAAh+QQJSwAOACwAAAAAMAAoAAAE/9DJSau9OOutAf8gBnhh+QEBWakmOI5Eusrt9grIABDEMUqAA612GQkKAkMhyEsJRkIfcWVEFAaGQQLV9D0DPVZtlMAhqoUtuMuMiUsjxBNnMMzPQvcLFpA63h1pdwmEWwAGQX0AhgkDS4p/gCICAjoKAo0FmjtQe0tPAEs+nC4IpncIdQZnayM6VyNLi0xDgWVyADiFhG2hoVqNWgowYRy5lWVOwZppKK4JV9DAzW4npnIHCwAKA6mrOUGh0uMDWtvOxklyAinDCt6rw89a5QkLCwkKl0F+GQCpcgJoo3QJ4AsvhbRoW0Dwi6IfFnLVEZCtCoJLAoa10jSg0ogFp7fe7eBRLaI6dH9u7WFAhtCqJC8PFBwJqUgSADomiDuiRRazAtdMKYiSix9Em2eW6GygEOdAVVmuIQuQItFHSX+s5ASiDUCDgf/qXLx2KY2QEVRTNMCaC0EjEi8i4WhLSao5AAx8HBgV1x8OpSZx6XgmDozeoyfmTkq6Jk1VN6BaHJP070meBCSp+jhDpK/JrlE0h2OIdQqQteE6RVpr2hgQnRRKt55Nu7bt27hz697Nu7fv38B3RwAAOw=="
+                                    alt="tyrantrum" width="48" height="40">
+                            </div>
+                            <p>
+                                (There's nothing here yet but just wait, there will be so much awesome stuff to say
+                                about
+                                dohaaa because she is so epic)</p>
+                            <img src="https://addsoupbase.github.io/cute-emojis/emojis/08034309497260039.gif"
+                                alt="strawberry milk"><img
+                                src="https://addsoupbase.github.io/cute-emojis/emojis/006161276202637889.gif"
+                                alt="milk"><img
+                                src="https://addsoupbase.github.io/cute-emojis/emojis/08034309497260039.gif" alt><img
+                                src="https://addsoupbase.github.io/cute-emojis/emojis/006161276202637889.gif" alt><img
+                                src="https://addsoupbase.github.io/cute-emojis/emojis/08034309497260039.gif" alt>
+                        </article>
                     </section>
                     <hr class="purple2">
                     <section class="topic" id="about">
@@ -1069,13 +1076,13 @@
         <div alt aria-hidden="true" width="30" height="30" class="anchor2 anchor star" draggable="false"
             id="bottomright"></div>
         <div class="other purple2" id="stuff" role="tablist" aria-label="Change the channel"><button draggable="false"
-                aria-controls="content" role="tab" class="goodbrowser button" aria-label="Draw me something"
-                data-transitions="draw" aria-selected="false">Draw</button><button draggable="false"
-                aria-controls="content" role="tab" class="goodbrowser button" aria-label="View other peoples drawings"
-                data-transitions="gallery" aria-selected="false">Gallery</button><button draggable="false"
-                aria-controls="content" role="tab" class="goodbrowser button radio" aria-label="About Me"
-                data-transitions="about" aria-selected="false">About</button><button draggable="false"
-                aria-controls="content" role="tab" class="goodbrowser button" data-transitions="home"
+                role="tab" aria-controls="frameholder" class="goodbrowser button" aria-label="Draw me something"
+                data-transitions="draw" aria-selected="false">Draw</button><button draggable="false" role="tab"
+                aria-controls="frameholder" class="goodbrowser button" aria-label="View other peoples drawings"
+                data-transitions="gallery" aria-selected="false">Gallery</button><button draggable="false" role="tab"
+                aria-controls="frameholder" class="goodbrowser button radio" aria-label="About Me"
+                data-transitions="about" aria-selected="false">About</button><button draggable="false" role="tab"
+                aria-controls="frameholder" class="goodbrowser button" data-transitions="home"
                 aria-selected="true">Home</button><a role="tab" class="badbrowser button" href="#about"
                 data-fallback-transitions="about">About</a><a role="tab" class="badbrowser button" href="#home"
                 data-fallback-transitions="home">Home</a><a role="tab" class="badbrowser button" href="#gallery"
@@ -1311,7 +1318,7 @@
         style="position:fixed;z-index:0;background: linear-gradient(0deg, rgba(224, 194, 212, 1) 0%, rgba(243, 187, 177, 1) 50%, rgba(253, 186, 157, 1) 100%);position:fixed;width:100vw;height:100vh;overflow:hidden"
         role="presentation" aria-label="Jellyfish Swimming"></div>
 </body>
-<script async type="module" src="https://addsoupbase.github.io/webcomponents/paper-canvas.js"></script>
+<script type="module" src="https://addsoupbase.github.io/webcomponents/paper-canvas.js"></script>
 <script type="module" src="background.js">
 </script>
 <script type="module">
