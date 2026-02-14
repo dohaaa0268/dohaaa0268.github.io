@@ -2,9 +2,7 @@
 <html lang="en">
 
 <head>
-    <script>
-        origin === 'http://localhost:3000' || origin === 'http://192.168.1.221:3000' && navigator.serviceWorker.register('../../local.js', { scope: './' }).then(alert)
-    </script>
+    <script>(origin === 'http://localhost:3000' || origin === 'http://192.168.1.221:3000') && navigator.serviceWorker.register('../../local.js', { scope: './' })</script>
     <meta charset="UTF-8">
     <meta http-equiv="content-language" content="en">
     <meta property="og:locale" content="en_US">
@@ -682,15 +680,16 @@
                                     display: none
                                 }
                             </style>
-                            [:dir('./media/movie').filter(o=>o.endsWith('.avif')).map(o=>o.split('.avif')[0])
-                            .map(o=>`<a class="mv" target="_blank" href="./media/movie/${o}.jpg">
-                                <picture>
-                                    <source srcset="./media/movie/${o}.avif" type="image/avif">
-                                    <source srcset="./media/movie/${o}.webp" type="image/webp">
-                                    <img src="./media/movie/${o}.jpg" width="100" height="200" class="n">
-                                </picture>
-                            </a>`).join('')
-                            :]
+                            <!--{{
+                                return(await dir('./media/movie')).filter(o=>o.endsWith('.avif')).map(o=>o.split('.avif')[0])
+                                .map(o=>`<a class="mv" target="_blank" href="./media/movie/${o}.jpg">
+                                    <picture>
+                                        <source srcset="./media/movie/${o}.avif" type="image/avif">
+                                        <source srcset="./media/movie/${o}.webp" type="image/webp">
+                                        <img src="./media/movie/${o}.jpg" width="100" height="200" class="n">
+                                    </picture>
+                                </a>`).join('')
+                                }}-->
                         </noscript>
                         <script nomodule>document.write(document.getElementById('f').textContent)</script>
                     </section>
@@ -840,6 +839,7 @@
                             // img.setAttribute('loading', 'lazy')
                             img.setAttribute('decoding', 'async')
                             img.setAttribute('src', link)
+                            img.width = img.height = 220
                             var time = document.createElement('time'),
                                 now = new Date(date)
                             time.textContent = now.toLocaleDateString()
