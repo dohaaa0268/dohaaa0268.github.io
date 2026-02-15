@@ -562,12 +562,15 @@
             height: 100%;
         }
 
-        ::view-transition-old(topic) {
-            animation: dustOut 0.6s ease-out forwards;
-        }
+        @media (prefers-reduced-motion: no-preference) {
 
-        ::view-transition-new(topic) {
-            animation: dustIn 0.6s ease-out forwards;
+            ::view-transition-old(topic) {
+                animation: dustOut 0.6s ease-out forwards;
+            }
+
+            ::view-transition-new(topic) {
+                animation: dustIn 0.6s ease-out forwards;
+            }
         }
 
         #drawings:empty::after {
@@ -687,8 +690,15 @@
             place-content: center;
             place-self: center;
         }
+
         hr {
             border-style: double !important;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            #background>* {
+                visibility: hidden;
+            }
         }
     </style>
     <noscript id="bad">
@@ -903,75 +913,75 @@
                     }(tab, type)
                 }
             }
-          /*  h.on(D.getElementById('gallery'), {
-                '_topic-enter': function () {*/
-                    function fail(e) {
-                        region.textContent = 'Something went wrong.'
-                    }
-                    onerror = console.error
-                    var region = document.getElementById('drawings')
-                        , res
-                        , url = 'https://drawing-submissions.deno.dev?user=dohaaa'
-                    if (window.fetch) try {
-                        fetch(url, { mode: "cors" }).then(function (n) {
-                            return n.json().then(function (n) {
-                                res = n
-                                gah()
-                            })
-                        }).catch(fail)
-                    }
-                        catch (e) {
-                            fail(e)
-                        }
-                    else {
-                        var xhr = new XMLHttpRequest
-                        xhr.responseType = 'json'
-                        xhr.open('get', url)
-                        // req.setRequestHeader('Access-Control-Allow-Origin', '*')
-                        xhr.onerror = fail
-                        xhr.onload = function () {
-                            res = xhr.response
-                            gah()
-                        }
-                        xhr.send()
-                    }
-                    function gah() {
-                        function go(i) {
-                            var img = document.createElement('img'),
-                                a = document.createElement('a'),
-                                d = data[i],
-                                src = d[0],
-                                date = d[1]
-                            var link = 'https://images.weserv.nl/?url=https://drive.google.com/thumbnail?id=' + src + '&sz=w220'
-                            a.appendChild(img)
-                            a.setAttribute('href', link)
-                            a.setAttribute('target', '_blank')
-                            img.className = 'drawing'
-                            // img.setAttribute('loading', 'lazy')
-                            img.setAttribute('decoding', 'async')
-                            img.setAttribute('src', link)
-                            img.width = img.height = 220
-                            var time = document.createElement('time'),
-                                now = new Date(date)
-                            time.textContent = now.toLocaleDateString()
-                            time.setAttribute('datetime', now.toISOString().slice(0, 10))
-                            a.appendChild(time)
-                            a.className = 'drawingdate'
-                            region.appendChild(a)
-                        }
-                        var data = res.reverse(),
-                            len = data.length
-                        if (!len) return region.textContent = 'No drawings yet. Submit one!'
-                        while (len--) go(len)
-                    }
-               /* }
-            })*/
+            /*  h.on(D.getElementById('gallery'), {
+                  '_topic-enter': function () {*/
+            function fail(e) {
+                region.textContent = 'Something went wrong.'
+            }
+            onerror = console.error
+            var region = document.getElementById('drawings')
+                , res
+                , url = 'https://drawing-submissions.deno.dev?user=dohaaa'
+            if (window.fetch) try {
+                fetch(url, { mode: "cors" }).then(function (n) {
+                    return n.json().then(function (n) {
+                        res = n
+                        gah()
+                    })
+                }).catch(fail)
+            }
+                catch (e) {
+                    fail(e)
+                }
+            else {
+                var xhr = new XMLHttpRequest
+                xhr.responseType = 'json'
+                xhr.open('get', url)
+                // req.setRequestHeader('Access-Control-Allow-Origin', '*')
+                xhr.onerror = fail
+                xhr.onload = function () {
+                    res = xhr.response
+                    gah()
+                }
+                xhr.send()
+            }
+            function gah() {
+                function go(i) {
+                    var img = document.createElement('img'),
+                        a = document.createElement('a'),
+                        d = data[i],
+                        src = d[0],
+                        date = d[1]
+                    var link = 'https://images.weserv.nl/?url=https://drive.google.com/thumbnail?id=' + src + '&sz=w220'
+                    a.appendChild(img)
+                    a.setAttribute('href', link)
+                    a.setAttribute('target', '_blank')
+                    img.className = 'drawing'
+                    // img.setAttribute('loading', 'lazy')
+                    img.setAttribute('decoding', 'async')
+                    img.setAttribute('src', link)
+                    img.width = img.height = 220
+                    var time = document.createElement('time'),
+                        now = new Date(date)
+                    time.textContent = now.toLocaleDateString()
+                    time.setAttribute('datetime', now.toISOString().slice(0, 10))
+                    a.appendChild(time)
+                    a.className = 'drawingdate'
+                    region.appendChild(a)
+                }
+                var data = res.reverse(),
+                    len = data.length
+                if (!len) return region.textContent = 'No drawings yet. Submit one!'
+                while (len--) go(len)
+            }
+            /* }
+         })*/
             h.on(D.getElementById('about'), {
                 '_topic-enter': function () {
                     var poster = D.getElementById('poster')
                     var source2 = poster.previousElementSibling
                     var source1 = source2.previousElementSibling
-                                        var titles = Object.entries({
+                    var titles = Object.entries({
                         '10things': '10 Things I Hate About You',
                         alice: 'Alice in Wonderland (2010)',
                         whisker: 'A Whisker Away',
