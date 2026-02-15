@@ -462,12 +462,15 @@
         .cr-octopus2 {
             scale: .3 .3
         }
+
         .cr-manta {
             scale: .6 .6
         }
+
         :has(.cr-manta, .cr-octopus2, .cr-school) {
-        animation-duration: 30s;
+            animation-duration: 30s;
         }
+
         .jelly {
             background-size: cover;
             image-rendering: pixelated;
@@ -707,6 +710,9 @@
             /* width: -webkit-fill-available; */
             place-content: center;
             place-self: center;
+        }
+        hr {
+            border-style: double !important;
         }
     </style>
     <noscript id="bad">
@@ -1158,10 +1164,10 @@
                         </noscript>
                         <script nomodule>document.write(document.getElementById('f').textContent)</script>
                     </section>
-                    <hr class="purple2">
+                    <!-- <hr class="purple2"> -->
                     <section class="topic" id="gallery">
                         <h1>Submitted Drawings</h1>
-                        <img alt="" aria-hidden="true" width="40" height="40" style="margin: 7px;"
+                        <img id="dragonpaperthing" alt="" aria-hidden="true" width="40" height="40" style="margin: 7px;"
                             src="https://addsoupbase.github.io/cute-emojis/emojis/1368436536005365782.gif">
                         <div role="region" id="drawings" style="text-align: center;"></div>
                     </section>
@@ -1266,8 +1272,8 @@
                     }(tab, type)
                 }
             }
-            h.on(D.getElementById('gallery'), {
-                '_topic-enter': function () {
+          /*  h.on(D.getElementById('gallery'), {
+                '_topic-enter': function () {*/
                     function fail(e) {
                         region.textContent = 'Something went wrong.'
                     }
@@ -1287,15 +1293,16 @@
                             fail(e)
                         }
                     else {
-                        var req = new XMLHttpRequest
-                        req.open('get', url)
+                        var xhr = new XMLHttpRequest
+                        xhr.responseType = 'json'
+                        xhr.open('get', url)
                         // req.setRequestHeader('Access-Control-Allow-Origin', '*')
-                        req.onerror = fail
-                        req.onload = function () {
-                            res = (window.JSON ? JSON.parse : eval)(req.responseText)
+                        xhr.onerror = fail
+                        xhr.onload = function () {
+                            res = xhr.response
                             gah()
                         }
-                        req.send()
+                        xhr.send()
                     }
                     function gah() {
                         function go(i) {
@@ -1326,8 +1333,8 @@
                         if (!len) return region.textContent = 'No drawings yet. Submit one!'
                         while (len--) go(len)
                     }
-                }
-            })
+               /* }
+            })*/
             h.on(D.getElementById('about'), {
                 '_topic-enter': function () {
                     var poster = D.getElementById('poster')
