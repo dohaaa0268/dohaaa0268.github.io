@@ -79,6 +79,11 @@
     <script src="https://addsoupbase.github.io/css_bad.js" nomodule></script>
     <noscript>
         <link rel="stylesheet" href="https://addsoupbase.github.io/noscript.css">
+        <style>
+            #galleryhrefbutton {
+                display: none
+            }
+        </style>
     </noscript>
     <title>Doha's page</title>
     <link rel="preload" as="font" href="./fonts/pixel2.woff2" crossorigin="anonymous">
@@ -1197,9 +1202,9 @@
                 data-transitions="about" aria-selected="false">Movies</button><button draggable="false" role="tab"
                 aria-controls="frameholder" class="goodbrowser button" data-transitions="home" aria-selected="true"
                 id="gohome">Home</button><a role="tab" class="badbrowser button" href="#about"
-                data-fallback-transitions="about">About</a><a role="tab" class="badbrowser button" href="#home"
+                data-fallback-transitions="about">Movies</a><a role="tab" class="badbrowser button" href="#home"
                 data-fallback-transitions="home">Home</a><a role="tab" class="badbrowser button" href="#gallery"
-                data-fallback-transitions="gallery">Gallery</a></div>
+                data-fallback-transitions="gallery" id="galleryhrefbutton">Gallery</a></div>
     </div>
     <script src="https://addsoupbase.github.io/h.js"></script>
     <style id="offset_thing"></style>
