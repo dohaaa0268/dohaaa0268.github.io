@@ -83,13 +83,14 @@
     <title>Doha's page</title>
     <link rel="preload" as="font" href="./fonts/pixel2.woff2" crossorigin="anonymous">
     <link rel="preload" as="font" href="./fonts/pixel1.woff2" crossorigin="anonymous">
+    <!--{{
+    return `media/foreground-merged.webp media/far.webp media/sand.webp`.split(' ').map(o=>`<link rel="prerender" as="image" src="${o}" blocking="render">`).join('')
+    }}-->
     <!--https://wiki.whatwg.org/wiki/MetaExtensions-->
     <!--[if IE]><script>alert('Please update your browser')</script><![endif]-->
     <style>
         /*
-
     For @Dohaaa0268 by @addsoupbase
-
 */
         :root {
             --RED-1: #EEBAB7;
@@ -134,6 +135,70 @@
             font-family: pixel1, monospace;
             padding: 0;
             margin: 0
+        }
+
+        #background {
+            /* background-color: #3e79dd; */
+            background-repeat: repeat-x;
+            background-size: max(80%, 500px), max(50%, 500px), max(50%, 500px);
+            /*:return imageSet(...['media/foreground-merged', 'media/sand', 'media/far'].map(o=>[`${o}.webp`, `${o}.png`]))*/
+            image-rendering: pixelated;
+            background-position-y: 100%;
+            --layer1: 0%;
+            --layer2: 0%;
+            --layer3: 0%;
+            background-position-x: var(--layer1), var(--layer2), var(--layer3);
+        }
+
+        /*:return `layer1 layer2 layer3`.split(' ')
+        .map(o=>`@property --${o} {
+            syntax: "<percentage>";
+            initial-value: 0%;
+            inherits: false;
+        }`).join('\n')*/
+        #background,
+        #overlay {
+            position: fixed;
+            z-index: 0;
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden
+        }
+
+        @media (prefers-reduced-motion: no-preference) {
+            #background {
+                will-change: background-position-x;
+                animation: layer1 30s ease-in-out alternate-reverse infinite,
+                    layer2 60s ease-in-out alternate-reverse infinite,
+                    layer3 120s ease-in-out alternate-reverse infinite
+            }
+
+            /*:return `layer1 layer2 layer3`.split(' ')
+            .map((o, i)=>`@keyframes ${o} {
+                0% {
+                    --${o}: 0%;
+                }
+
+                100% {
+                    --${o}: 100%;
+                }
+            }`).join('\n')*/
+
+        }
+
+        @keyframes offset {
+            0% {
+                offset-distance: 0%;
+            }
+
+            100% {
+                offset-distance: 100%;
+            }
+        }
+
+        #overlay {
+            background-color: rgba(0, 51, 255, 0.192);
         }
 
         #poster {
@@ -354,20 +419,39 @@
             }
         }
 
+        .obj {
+            offset-rotate: 0deg;
+            will-change: offset-path;
+            position: absolute;
+        }
+
+        .creature {
+            animation: offset 17s linear 1;
+        }
+
+        .cr-school,
+        .cr-octopus2 {
+            scale: .3 .3
+        }
+        .cr-manta {
+            scale: .6 .6
+        }
+        :has(.cr-manta, .cr-octopus2, .cr-school) {
+        animation-duration: 30s;
+        }
         .jelly {
             background-size: cover;
             image-rendering: pixelated;
             /* background-size: contain; */
             background-repeat: no-repeat;
-            position: fixed;
             width: 128px;
             height: 128px;
-            top: 100vh;
+            /* bottom: 128px; */
             z-index: 0;
-            scale: .5.5;
+            /* --zoom: .5; */
+            transform: scale(0.5, 0.5);
             /* transform: scale(.5); */
-            animation: 1s ease-in-out 0s infinite alternate-reverse both running wiggle, slideshow 700ms steps(7, end) infinite;
-
+            animation: 1s ease-in-out 0s infinite alternate-reverse both running wiggle, slideshow 700ms steps(7, end) infinite, offset 10s linear 1;
         }
 
         @keyframes wiggle {
@@ -386,6 +470,7 @@
 
         body,
         html {
+            background-color: #3e79dd;
             view-transition-name: none;
         }
 
@@ -429,6 +514,12 @@
             margin: 5px;
             --user-select: none;
             transition: background .1s LINEAR, transform .2s ease;
+        }
+
+        @media screen and (width < 380px) {
+            #gohome {
+                display: none !important
+            }
         }
 
         .button:hover {
@@ -733,18 +824,26 @@
                 data-transitions="draw" aria-selected="false">Draw</button><button draggable="false" role="tab"
                 aria-controls="frameholder" class="goodbrowser button" aria-label="View other peoples drawings"
                 data-transitions="gallery" aria-selected="false">Gallery</button><button draggable="false" role="tab"
-                aria-controls="frameholder" class="goodbrowser button radio" aria-label="About Me"
-                data-transitions="about" aria-selected="false">About</button><button draggable="false" role="tab"
-                aria-controls="frameholder" class="goodbrowser button" data-transitions="home"
-                aria-selected="true">Home</button><a role="tab" class="badbrowser button" href="#about"
+                aria-controls="frameholder" class="goodbrowser button radio" aria-label="Movies"
+                data-transitions="about" aria-selected="false">Movies</button><button draggable="false" role="tab"
+                aria-controls="frameholder" class="goodbrowser button" data-transitions="home" aria-selected="true"
+                id="gohome">Home</button><a role="tab" class="badbrowser button" href="#about"
                 data-fallback-transitions="about">About</a><a role="tab" class="badbrowser button" href="#home"
                 data-fallback-transitions="home">Home</a><a role="tab" class="badbrowser button" href="#gallery"
                 data-fallback-transitions="gallery">Gallery</a></div>
     </div>
     <script src="https://addsoupbase.github.io/h.js"></script>
+    <style id="offset_thing"></style>
     <script>
-        !function (D, h) {
+        !function (D, h, css) {
             'use strict'
+            var offset = D.getElementById('offset_thing')
+            h.on(window, {
+                resize: function n() {
+                    offset.textContent = ".obj_up {offset-path: path('M 0 " + (innerHeight * 1.2) + " L 0 -1000')} .obj_left {offset-path: path('M -1000 0 L " + (innerWidth * 1.5) + " 0');}"
+                    return n
+                }()
+            })
             var CreateEvent = function () {
                 function New(type) {
                     return new Event(type)
@@ -860,11 +959,15 @@
                     var poster = D.getElementById('poster')
                     var source2 = poster.previousElementSibling
                     var source1 = source2.previousElementSibling
+                    function doFormat() {
+                        format = poster.currentSrc.split(/\.(?=avif|webp|png)/)[1]
+                        preloadNextImage(0)
+                    }
+                    if (poster.complete) doFormat()
+                    else h.on(poster, {
+                        _load: doFormat
+                    })
                     h.on(poster, {
-                        _load: function () {
-                            format = poster.currentSrc.split(/\.(?=avif|webp|png)/)[1]
-                            preloadNextImage(0)
-                        },
                         animationend: function () {
                             if (this.complete) {
                                 this.classList.remove('animate')
@@ -966,11 +1069,10 @@
                 }
             })
 
-        }(document, window[Symbol.for('[[HModule]]')])
+        }(document, window[Symbol.for('[[HModule]]')], window[Symbol.for('[[CSSModule]]')])
     </script>
-    <div id="background" role="img"
-        style="position:fixed;z-index:0;background: linear-gradient(0deg, rgba(224, 194, 212, 1) 0%, rgba(243, 187, 177, 1) 50%, rgba(253, 186, 157, 1) 100%);position:fixed;width:100vw;height:100vh;overflow:hidden"
-        role="presentation" aria-label="Jellyfish Swimming"></div>
+    <div id="background" role="img" role="presentation" aria-label="Jellyfish Swimming"></div>
+    <div aria-hidden="true" id="overlay"></div>
 </body>
 <script type="module" src="https://addsoupbase.github.io/webcomponents/paper-canvas.js"></script>
 <script type="module" src="background.js">
