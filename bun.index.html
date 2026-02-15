@@ -971,40 +971,7 @@
                     var poster = D.getElementById('poster')
                     var source2 = poster.previousElementSibling
                     var source1 = source2.previousElementSibling
-                    function doFormat() {
-                        format = poster.currentSrc.split(/\.(?=avif|webp|png)/)[1]
-                        preloadNextImage(0)
-                    }
-                    if (poster.complete) doFormat()
-                    else h.on(poster, {
-                        _load: doFormat
-                    })
-                    h.on(poster, {
-                        animationend: function () {
-                            if (this.complete) {
-                                this.classList.remove('animate')
-                            }
-                            else h.on(this, {
-                                _load: function () {
-                                    this.classList.remove('animate')
-                                }
-                            })
-                        },
-                        click: function () {
-                            if (this.classList.contains('animate')) return
-                            preloadNextImage(++i)
-                            var cur = titles[i % titles.length]
-                                , src = cur[0]
-                            setTimeout(function () {
-                                source1.srcset = './media/movie/' + src + '.avif'
-                                source2.srcset = './media/movie/' + src + '.webp'
-                                poster.src = './media/movie/' + src + '.jpg'
-                                poster.alt = cur[1]
-                            }, 300)
-                            poster.classList.add('animate')
-                        }
-                    })
-                    var titles = Object.entries({
+                                        var titles = Object.entries({
                         '10things': '10 Things I Hate About You',
                         alice: 'Alice in Wonderland (2010)',
                         whisker: 'A Whisker Away',
@@ -1067,6 +1034,39 @@
                     })
                         , i = titles.length
                         , format
+                    function doFormat() {
+                        format = poster.currentSrc.split(/\.(?=avif|webp|png)/)[1]
+                        preloadNextImage(0)
+                    }
+                    if (poster.complete) doFormat()
+                    else h.on(poster, {
+                        _load: doFormat
+                    })
+                    h.on(poster, {
+                        animationend: function () {
+                            if (this.complete) {
+                                this.classList.remove('animate')
+                            }
+                            else h.on(this, {
+                                _load: function () {
+                                    this.classList.remove('animate')
+                                }
+                            })
+                        },
+                        click: function () {
+                            if (this.classList.contains('animate')) return
+                            preloadNextImage(++i)
+                            var cur = titles[i % titles.length]
+                                , src = cur[0]
+                            setTimeout(function () {
+                                source1.srcset = './media/movie/' + src + '.avif'
+                                source2.srcset = './media/movie/' + src + '.webp'
+                                poster.src = './media/movie/' + src + '.jpg'
+                                poster.alt = cur[1]
+                            }, 300)
+                            poster.classList.add('animate')
+                        }
+                    })
                     function preloadNextImage(i) {
                         var a = titles[(i + 1) % titles.length][0]
                             , link = './media/movie/' + a + '.' + format
