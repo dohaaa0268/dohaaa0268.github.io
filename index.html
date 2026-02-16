@@ -181,9 +181,9 @@
         @media (prefers-reduced-motion: no-preference) {
             #background {
                 will-change: background-position-x;
-                animation: layer1 30s ease-in-out alternate-reverse infinite,
-                    layer2 60s ease-in-out alternate-reverse infinite,
-                    layer3 120s ease-in-out alternate-reverse infinite
+                animation: layer1 25s linear normal infinite,
+                    layer2 90s linear normal infinite,
+                    layer3 150s linear normal infinite
             }
 
             @keyframes layer1 {
@@ -192,7 +192,7 @@
                 }
 
                 100% {
-                    --layer1: 100%;
+                    --layer1: 400%;
                 }
             }
 @keyframes layer2 {
@@ -201,7 +201,7 @@
                 }
 
                 100% {
-                    --layer2: 100%;
+                    --layer2: 400%;
                 }
             }
 @keyframes layer3 {
@@ -210,7 +210,7 @@
                 }
 
                 100% {
-                    --layer3: 100%;
+                    --layer3: 400%;
                 }
             }
 
@@ -450,7 +450,7 @@
 
         .obj {
             offset-rotate: 0deg;
-            will-change: offset-path;
+            will-change: offset-distance;
             position: absolute;
         }
 
@@ -622,7 +622,10 @@
                 /* filter: brightness(0) saturate(0); */
             }
         }
-
+        .star_rate {
+            filter: grayscale(1) brightness(90%);
+            font-size: 2em
+        }
         @keyframes dustIn {
             from {
                 opacity: 0;
@@ -809,6 +812,14 @@
                             <source srcset="./media/movie/wicked.webp" type="image/webp">
                             <img role="button" id="poster" tabindex="0" loading="lazy" width="300" height="400"
                                 src="./media/movie/wicked.jpg" alt="Wicked">
+                                <!--
+                                    <div>
+                                        <h2>What did you think?</h2>
+                                        <div>
+                                            <span class="star_rate" role="button">⭐</span><span class="star_rate" role="button">⭐</span><span class="star_rate" role="button">⭐</span><span class="star_rate" role="button">⭐</span><span class="star_rate" role="button">⭐</span>
+                                        </div>
+                                    </div>
+                                -->
                         </picture>
                         <noscript id="f">
                             <style>
@@ -1268,7 +1279,6 @@
                 for (var i = tabs.length; i--;) {
                     var tab = tabs[i]
                     var type = 'topic-leave'
-                    console.log(tab.id, currentTab)
                     if (tab.id === currentTab) {
                         type = 'topic-enter'
                         tab.classList.add('active')
@@ -1276,7 +1286,6 @@
                     else tab.classList.remove('active')
                     !function (tab, type) {
                         queueMicrotask(function () {
-                            console.log(type)
                             tab.dispatchEvent(CreateEvent(type))
                         })
                     }(tab, type)
@@ -1316,7 +1325,7 @@
             }
             function gah() {
                 function go(i) {
-                    var img = document.createElement('img'),
+                    var img = new Image(220, 220),
                         a = document.createElement('a'),
                         d = data[i],
                         src = d[0],
@@ -1329,7 +1338,6 @@
                     // img.setAttribute('loading', 'lazy')
                     img.setAttribute('decoding', 'async')
                     img.setAttribute('src', link)
-                    img.width = img.height = 220
                     var time = document.createElement('time'),
                         now = new Date(date)
                     time.textContent = now.toLocaleDateString()
@@ -1340,8 +1348,8 @@
                 }
                 var data = res.reverse(),
                     len = data.length
-                if (!len) return region.textContent = 'No drawings yet. Submit one!'
-                while (len--) go(len)
+                if (len) while (len--) go(len)
+                else return region.textContent = 'No drawings yet. Submit one!'
             }
             /* }
          })*/
@@ -1411,11 +1419,11 @@
                         whisper: 'Whisper of the Heart',
                         'wicked': 'Wicked',
                     })
-                        , i = titles.length
+                        , i = 0
                         , format
                     function doFormat() {
                         format = poster.currentSrc.split(/\.(?=avif|webp|png)/)[1]
-                        preloadNextImage(0)
+                        preloadNextImage(++i)
                     }
                     if (poster.complete) doFormat()
                     else h.on(poster, {
@@ -1455,6 +1463,10 @@
                             l.as = 'image'
                             l.href = link
                             D.head.appendChild(l)
+                        }
+                        else {
+                            // ill do the rest when i get back from work
+                            // poster.replaceWith()
                         }
                     }
                 }
