@@ -142,18 +142,18 @@
 
         #background {
             /* background-color: #3e79dd; */
-            background-repeat: repeat-x;
-            background-size: cover;
-            background-size: max(80%, 500px), max(50%, 500px), max(50%, 500px);
+            background-repeat: repeat-x, repeat-x, repeat-x;
+            background-size: auto 50vh;
+            /* background-size: max(60vw, 2048px) 50vh, 20vw 50vh, 20vw 50vh; */
             background-image:url(media/foreground-merged.png),url(media/sand.png),url(media/far.png);background-image:image-set(url(media/foreground-merged.webp) type("image/webp"),url(media/foreground-merged.png) type("image/png")),image-set(url(media/sand.webp) type("image/webp"),url(media/sand.png) type("image/png")),image-set(url(media/far.webp) type("image/webp"),url(media/far.png) type("image/png"));background-image:-webkit-image-set(url(media/foreground-merged.webp) type("image/webp"),url(media/foreground-merged.png) type("image/png")),-webkit-image-set(url(media/sand.webp) type("image/webp"),url(media/sand.png) type("image/png")),-webkit-image-set(url(media/far.webp) type("image/webp"),url(media/far.png) type("image/png"));
             image-rendering: pixelated;
-            background-position-y: 100%;
+            background-position-y: bottom;
             --layer1: 0%;
             --layer2: 0%;
             --layer3: 0%;
+            background-attachment: fixed;
             background-position-x: var(--layer1), var(--layer2), var(--layer3);
         }
-
         @property --layer1 {
             syntax: "<percentage>";
             initial-value: 0%;
@@ -182,18 +182,17 @@
         @media (prefers-reduced-motion: no-preference) {
             #background {
                 will-change: background-position-x;
-                animation: layer1 25s linear normal infinite,
-                    layer2 90s linear normal infinite,
-                    layer3 150s linear normal infinite
+                animation: layer1 41s ease-out alternate-reverse infinite,
+                    layer2 90s ease-out alternate-reverse infinite,
+                    layer3 150s ease-out alternate-reverse infinite
             }
-
             @keyframes layer1 {
                 0% {
                     --layer1: 0%;
                 }
 
                 100% {
-                    --layer1: 400%;
+                    --layer1: 100%;
                 }
             }
 @keyframes layer2 {
@@ -202,7 +201,7 @@
                 }
 
                 100% {
-                    --layer2: 400%;
+                    --layer2: 100%;
                 }
             }
 @keyframes layer3 {
@@ -211,12 +210,10 @@
                 }
 
                 100% {
-                    --layer3: 400%;
+                    --layer3: 100%;
                 }
             }
-
         }
-
         @keyframes offset {
             0% {
                 offset-distance: 0%;
@@ -806,8 +803,8 @@
                     </section>
                     <hr class="purple2">
                     <section class="topic" id="about">
-                        <h1 style="display: flex;font-size:1.3em;justify-content: center;align-items: center;"><img draggable="false" alt=""
-                                width="30" height="30"
+                        <h1 style="display: flex;font-size:1.3em;justify-content: center;align-items: center;"><img
+                                draggable="false" alt="" width="30" height="30"
                                 src="https://addsoupbase.github.io/cute-emojis/emojis/1225821658225577984.gif"
                                 decoding="async" loading="lazy" style="margin:5px;width:30px;height:30px"
                                 class="pixel">Favourite Movies:<img draggable="false" alt="" width="30" height="30"
@@ -904,7 +901,7 @@
             var offset = D.getElementById('offset_thing')
             h.on(window, {
                 resize: function n() {
-                    offset.textContent = ".obj_up {offset-path: path('M 0 " + (innerHeight * 1.2) + " L 0 -1000')} .obj_left {offset-path: path('M -1000 0 L " + (innerWidth * 1.5) + " 0');}"
+                    offset.textContent = ".obj_up {offset-path: path('M 0 " + (innerHeight * 1.2) + " L 0 -1000')} .obj_left {offset-path: path('M -1000 0 L " + (innerWidth * 2) + " 0');}"
                     return n
                 }()
             })
