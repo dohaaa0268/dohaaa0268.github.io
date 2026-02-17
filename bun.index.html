@@ -145,6 +145,7 @@
         #background {
             /* background-color: #3e79dd; */
             background-repeat: repeat-x;
+            background-size: cover;
             background-size: max(80%, 500px), max(50%, 500px), max(50%, 500px);
             /*:return imageSet(...['media/foreground-merged', 'media/sand', 'media/far'].map(o=>[`${o}.webp`, `${o}.png`]))*/
             image-rendering: pixelated;
@@ -212,7 +213,7 @@
 
         .drawMeSomething::after,
         .drawMeSomething::before {
-            background-image: url(data:image/png;base64,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);
+            background-image: url(https://addsoupbase.github.io/cute-emojis/emojis/11246-purplecrayon.gif);
             content: '';
             height: 30px;
             width: 30px;
@@ -225,6 +226,7 @@
 
         .drawMeSomething {
             font-size: 1.2em;
+            align-items: center;
         }
 
         .drawMeSomething::before {
@@ -406,12 +408,6 @@
             .glow {
                 filter: none
             }
-
-
-
-            img-sprite {
-                display: none
-            }
         }
 
         @keyframes toTop {
@@ -431,7 +427,7 @@
         }
 
         .creature {
-            animation: offset 17s linear 1;
+            animation: offset 27s linear 1;
         }
 
         .cr-school,
@@ -473,7 +469,8 @@
         }
 
         .mv {
-            display: contents
+            display: contents;
+            text-decoration: none;
         }
 
         body,
@@ -598,10 +595,21 @@
                 /* filter: brightness(0) saturate(0); */
             }
         }
+
         .star_rate {
             filter: grayscale(1) brightness(90%);
-            font-size: 2em
+            font-size: 2em;
+            margin-inline: 3px;
         }
+
+        .star_rate:is(:hover, :focus, :has(~ .star_rate:is(:hover, :focus))) {
+            filter: grayscale(0)
+        }
+
+        .star_rate:active {
+            scale: .1 .1
+        }
+
         @keyframes dustIn {
             from {
                 opacity: 0;
@@ -774,7 +782,7 @@
                     </section>
                     <hr class="purple2">
                     <section class="topic" id="about">
-                        <h1 style="display: flex;font-size:1.3em;justify-content: center;"><img draggable="false" alt=""
+                        <h1 style="display: flex;font-size:1.3em;justify-content: center;align-items: center;"><img draggable="false" alt=""
                                 width="30" height="30"
                                 src="https://addsoupbase.github.io/cute-emojis/emojis/1225821658225577984.gif"
                                 decoding="async" loading="lazy" style="margin:5px;width:30px;height:30px"
@@ -788,14 +796,14 @@
                             <source srcset="./media/movie/wicked.webp" type="image/webp">
                             <img role="button" id="poster" tabindex="0" loading="lazy" width="300" height="400"
                                 src="./media/movie/wicked.jpg" alt="Wicked">
-                                <!--
-                                    <div>
-                                        <h2>What did you think?</h2>
-                                        <div>
-                                            <!--{{return `<span class="star_rate" role="button">⭐</span>`.repeat(5)}}-->
-                                        </div>
-                                    </div>
-                                -->
+                            <div style="display: none;">
+                                <h2>What did you think?</h2>
+                                <div role="radiogroup" style="--user-select:none" aria-label="Rate the movie choices">
+                                    <!--{{
+                                    return [1,2,3,4,5].map(o=>`<span tabindex="0" aria-label="${o} star${o === 1 ? '' : 's'}" class="star_rate" role="radio">⭐</span>`).join('')
+                                    }}-->
+                                </div>
+                            </div>
                         </picture>
                         <noscript id="f">
                             <style>
@@ -805,13 +813,7 @@
                             </style>
                             <!--{{
                                 return(await dir('./media/movie')).filter(o=>o.endsWith('.avif')).map(o=>o.split('.avif')[0])
-                                .map(o=>`<a class="mv" target="_blank" href="./media/movie/${o}.jpg">
-                                    <picture>
-                                        <source srcset="./media/movie/${o}.avif" type="image/avif">
-                                        <source srcset="./media/movie/${o}.webp" type="image/webp">
-                                        <img src="./media/movie/${o}.jpg" width="100" height="200" class="n">
-                                    </picture>
-                                </a>`).join('')
+                                .map(o=>`<a class="mv" target="_blank" href="./media/movie/${o}.jpg"><picture><source srcset="./media/movie/${o}.avif" type="image/avif"><source srcset="./media/movie/${o}.webp" type="image/webp"><img src="./media/movie/${o}.jpg" width="100" height="200" class="n"></picture></a>`).join('')
                                 }}-->
                         </noscript>
                         <script nomodule>document.write(document.getElementById('f').textContent)</script>
@@ -848,9 +850,11 @@
         <div alt aria-hidden="true" width="30" height="30" class="anchor1 anchor star" draggable="false" id="topright">
         </div>
         <div alt aria-hidden="true" width="30" height="30" class="anchor2 anchor star" draggable="false"
-            id="bottomleft"></div>
+            id="bottomleft">
+        </div>
         <div alt aria-hidden="true" width="30" height="30" class="anchor2 anchor star" draggable="false"
-            id="bottomright"></div>
+            id="bottomright">
+        </div>
         <div class="other purple2" id="stuff" role="tablist" aria-label="Change the channel"><button draggable="false"
                 role="tab" aria-controls="frameholder" class="goodbrowser button" aria-label="Draw me something"
                 data-transitions="draw" aria-selected="false">Draw</button><button draggable="false" role="tab"
@@ -869,6 +873,15 @@
     <script>
         !function (D, h, css) {
             'use strict'
+            h.delegate(document.body, {
+                keydown: function (e) {
+                    var key = e.key.toLowerCase()
+                    if (key === 'enter' || key === ' ') {
+                        if (key === ' ') e.preventDefault()
+                        this.click()
+                    }
+                }
+            }, function (n) { return n.tagName !== 'BUTTON' && n.tagName !== 'A' && n.getAttribute('tabindex') > -1 })
             var offset = D.getElementById('offset_thing')
             h.on(window, {
                 resize: function n() {
@@ -1105,7 +1118,7 @@
 
         }(document, window[Symbol.for('[[HModule]]')], window[Symbol.for('[[CSSModule]]')])
     </script>
-    <div id="background" role="img" role="presentation" aria-label="Jellyfish Swimming"></div>
+    <div id="background" role="img" role="presentation" aria-label="Sea creatures swimming"></div>
     <div aria-hidden="true" id="overlay"></div>
 </body>
 <script type="module" src="https://addsoupbase.github.io/webcomponents/paper-canvas.js"></script>

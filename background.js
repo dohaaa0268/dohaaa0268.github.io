@@ -56,6 +56,6 @@ let creatures = ['manta', 'octopus2', 'fish', 'school', //'octopus'
     if (isHidden()) return
     let creature = creatures[Math.floor(Math.random() * creatures.length)]
     let dir = Math.random() > .5
-    let div = $`<div style="animation-direction: ${dir ? 'normal' : 'reverse'};top: ${Math.random() * innerHeight}px;${dir ? 'transform:scaleX(-1)' : ''}" class="obj obj_left creature"><cel-runner dura="80ms" src="media/${creature}.png" class="cr-${creature}"></cel-runner></div>`
+    let div = $`<div aria-hidden="true" style="animation-direction: ${dir ? 'normal' : 'reverse'};top: ${Math.random() * innerHeight}px;${dir ? 'transform:scaleX(-1)' : ''}" class="obj obj_left creature"><cel-runner dura="80ms" src="media/${creature}.png" class="cr-${creature}"></cel-runner></div>`
     div.setParent(background)
 }()
