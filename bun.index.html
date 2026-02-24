@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<!--{{@define
+let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
+}}-->
 <head>
     <script>(origin === 'http://localhost:3000' || origin === 'http://192.168.1.221:3000') && navigator.serviceWorker.register('../../local.js', { scope: './' })</script>
     <meta charset="UTF-8">
@@ -156,6 +158,7 @@
             background-attachment: fixed;
             background-position-x: var(--layer1), var(--layer2), var(--layer3);
         }
+
         /*:return `layer1 layer2 layer3`.split(' ')
         .map(o=>`@property --${o} {
             syntax: "<percentage>";
@@ -179,6 +182,7 @@
                     layer2 90s ease-out alternate-reverse infinite,
                     layer3 150s ease-out alternate-reverse infinite
             }
+
             /*:return `layer1 layer2 layer3`.split(' ')
             .map((o, i)=>`@keyframes ${o} {
                 0% {
@@ -190,6 +194,7 @@
                 }
             }`).join('\n')*/
         }
+
         @keyframes offset {
             0% {
                 offset-distance: 0%;
@@ -789,10 +794,10 @@
                         </h1>
                         <aside class="hint">Click to view next</aside>
                         <picture>
-                            <source srcset="./media/movie/wicked.avif" type="image/avif">
-                            <source srcset="./media/movie/wicked.webp" type="image/webp">
+                            <source srcset="./media/movie/<!--{{return movie}}-->.avif" type="image/avif">
+                            <source srcset="./media/movie/<!--{{return movie}}-->.webp" type="image/webp">
                             <img role="button" id="poster" tabindex="0" loading="lazy" width="300" height="400"
-                                src="./media/movie/wicked.jpg" alt="Wicked">
+                                src="./media/movie/<!--{{return movie}}-->.jpg" alt="<!--{{return movie.split('_').join(' ')}}-->">
                             <div style="display: none;">
                                 <h2>What did you think?</h2>
                                 <div role="radiogroup" style="--user-select:none" aria-label="Rate the movie choices">
@@ -1000,65 +1005,81 @@
                     var source2 = poster.previousElementSibling
                     var source1 = source2.previousElementSibling
                     var titles = Object.entries({
-                        '10things': '10 Things I Hate About You',
-                        alice: 'Alice in Wonderland (2010)',
-                        whisker: 'A Whisker Away',
-                        arrietty: 'The Secret World of Arrietty',
-                        barbie: 'Barbie (2023)',
-                        beautybeast: 'Beauty and the Beast (2017)',
-                        brave: 'Brave (2012)',
-                        catreturns: 'The Cat Returns',
-                        charlie: "Charlie and the Chocolate Factory (2005)",
-                        childrenvoices: 'Children Who Chase Lost Voices',
-                        'coraline': 'Coraline',
-                        corner: 'In This Corner of the World',
-                        'corpse': 'Corpse Bride',
-                        cruella: 'Cruella',
-                        'damsel': 'Damsel (2024)',
-                        deadpoets: 'Dead Poets Society',
-                        'enola': 'Enola Holmes',
-                        fireflies: 'Grave of the Fireflies',
-                        frozen: 'Frozen (2013)',
-                        'harrypotter': "Harry Potter and the Philosopher's Stone",
-                        home: 'Home (2015)',
-                        'homealone': 'Home Alone (1990)',
-                        hotarubi: 'Hotarubi No Mori E',
-                        'hungergames': 'The Hunger Games (2012)',
-                        'jumanji': 'Jumanji (2019)',
-                        'karatekid': 'The Karate Kid (2010)',
-                        'kpopdemonhunters': 'Kpop Demon Hunters',
-                        lalaland: 'La La Land',
-                        legallyblonde: 'Legally Blonde',
-                        'littleprince': 'The Little Prince',
-                        'littlewomen': 'Little Women',
-                        luca: 'Luca',
-                        maleficent: 'Maleficent (2014)',
-                        'mazerunner': 'The Maze Runner',
-                        meangirls: 'Mean Girls (2004)',
-                        mebeforeyou: 'Me Before You',
-                        moana: 'Moana',
-                        mononoke: 'Princess Mononoke',
-                        moxie: 'Moxie (2021)',
-                        mulan: 'Mulan (1998)',
-                        'narnia': 'The Chronicles of Narnia (2005)',
-                        oceanwaves: 'The Ocean Waves',
-                        peregrine: "Miss Peregrine's Home for Peculiar Children",
-                        pitchperfect: 'Pitch Perfect (2012)',
-                        princessdiary: 'The Princess Diaries',
-                        'saiyaara': 'Saiyaara',
-                        'school': 'The School for Good and Evil',
-                        shestheman: "She's The Man",
-                        'showman': 'The Greatest Showman',
-                        suzume: 'Suzume No Tojimari',
-                        thedevil: 'The Devil Wears Prada',
-                        thehelp: 'The Help',
-                        'train': 'Train to Busan',
-                        up: 'Up (2009)',
-                        uptowngirls: 'Uptown Girls',
-                        violet: 'Violet Evergarden',
-                        'wind': 'The Wind Rises',
-                        whisper: 'Whisper of the Heart',
-                        'wicked': 'Wicked',
+                        "10things": "10 Things I Hate About You",
+                        "aladdin": "Aladdin (2019)",
+                        "alice": "Alice in Wonderland (2010)",
+                        "arrietty": "The Secret World of Arrietty",
+                        "avatar": "Avatar (2009)",
+                        "bambi": "Bambi (1942)",
+                        "barbie": "Barbie (2023)",
+                        "beautybeast": "Beauty and the Beast (2017)",
+                        "brave": "Brave (2012)",
+                        "castle_in_the_sky": "Castle in the Sky",
+                        "catreturns": "The Cat Returns",
+                        "charlie": "Charlie and the Chocolate Factory (2005)",
+                        "childrenvoices": "Children Who Chase Lost Voices",
+                        "cinderella": "Cinderella (1950)",
+                        "coraline": "Coraline",
+                        "corner": "In This Corner of the World",
+                        "corpse": "Corpse Bride",
+                        "cruella": "Cruella",
+                        "damsel": "Damsel (2024)",
+                        "deadpoets": "Dead Poets Society",
+                        "descendants": "Descendants",
+                        "encanto": "Encanto",
+                        "enola": "Enola Holmes",
+                        "fireflies": "Grave of the Fireflies",
+                        "frozen": "Frozen (2013)",
+                        "harrypotter": "Harry Potter and the Philosopher's Stone",
+                        "home": "Home (2015)",
+                        "homealone": "Home Alone (1990)",
+                        "hotarubi": "Hotarubi No Mori E",
+                        "how_to_train_your_dragon": "How to train your dragon",
+                        "howl's_moving_castle": "Howl's Moving Castle",
+                        "hungergames": "The Hunger Games (2012)",
+                        "jumanji": "Jumanji (2019)",
+                        "karatekid": "The Karate Kid (2010)",
+                        "kiki's_delivery_service": "Kiki's Delivery Service",
+                        "kpopdemonhunters": "Kpop Demon Hunters",
+                        "lalaland": "La La Land",
+                        "legallyblonde": "Legally Blonde",
+                        "littleprince": "The Little Prince",
+                        "littlewomen": "Little Women",
+                        "luca": "Luca",
+                        "maleficent": "Maleficent (2014)",
+                        "mazerunner": "The Maze Runner",
+                        "meangirls": "Mean Girls (2004)",
+                        "mebeforeyou": "Me Before You",
+                        "moana": "Moana",
+                        "mononoke": "Princess Mononoke",
+                        "moxie": "Moxie (2021)",
+                        "mulan": "Mulan (1998)",
+                        "my_neighbor_totoro": "My Neighbor Totoro",
+                        "narnia": "The Chronicles of Narnia (2005)",
+                        "oceanwaves": "The Ocean Waves",
+                        "one_hundred_and_one_dalmations": "One Hundred and One Dalmations",
+                        "peregrine": "Miss Peregrine's Home for Peculiar Children",
+                        "pitchperfect": "Pitch Perfect (2012)",
+                        "princessdiary": "The Princess Diaries",
+                        "saiyaara": "Saiyaara",
+                        "school": "The School for Good and Evil",
+                        "shestheman": "She's The Man",
+                        "showman": "The Greatest Showman",
+                        "suzume": "Suzume No Tojimari",
+                        "tangled": "Tangled",
+                        "the_perks_of_being_a_wallflower": "The Perks of Being a Wallflower",
+                        "thedevil": "The Devil Wears Prada",
+                        "thehelp": "The Help",
+                        "train": "Train to Busan",
+                        "up": "Up (2009)",
+                        "uptowngirls": "Uptown Girls",
+                        "violet": "Violet Evergarden",
+                        "whisker": "A Whisker Away",
+                        "whisper": "Whisper of the Heart",
+                        "wicked": "Wicked",
+                        "wind": "The Wind Rises",
+                        "wonder": "Wonder",
+                        "wreck_it_ralph": "Wreck it Ralph"
                     })
                         , i = 0
                         , format
