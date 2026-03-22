@@ -3,6 +3,7 @@
 <!--{{@define
 let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
 }}-->
+
 <head>
     <script>(origin === 'http://localhost:3000' || origin === 'http://192.168.1.221:3000') && navigator.serviceWorker.register('../../local.js', { scope: './' })</script>
     <meta charset="UTF-8">
@@ -797,7 +798,8 @@ let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
                             <source srcset="./media/movie/<!--{{return movie}}-->.avif" type="image/avif">
                             <source srcset="./media/movie/<!--{{return movie}}-->.webp" type="image/webp">
                             <img role="button" id="poster" tabindex="0" loading="lazy" width="300" height="400"
-                                src="./media/movie/<!--{{return movie}}-->.jpg" alt="<!--{{return movie.split('_').join(' ')}}-->">
+                                src="./media/movie/<!--{{return movie}}-->.jpg"
+                                alt="<!--{{return movie.split('_').join(' ')}}-->">
                             <div style="display: none;">
                                 <h2>What did you think?</h2>
                                 <div role="radiogroup" style="--user-select:none" aria-label="Rate the movie choices">
@@ -959,12 +961,13 @@ let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
                 }
             else {
                 var xhr = new XMLHttpRequest
-                xhr.responseType = 'json'
                 xhr.open('get', url)
+                xhr.responseType = 'json'
                 // req.setRequestHeader('Access-Control-Allow-Origin', '*')
                 xhr.onerror = fail
                 xhr.onload = function () {
                     res = xhr.response
+                    if (typeof res !== 'object') res = (window.JSON ? JSON.parse : eval)(res)
                     gah()
                 }
                 xhr.send()
@@ -977,7 +980,7 @@ let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
                         d = data[i],
                         src = d[0],
                         date = d[1]
-                    var link = 'https://images.weserv.nl/?url='+ encodeURIComponent('https://drive.google.com/thumbnail?id=' + src + '&sz=w'+size)
+                    var link = 'https://images.weserv.nl/?url=' + encodeURIComponent('https://drive.google.com/thumbnail?id=' + src + '&sz=w' + size)
                     a.appendChild(img)
                     a.setAttribute('href', link)
                     a.setAttribute('target', '_blank')
