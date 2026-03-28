@@ -227,7 +227,6 @@ input[type="text"], input[type="email"], textarea {
     display: inline-grid;
     gap: 8px;
     padding: 12px;
-    padding-inline: 10%;
     background-color: rgba(207, 161, 188, 0.96);
     border: 5px groove var(--PURPLE-3);
 }

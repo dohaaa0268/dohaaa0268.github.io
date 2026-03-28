@@ -83,6 +83,9 @@ let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
     <noscript>
         <link rel="stylesheet" href="https://addsoupbase.github.io/noscript.css">
         <style>
+            .needsjs {
+                display: none !important;
+            }
             #fallbackstuff {
                 display: flex !important;
             }
@@ -110,7 +113,6 @@ let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
                 display: block !important;
             }
 
-            #gallery,
             .hint,
             #draw {
                 display: none !important;
@@ -211,14 +213,14 @@ let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
                         </noscript>
                         <script nomodule>document.write(document.getElementById('f').textContent)</script>
                     </section>
-                    <!-- <hr class="purple2"> -->
+                    <hr class="purple2">
                     <section class="topic" id="gallery">
                         <!-- <h2>Send me something:</h2> -->
-                        <nav id="navigate"><a role="button" class="button" href="#drawings"
-                                aria-label="View submitted drawings">View</a><a role="button" class="button"
+                        <nav id="navigate"><a role="button" class="button needsjs" href="#drawings"
+                                aria-label="View submitted drawings">View</a><a role="button" class="button needsjs"
                                 href="#paper" aria-label="Draw something">Draw</a><a role="button" class="button"
                                 href="#sendnamefield" aria-label="Message me something">Message</a></nav>
-                        <section class="region">
+                        <section class="region needsjs">
                             <h3 class="drawMeSomething">Draw something!!</h3>
                             <form enctype="text/plain" id="submitdrawing"
                                 action="https://drawing-submissions.deno.dev?user=dohaaa" method="POST"
@@ -237,7 +239,7 @@ let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
                             <div><button form="submitdrawing" class="button" style="font-size: 1.1em;">Submit</button>
                             </div>
                         </section>
-                        <hr>
+                        <hr class="needsjs">
                         <section class="region">
                             <div>
                                 <form class="textform" action="https://drawing-submissions.deno.dev?user=dohaaa" method="POST">
@@ -248,8 +250,8 @@ let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
                                 </form>
                             </div>
                         </section>
-                        <hr>
-                        <section class="region">
+                        <hr class="needsjs">
+                        <section class="region needsjs">
                             <h3>Submitted Drawings:</h3>
                             <img id="dragonpaperthing" alt="" aria-hidden="true" width="40" height="40"
                                 style="margin: 7px;"
@@ -273,7 +275,7 @@ let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
         <nav class="stuff other purple2" id="fallbackstuff"><a class="badbrowser button" href="#about"
                 data-fallback-transitions="about">Movies</a><a class="badbrowser button" href="#home"
                 data-fallback-transitions="home">Home</a><a class="badbrowser button" href="#gallery"
-                data-fallback-transitions="gallery" id="galleryhrefbutton">Send</a></nav>
+                data-fallback-transitions="gallery">Send</a></nav>
         <div class="other purple2 stuff" id="stuff" role="tablist" aria-label="Change the channel"><button
                 draggable="false" role="tab" aria-controls="frameholder" class="goodbrowser button"
                 aria-label="View other peoples drawings" data-transitions="gallery"
