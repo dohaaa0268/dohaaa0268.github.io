@@ -52,7 +52,8 @@
           background-repeat: repeat-x, repeat-x, repeat-x;
           background-size: auto 50vh;
           /* background-size: max(60vw, 2048px) 50vh, 20vw 50vh, 20vw 50vh; */
-          /*:return imageSet(...['media/foreground-merged', 'media/sand', 'media/far'].map(o=>[`${o}.webp`, `${o}.png`]))*/
+          background-image: url(media/foreground-merged.png), url(media/sand.png), url(media/far.png);
+          background-image: image-set(url(media/foreground-merged.webp) type("image/webp"),url(media/foreground-merged.png) type("image/png")),image-set(url(media/sand.webp) type("image/webp"),url(media/sand.png) type("image/png")),image-set(url(media/far.webp) type("image/webp"),url(media/far.png) type("image/png"));
           image-rendering: pixelated;
           background-position-y: bottom;
           --layer1: 0%;
@@ -423,7 +424,7 @@
           padding-right: 1px;
           margin: 5px;
           --user-select: none;
-          transition: background .1s LINEAR, transform .2s ease;
+          transition: background-color .1s LINEAR, transform .2s ease;
       }
 
       @media screen and (width < 380px) {
@@ -591,6 +592,47 @@
           100% {
               background-position-x: -896px
           }
+      }
+
+      #frameholder {
+          /* margin-top: 5px;	 */
+          max-height: 80vh;
+          scroll-behavior: smooth;
+          /* min-height: 700px;	 */
+          anchor-name: --corners;
+          /* overflow: hidden;	 */
+      }
+
+      input[type="text"],
+      input[type="email"],
+      textarea {
+          background-color: var(--PURPLE-1);
+          border: 3px inset var(--PURPLE-2);
+          font-family: pixel1, monospace;
+          font-size: 1em;
+          padding: 4px 6px;
+          color: black;
+          caret-color: var(--PURPLE-3);
+          accent-color: var(--PURPLE-3);
+      }
+
+      .textform {
+          display: inline-grid;
+          gap: 8px;
+          padding: 12px;
+          background-color: rgba(207, 161, 188, 0.96);
+          border: 5px groove var(--PURPLE-3);
+      }
+
+      input::placeholder,
+      textarea::placeholder {
+          color: var(--PURPLE-4);
+          opacity: 0.7;
+      }
+
+      #fallbackstuff {
+          display: none;
+          anchor-name: --corners-bottom;
       }
 
       hr,

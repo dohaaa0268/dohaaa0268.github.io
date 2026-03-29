@@ -86,10 +86,11 @@
     <!-- <link rel="preload" as="font" href="./fonts/pixel2.woff2" crossorigin="anonymous"> -->
     <link rel="preload" as="font" href="./fonts/pixel1.woff2" crossorigin="anonymous">
     <!--https://wiki.whatwg.org/wiki/MetaExtensions-->
-        <!--{{
-    return `media/foreground-merged.webp media/far.webp media/sand.webp`.split(' ').map(o=>`<link rel="prerender" as="image" src="${o}" blocking="render">`).join('')
+    <!--{{
+    return(`media/foreground-merged.webp media/far.webp media/sand.webp`).split(' ')
+    .map(o=>`<link rel="prerender" as="image" src="${o}" blocking="render">`).join('') + 
+    `<style>${(await sheet('css/styles.css'))}</style>`
     }}-->
-    <!--{{return `<style>${(await file('css/styles.css')).replaceAll('\n','')}</style>`}}-->
 </head>
 
 <body style="margin:0;padding: 0;place-content: center;width:100vw;height:100vh
