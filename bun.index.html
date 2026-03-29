@@ -103,7 +103,7 @@ let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
     <link rel="preload" as="font" href="./fonts/pixel2.woff2" crossorigin="anonymous">
     <link rel="preload" as="font" href="./fonts/pixel1.woff2" crossorigin="anonymous">
     <!--{{
-    return `media/foreground-merged.webp media/far.webp media/sand.webp`.split(' ').map(o=>`<link rel="prerender" as="image" src="${o}" blocking="render">`).join('')
+    return `media/foreground-merged.webp media/far.webp media/sand.webp`.split(' ').map(o=>`<link rel="preload" as="image" src="${o}" blocking="render">`).join('')
     }}-->
     <!--{{return `<style>${(await sheet('css/styles.css'))}</style>`}}-->
     <noscript id="bad">
@@ -246,7 +246,7 @@ let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
                                     <h3>Text something!!</h3>
                                     <input id="sendnamefield" type="text" placeholder="Name" name="name" autocomplete="username" enterkeyhint="next">
                                     <input type="text" placeholder="Message" required name="message" enterkeyhint="send">
-                                    <div><button class="button">Send</button></div>
+                                    <div><button class="button">Gallery</button></div>
                                 </form>
                             </div>
                         </section>
@@ -275,11 +275,11 @@ let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
         <nav class="stuff other purple2" id="fallbackstuff"><a class="badbrowser button" href="#about"
                 data-fallback-transitions="about">Movies</a><a class="badbrowser button" href="#home"
                 data-fallback-transitions="home">Home</a><a class="badbrowser button" href="#gallery"
-                data-fallback-transitions="gallery">Send</a></nav>
+                data-fallback-transitions="gallery">Gallery</a></nav>
         <div class="other purple2 stuff" id="stuff" role="tablist" aria-label="Change the channel"><button
                 draggable="false" role="tab" aria-controls="frameholder" class="goodbrowser button"
                 aria-label="View other peoples drawings" data-transitions="gallery"
-                aria-selected="false">Send</button><button draggable="false" role="tab" aria-controls="frameholder"
+                aria-selected="false">Gallery</button><button draggable="false" role="tab" aria-controls="frameholder"
                 class="goodbrowser button radio" aria-label="Movies" data-transitions="about"
                 aria-selected="false">Movies</button><button draggable="false" role="tab" aria-controls="frameholder"
                 class="goodbrowser button" data-transitions="home" aria-selected="true" id="gohome">Home</button></div>
@@ -304,7 +304,7 @@ let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
             var offset = D.getElementById('offset_thing')
             h.on(window, {
                 resize: function n() {
-                    offset.textContent = ".obj_up {offset-path: path('M 0 " + (innerHeight * 1.2) + " L 0 -1000')} .obj_left {offset-path: path('M -1000 0 L " + (innerWidth * 2) + " 0');}"
+                    offset.textContent = ".obj_up {--offset-path: path('M 0 " + (innerHeight * 1.2) + " L 0 -1000')} .obj_left {--offset-path: path('M -1000 0 L " + (innerWidth * 2) + " 0');}"
                     return n
                 }()
             })

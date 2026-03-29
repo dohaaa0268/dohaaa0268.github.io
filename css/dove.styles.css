@@ -1,7 +1,6 @@
       /*
     For @Dohaaa0268 by @addsoupbase
         */
-
       :root {
           --RED-1: #EEBAB7;
           --RED-2: #E68A8D;
@@ -169,7 +168,6 @@
       .jellyfish::after {
           background-image: url(https://addsoupbase.github.io/cute-emojis/emojis/1225795001838211134.gif);
           content: '';
-          alt: '';
           display: inline-block;
           vertical-align: middle;
           width: 25px;
