@@ -46,13 +46,24 @@
           margin: 0
       }
 
+      #vinyl {
+          width: 50%;
+          display: block;
+          place-self: center;
+          max-width: 500px;
+          border-radius: 100%;
+          shape-outside: circle(100%);
+      }
+      #vinyl:active {
+        
+      }
       #background {
           /* background-color: #3e79dd; */
           background-repeat: repeat-x, repeat-x, repeat-x;
           background-size: auto 50vh;
           /* background-size: max(60vw, 2048px) 50vh, 20vw 50vh, 20vw 50vh; */
           background-image: url(media/foreground-merged.png), url(media/sand.png), url(media/far.png);
-          background-image: image-set(url(media/foreground-merged.webp) type("image/webp"),url(media/foreground-merged.png) type("image/png")),image-set(url(media/sand.webp) type("image/webp"),url(media/sand.png) type("image/png")),image-set(url(media/far.webp) type("image/webp"),url(media/far.png) type("image/png"));
+          background-image: image-set(url(media/foreground-merged.webp) type("image/webp"), url(media/foreground-merged.png) type("image/png")), image-set(url(media/sand.webp) type("image/webp"), url(media/sand.png) type("image/png")), image-set(url(media/far.webp) type("image/webp"), url(media/far.png) type("image/png"));
           image-rendering: pixelated;
           background-position-y: bottom;
           --layer1: 0%;
