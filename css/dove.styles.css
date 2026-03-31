@@ -54,9 +54,9 @@
           border-radius: 100%;
           shape-outside: circle(100%);
       }
-      #vinyl:active {
-        
-      }
+
+      #vinyl:active {}
+
       #background {
           /* background-color: #3e79dd; */
           background-repeat: repeat-x, repeat-x, repeat-x;
@@ -615,6 +615,7 @@
       input[type="text"],
       input[type="email"],
       textarea {
+          width: 100%;
           background-color: var(--PURPLE-1);
           border: 3px inset var(--PURPLE-2);
           font-family: pixel1, monospace;
