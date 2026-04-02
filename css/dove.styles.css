@@ -2,45 +2,50 @@
     For @Dohaaa0268 by @addsoupbase
         */
       :root {
-          --RED-1: #EEBAB7;
-          --RED-2: #E68A8D;
-          --RED-3: #C96068;
-          --RED-4: #AB4543;
-          --RED-5: #9B4443;
+          --_RED-1: #EEBAB7;
+          --_RED-2: #E68A8D;
+          --_RED-3: #C96068;
+          --_RED-4: #AB4543;
+          --_RED-5: #9B4443;
 
-          --ORANGE-1: #EEE1B7;
-          --ORANGE-2: #E6B58A;
-          --ORANGE-3: #C98860;
-          --ORANGE-4: #AB7543;
-          --ORANGE-5: #9B6B43;
+          --_ORANGE-1: #EEE1B7;
+          --_ORANGE-2: #E6B58A;
+          --_ORANGE-3: #C98860;
+          --_ORANGE-4: #AB7543;
+          --_ORANGE-5: #9B6B43;
 
-          --YELLOW-1: #EEE1B7;
-          --YELLOW-2: #E6CB8A;
-          --YELLOW-3: #C9AF60;
-          --YELLOW-4: #AB9943;
-          --YELLOW-5: #9B8943;
+          --_YELLOW-1: #EEE1B7;
+          --_YELLOW-2: #E6CB8A;
+          --_YELLOW-3: #C9AF60;
+          --_YELLOW-4: #AB9943;
+          --_YELLOW-5: #9B8943;
 
-          --GREEN-1: #E1E9B7;
-          --GREEN-2: #BDD299;
-          --GREEN-3: #7A9B57;
-          --GREEN-4: #5E7F19;
-          --GREEN-5: #466D1D;
+          --_GREEN-1: #E1E9B7;
+          --_GREEN-2: #BDD299;
+          --_GREEN-3: #7A9B57;
+          --_GREEN-4: #5E7F19;
+          --_GREEN-5: #466D1D;
 
-          --BLUE-1: #A8C7D6;
-          --BLUE-2: #84AABC;
-          --BLUE-3: #5C93AA;
-          --BLUE-4: #4B7A90;
-          --BLUE-5: #355C7D;
+          --_BLUE-1: #A8C7D6;
+          --_BLUE-2: #84AABC;
+          --_BLUE-3: #5C93AA;
+          --_BLUE-4: #4B7A90;
+          --_BLUE-5: #355C7D;
 
-          --PURPLE-1: #A8AFD6;
-          --PURPLE-2: #848EBC;
-          --PURPLE-3: #5C6BAA;
-          --PURPLE-4: #4B5390;
-          --PURPLE-5: #35387D;
+          --_PURPLE-1: #A8AFD6;
+          --_PURPLE-2: #848EBC;
+          --_PURPLE-3: #5C6BAA;
+          --_PURPLE-4: #4B5390;
+          --_PURPLE-5: #35387D;
 
-          --CREAMY-BERRY: hsl(324, 33%, 72%);
-          --SALMON-GLOW: hsl(9, 73%, 51%);
-          --CREAM-PUFF: hsl(18, 96%, 60%);
+          --_CREAMY-BERRY: hsl(324, 33%, 72%);
+          --_SALMON-GLOW: hsl(9, 73%, 51%);
+          --_CREAM-PUFF: hsl(18, 96%, 60%);
+
+          --_DEEP-AQUA: #003B46;
+          --_OCEAN: #07575B;
+          --_WAVE: #66A5AD;
+          --_SEAFOAM: #C4DFE6;
           font-family: pixel1, monospace;
           padding: 0;
           margin: 0
@@ -49,7 +54,7 @@
       #vinyl {
           width: 50%;
           max-width: 200px;
-          margin:auto;
+          margin: auto;
           display: block;
           place-self: center;
           border-radius: 100%;
@@ -62,8 +67,6 @@
       #vinyl[aria-pressed="true"] {
           animation-play-state: running;
       }
-
-      #vinyl:active {}
 
       #background {
           /* background-color: #3e79dd; */
@@ -137,6 +140,8 @@
 
       .drawMeSomething::after,
       .drawMeSomething::before {
+                  filter: hue-rotate(270deg);
+
           background-image: url(https://addsoupbase.github.io/cute-emojis/emojis/11246-purplecrayon.gif);
           content: '';
           height: 30px;
@@ -174,8 +179,8 @@
       }
 
       input {
-          caret-color: var(--PURPLE-3);
-          accent-color: var(--PURPLE-3);
+          caret-color: var(--_SEAFOAM);
+          accent-color: var(--_SEAFOAM);
       }
 
       button[data-transitions][aria-selected="true"] {
@@ -296,14 +301,14 @@
       }
 
       .purple {
-          background-color: var(--CREAMY-BERRY);
-          border: 5px groove var(--PURPLE-3);
+          background-color: var(--_CREAMY-BERRY);
+          border: 5px groove var(--_PURPLE-3);
           /* border-radius: 5px; */
       }
 
       .purple2 {
-          background-color: rgba(207, 161, 188, 0.96);
-          border: 5px groove rgba(92, 108, 171, 0.96);
+          background-color: rgba(102, 165, 173, 0.96);
+          border: 5px groove rgba(7, 87, 91, 0.96);
           /* border-radius: 5px; */
       }
 
@@ -311,10 +316,12 @@
           border-radius: 100%;
           margin: 10px
       }
+
       progress {
-        accent-color: var(--SALMON-GLOW);
-        cursor: pointer
+          accent-color: var(--_WAVE);
+          cursor: pointer
       }
+
       .star {
           contain: content;
           background-size: contain;
@@ -322,12 +329,12 @@
           height: 30px;
           background-size: contain;
           position: fixed;
-          filter: hue-rotate(342deg);
+          filter: hue-rotate(230deg);
           background-image: url(data:image/gif;base64,R0lGODlhKgAqANUpAAAAAJQQc5wQc5wQe6UQe6UQhK0QhLUQjL0YlMYYlMYYnM4YpdYYpdYYrd4htechve8hxu8hzvcp1v8p3v8x5/855/9C5/9K5/9A//9S5/9j7/+E7/+M7/+U7/+c9/+l9/+t9/+19//O9//W///e///n///v///3/////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQFCgApACwAAAAAKgAqAAAG/sCUcEgsGo/IpBKJaWKW0Khz+oxai9TpdSvMarnS6YDwBSuphHHZzBSn12ysWw2HepspqiDNr5/vWQMCAgMGAWROV4BeA2MCBY9UYYtTBJaQYwUckkuVjSgEBQZTBgYFBZahdFlJlWkmlqUIpbSoppeURlQhJSgmIRkPBgeloqYIooUOlFVDriaZtNLSCAQHDtgPi0RUAyCX07MGswXi2Q8OD9qs3FMXY6Gyw+P0Bg8K6ejpEPwQnF1oMhmbhYzWgQoJ8qnr1w9ONz7xxhUgRrADPnUPGPL758zTpYH0EBwQoaCBwowb/eQRA88YLQQwTyhYYHLfOo7tnBDiY+xBtwUOIk6gOCHigwYJGb20moPK5TAECk4smJpO6Z8mgkJpLUXsAIIFIxowWLCM3VUMl3iKgglVQYepC6yexdBUKwpRa2FamBlXpS4nWuuaKtWhLQS4fv82qdt0cAcUFhXwLYtnUpNUoiLC5NAW6gIFiXOiHQDqVKkpbGFKBp3IcuACdyS3VYAgdMfFiBaplm0bILMsq2u3tnxnJZXVvX2bVQ54QPLbzY7kitNJLvW50a9Xz669e4ogAAAh+QQFCgApACwFAAUAIAAgAAAG/sCUcEgsDgfGpHJJQC6fTCd0StxQr8MNajNoYp8CoWAw/jJTyHHYnHQSChAOCYo4IBCKhYKYuPvrBwdQHHgTDg4LDYeIengJCncJU3ofDIwLCwyYCo8Knp4SUJglmYmWi5ufqp5LJSglH4YLDpaaebd6ep93SSUMDZqYDZi6eZgpm412eEWzmsCIw7meubp1Bo4IRL8NwN6lqcQKHgkHBXasRYqJ7NCptx4oHQbYCJJJs/koitzSKZ4d6vBakskbrUOnwkHCJmrYQUUOunkT4kkbFGDCLCniB9HWnimx8lwituDDsS/VwBX8gMLkgn9UdJEkqcnlv49QcKWciewmLRU8wSiR3DPtJRQD6Ih9IKLq5YIOUwoQwIYzCc6qSghQScemq1clFr8qCbAkCAAh+QQFCgApACwFAAUAHwAgAAAG/sCUcEgsChEHo3KpRCEQzCjTcEhKr0OEQYvFHqhPa3f5VCwU6DETzU6rje1EO0ooGOx2IhQtaSuiAngGd4MGHWAKHn9sUgWChB0oG1sIJUV/U4+EGwURHCUoJR0SRR1LhKh2hQclCIspmCmusUOqtoVUHAZucikdUFApCUS3qIMSWx0Ks5EcT7/BQoOqhdQGHCjQz8/ZRsa4uBxVB65PCAm/Sqgog1paVPCzrlHFgw9PYGCwbkvWWwYV4lEyRUudIC12dLXjZqoRgTrTBom41o4cByyOIBZCcAKbNiRXqBVwUIGDCBMoTJjgQOHek5DVBn0pcKLiODFMbiF5N5EcLz4uUnDZaSiN3KpoZIIZOFXgoR2cSpZdMUBgQFUCb6IMGCBAQFZAAQJ8jVJlSRAAADs=)
       }
 
       .glow {
-          filter: drop-shadow(0px 0px 10px var(--BLUE-5))
+          filter: drop-shadow(0px 0px 10px var(--_BLUE-5))
       }
 
       @supports (-webkit-touch-callout: initial) {
@@ -406,10 +413,10 @@
       }
 
       .container {
-          --scrollbar-color: var(--PURPLE-3);
-          --scrollbar-thumb-color: var(--CREAMY-BERRY);
+          --scrollbar-color: var(--_SEAFOAM);
+          --scrollbar-thumb-color: var(--_DEEP-AQUA);
           scrollbar-width: thin;
-          box-shadow: 0px 0px 10px var(--CREAM-PUFF);
+          box-shadow: 0px 0px 10px var(--_WAVE);
           word-break: break-word;
           overflow-y: auto;
           padding: 8px;
@@ -429,8 +436,8 @@
           line-height: inherit;
           word-break: break-all;
           word-wrap: break-word;
-          background-color: var(--PURPLE-1);
-          border: 3px outset var(--PURPLE-2);
+          background-color: var(--_BLUE-1);
+          border: 3px outset var(--_BLUE-2);
           display: inline-block;
           text-align: center;
           padding: 3px;
@@ -454,7 +461,7 @@
       }
 
       .button:hover {
-          background-color: var(--PURPLE-2);
+          background-color: var(--_BLUE-2);
       }
 
       .button:active {
@@ -637,27 +644,27 @@
       input[type="email"],
       textarea {
           width: 100%;
-          background-color: var(--PURPLE-1);
-          border: 3px inset var(--PURPLE-2);
+          background-color: var(--_BLUE-1);
+          border: 3px inset var(--_BLUE-2);
           font-family: pixel1, monospace;
           font-size: 1em;
           padding: 4px 6px;
           color: black;
-          caret-color: var(--PURPLE-3);
-          accent-color: var(--PURPLE-3);
+          caret-color: var(--_BLUE-3);
+          accent-color: var(--_BLUE-3);
       }
 
       .textform {
           display: inline-grid;
           gap: 8px;
           padding: 12px;
-          background-color: rgba(207, 161, 188, 0.96);
-          border: 5px groove var(--PURPLE-3);
+          background-color: rgba(102, 165, 173, 0.96);
+          border: 5px groove var(--_BLUE-3);
       }
 
       input::placeholder,
       textarea::placeholder {
-          color: var(--PURPLE-4);
+          color: var(--_BLUE-4);
           opacity: 0.7;
       }
 
