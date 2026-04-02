@@ -59,6 +59,8 @@ let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
     <meta name="author" content="dohaaa0268">
     <link rel="canonical" href="https://dohaaa0268.github.io">
     <link rel="preconnect" href="https://addsoupbase.github.io">
+    <link rel="preconnect" href="https://images.weserv.nl/">
+    <link rel="preconnect" href="https://www.dropbox.com">
     <!--
     <script 
         type="application/ld+json">{"@context":"https://schema.org","@type": "WebSite","name":"dohaaa0268","url":"https://dohaaa0268.github.io","description":"This page was made for dohaaa0268","author":{"@type": "Person","name":"dohaaa0268","sameAs":["https://twitter.com/dohaaa0268"]},"mainEntityOfPage":{"@type":"WebPage","@id":"https://dohaaa0268.github.io"},"image":{"@type":"ImageObject","url":"https://addsoupbase.github.io/media/avatars/Dohaaa.webp","width":256,"height":256}}</script>
@@ -86,6 +88,9 @@ let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
             .needsjs {
                 display: none !important;
             }
+            #music {
+                display: none !important;
+            }
             #fallbackstuff {
                 display: flex !important;
             }
@@ -103,7 +108,7 @@ let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
     <link rel="preload" as="font" href="./fonts/pixel2.woff2" crossorigin="anonymous">
     <link rel="preload" as="font" href="./fonts/pixel1.woff2" crossorigin="anonymous">
     <!--{{
-    return `media/foreground-merged.webp media/far.webp media/sand.webp`.split(' ').map(o=>`<link rel="preload" as="image" src="${o}" blocking="render">`).join('')
+    return `foreground-merged far sand`.split(' ').map(o=>`<link rel="preload" as="image" href="./media/${o}.webp" blocking="render">`).join('')
     }}-->
     <!--{{return `<style>${(await sheet('css/styles.css'))}</style>`}}-->
     <noscript id="bad">
@@ -136,6 +141,7 @@ let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
     </script>
     <script src="https://addsoupbase.github.io/aria.js" crossorigin="anonymous" defer></script>
 </head>
+
 <body style="margin:0;padding:0">
     <div class="center_screen" style="text-align: center;height: auto;">
         <main style="view-transition-name: topic;">
@@ -241,10 +247,13 @@ let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
                         <hr class="needsjs">
                         <section class="region">
                             <div>
-                                <form class="textform" action="https://drawing-submissions.deno.dev?user=dohaaa" method="POST">
+                                <form class="textform" action="https://drawing-submissions.deno.dev?user=dohaaa"
+                                    method="POST">
                                     <h3>Text something!!</h3>
-                                    <input id="sendnamefield" type="text" placeholder="Name" name="name" autocomplete="username" enterkeyhint="next">
-                                    <input type="text" placeholder="Message" required name="message" enterkeyhint="send">
+                                    <input id="sendnamefield" type="text" placeholder="Name" name="name"
+                                        autocomplete="username" enterkeyhint="next">
+                                    <input type="text" placeholder="Message" required name="message"
+                                        enterkeyhint="send">
                                     <div><button class="button">Gallery</button></div>
                                 </form>
                             </div>
@@ -258,14 +267,18 @@ let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
                             <div role="region" id="drawings" style="text-align: center;"></div>
                         </section>
                     </section>
-                    <!-- <hr class="purple2">
-                    <section class="topic" id="music">
-                        <h2>Click the vinyl</h2>
-                        <picture id="vinyl" role="button" tabindex="0">
+                    <hr class="purple2 needsjs">
+                    <section class="topic needsjs" id="music" style="width: var(--stretch);">
+                        <h2>Music!!</h2>
+                        <picture>
                             <source srcset="./media/vinyl.webp" type="image/webp">
-                            <img src="./media/vinyl.png" alt="vinyl">
+                            <img draggable="false" src="./media/vinyl.png" alt="vinyl" id="vinyl" role="button"
+                                aria-pressed="false" tabindex="0" title="click to play a random music">
                         </picture>
-                    </section> -->
+                        <marquee id="musicstatus">Click the vinyl!</marquee>
+                        <progress id="progress" max="100"></progress>
+                        <audio style="display: none;" id="vinylAudio" preload="none"></audio>
+                    </section>
                 </div>
             </div>
         </main>
@@ -283,21 +296,95 @@ let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
                 data-fallback-transitions="home">Home</a><a class="badbrowser button" href="#gallery"
                 data-fallback-transitions="gallery">Gallery</a><a class="badbrowser button" href="#about"
                 data-fallback-transitions="about">Movies</a></nav>
-        <div class="other purple2 stuff" id="stuff" role="tablist" aria-label="Change the channel"><button draggable="false" role="tab" aria-controls="frameholder"
-                class="goodbrowser button" data-transitions="home" aria-selected="true" id="gohome">Home</button><button
+        <div class="other purple2 stuff" id="stuff" role="tablist" aria-label="Change the channel"><button
                 draggable="false" role="tab" aria-controls="frameholder" class="goodbrowser button"
+                data-transitions="home" aria-selected="true" id="gohome">Home</button><button draggable="false"
+                role="tab" aria-controls="frameholder" class="goodbrowser button"
                 aria-label="View other peoples drawings" data-transitions="gallery"
                 aria-selected="false">Gallery</button><button draggable="false" role="tab" aria-controls="frameholder"
                 class="goodbrowser button radio" aria-label="Movies" data-transitions="about"
-                aria-selected="false">Movies</button><!--<button draggable="false" role="tab" aria-controls="frameholder"
+                aria-selected="false">Movies</button><button draggable="false" role="tab" aria-controls="frameholder"
                 class="goodbrowser button radio" aria-label="Music" data-transitions="music"
-                aria-selected="false">Music</button>--></div>
+                aria-selected="false">Music</button></div>
     </div>
     <script src="https://addsoupbase.github.io/h.js"></script>
     <style id="offset_thing"></style>
     <script>
         !function (D, h, css) {
             'use strict'
+            function id(i) { return D.getElementById(i) }
+            var vinyl = id('vinyl')
+            , progress = id('progress')
+            , musicMarquee = id('musicstatus')
+            , playingMusic = id('vinylAudio')
+            , musicLinksAndAuthors = shuffle(Object.entries({
+                'Iloveitiloveitiloveit by Bella Kay': 'ilpyhqb8itzrp9k59ps6c/iloveitiloveitiloveit.mp3?rlkey=ugdf1y8q2aws09jwptgzbhr2x&st=z7n66x9f',
+                'BAILE INoLVIDABLE by Bad Bunny': 'fgybvtpkw77d3knu1inu5/BAILEINoLVIDABLE.mp3?rlkey=ebbz35p4hlfu352k3zqs6a1pa&st=lk1h7zlp',
+                'white keys by Dominic Fike': 'gkhjl3wsdx8coeh18xj33/whitekeys.mp3?rlkey=rfopj2tjfoz7dtpoes8ktfe6n&st=2g0w3710',
+                'NIGHTS LIKE THIS by The Kid LAROI': 'jl3bv38yq1c1ktdvwq3s2/nightslikethis.mp3?rlkey=ozb17yoerlxu4k8tzrbeslg3n&st=0bht7b6y',
+                'Manchild by Sabrina Carpenter': '881bqmc0ws8h29p76xee0/manchild.mp3?rlkey=nvzipuel34eb1la9cfwr3lkl5&st=qsakulxj',
+                'Diet Pepsi by Addison Rae': 'oqc1qw73cqjvatmwijumf/dietpepsi.mp3?rlkey=nr5q8rhw2j4ghwvx0evsi2axj&st=yo2w515u',
+                'That\'s So True by Gracie Abrams': 'omzkzv1xntcm2q3wnepc2/ThatsSoTrue.mp3?rlkey=mdmo5mpwejtdj2c96oeysxqk3&st=nrl7e1u0',
+                'NAPA by Deslocado': '7lcd41vwyxctpzj3i2ljk/NAPA.mp3?rlkey=zweazm03543njxeca12hmbbm4&st=h0zniw2d',
+                'DtMf by Bad Bunny': 'o6n4whqgxl9nklwvci63t/DTMF.mp3?rlkey=y0enhmr2qzbj7jyidn14d7401&st=tiuw01ac',
+                'Symphonia IX by Current Joys': '1wbqkpvtpv6wb78q7ihz9/Symphonia.mp3?rlkey=dqsxuihspozjh90ujxu56kte5&st=hpfnalbz',
+                'house song by Searows': '7acfyvqpmw15cq0i61804/housesong.mp3?rlkey=o678qkhe7eebjefoc98xjkexv&st=b861etyk',
+                'do i ever cross your mind by sombr': 'vqsrbw4vk1gy2cyl21upn/doievercrossyourmind.mp3?rlkey=9rrn17etk54u4rxbb0zq2994k&st=595xgds2',
+                'let down by Radiohead': 'nqa7dq3x8irnji9yooy2o/letdown.mp3?rlkey=w00cu1irvbk5p7pevyj2pdmsp&st=6upvcj4r',
+                'enough for you by Wisp': 'm4r8a4un66qnjuackiwzj/enoughforyou.mp3?rlkey=dqgwg8u2makxyp7mu9tbyz0zd&st=hquh5bp4',
+                'roommates by Malcolm Todd': 'ucyfds2k3cv0ock5rn9o5/roomates.mp3?rlkey=ul7pohyvrzyjyaksajw88z6lb&st=5xnqlcy9',
+                'art house by Malcolm Todd': 'gblrl61in3ragsjp7m7ku/art_house.mp3?rlkey=xpgenmg89vs1hvgyrsbsy90kv&st=s8q34yy2',
+                'still save a seat for you by otuka': 'yi9m6mn2d21cqz6ys0jqc/still_save_a_seat_for_you.mp3?rlkey=xfi3u5eowlg0vmjkoutg2u4d7&st=nj3iutxo',
+                'eien by melancholy': 'v93wu0jh0j0mynp75zd9r/eien.mp3?rlkey=vyogn4do38an2be59b9d0u4su&st=qt83kzpd'
+            }))
+            function shuffle(item) {
+                for (var i = 0, length = item.length; i < length; ++i) {
+                    var pick = Math.floor(Math.random() * (i + 1))
+                        , o = item[i]
+                        , n = item[pick]
+                    item[i] = n
+                    item[pick] = o
+                }
+                return item
+            }
+            h.on(vinyl, {
+                click: function () {
+                    var pressed = this.ariaPressed === 'true'
+                    this.ariaPressed = String(!pressed)
+                    if (pressed)
+                        playingMusic.pause()
+                    else playingMusic.play()
+                }
+            })
+            h.on(playingMusic, {
+                timeupdate: function () {
+                    if (!this.paused)
+                        progress.value = (this.currentTime / this.duration) * 100
+                },
+                pause: function () {
+                    playingMusic.currentTime = 0
+                    loadNextMusic()
+                    vinyl.ariaPressed = 'false'
+                },
+                play: function () {
+                    musicMarquee.textContent = '🎵 Now playing: ' + currentMusic[0] + ' 🎶'
+                }
+            })
+            var currentMusicIndex = 0
+            var currentMusic = null
+            loadNextMusic()
+            h.on(document, {
+                visibilitychange: function () {
+                    playingMusic.pause()
+                }
+            })
+            function loadNextMusic() {
+                currentMusic = musicLinksAndAuthors[currentMusicIndex++ % musicLinksAndAuthors.length]
+                var src = 'https://www.dropbox.com/scl/fi/' + currentMusic[1] + '&dl=0&raw=1'
+                playingMusic.src = src
+                musicMarquee.textContent = 'Click the vinyl!'
+                progress.removeAttribute('value')
+            }
             h.on(document, {
                 submit: function (e) { e.submitter.setAttribute('disabled', true) }
             })
@@ -310,7 +397,7 @@ let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
                     }
                 }
             }, function (n) { return n.tagName !== 'BUTTON' && n.tagName !== 'A' && n.getAttribute('tabindex') > -1 })*/
-            var offset = D.getElementById('offset_thing')
+            var offset = id('offset_thing')
             h.on(window, {
                 resize: function n() {
                     offset.textContent = ".obj_up {--offset-path: path('M 0 " + (innerHeight * 1.2) + " L 0 -1000')} .obj_left {--offset-path: path('M -1000 0 L " + (innerWidth * 2) + " 0');}"
@@ -333,7 +420,7 @@ let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
                     }
                 }
             }()
-            var tabHolder = D.getElementById('stuff')
+            var tabHolder = id('stuff')
             var tabs = D.getElementsByClassName('topic')
             var startViewTransition = document.startViewTransition ? document.startViewTransition.bind(document) : function (callback) { setTimeout(callback) }
             h.delegate(tabHolder, {
@@ -412,6 +499,7 @@ let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
                     // img.setAttribute('loading', 'lazy')
                     img.setAttribute('decoding', 'async')
                     img.setAttribute('src', link)
+                    img.loading = 'lazy'
                     var time = document.createElement('time'),
                         now = new Date(date)
                     time.textContent = now.toLocaleDateString()
@@ -427,7 +515,7 @@ let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
             }
             /* }
          })*/
-            h.on(D.getElementById('about'), {
+            h.on(id('about'), {
                 '_topic-enter': function () {
                     var poster = D.getElementById('poster')
                     var source2 = poster.previousElementSibling

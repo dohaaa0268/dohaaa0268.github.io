@@ -48,11 +48,19 @@
 
       #vinyl {
           width: 50%;
+          max-width: 200px;
+          margin:auto;
           display: block;
           place-self: center;
-          max-width: 500px;
           border-radius: 100%;
           shape-outside: circle(100%);
+          --tap-highlight-color: rgba(255, 0, 0, 0.18);
+          animation: spin 8s linear infinite;
+          animation-play-state: paused;
+      }
+
+      #vinyl[aria-pressed="true"] {
+          animation-play-state: running;
       }
 
       #vinyl:active {}
@@ -303,7 +311,9 @@
           border-radius: 100%;
           margin: 10px
       }
-
+      progress {
+        accent-color: var(--SALMON-GLOW);
+      }
       .star {
           contain: content;
           background-size: contain;
@@ -610,6 +620,16 @@
           /* min-height: 700px;	 */
           anchor-name: --corners;
           /* overflow: hidden;	 */
+      }
+
+      @keyframes spin {
+          0% {
+              transform: rotate(0deg)
+          }
+
+          100% {
+              transform: rotate(360deg)
+          }
       }
 
       input[type="text"],
