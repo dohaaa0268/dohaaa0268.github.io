@@ -313,6 +313,7 @@
       }
       progress {
         accent-color: var(--SALMON-GLOW);
+        cursor: pointer
       }
       .star {
           contain: content;
