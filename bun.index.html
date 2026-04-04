@@ -107,8 +107,8 @@ let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
         </style>
     </noscript>
     <title>Doha's page</title>
-    <link rel="preload" as="font" href="./fonts/pixel2.woff2" crossorigin="anonymous">
-    <link rel="preload" as="font" href="./fonts/pixel1.woff2" crossorigin="anonymous">
+    <link rel="preload" as="font" href="./fonts/pixel2.woff2" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" as="font" href="./fonts/pixel1.woff2" type="font/woff2" crossorigin="anonymous">
     <!--{{
     return `foreground-merged far sand`.split(' ').map(o=>`<link rel="preload" as="image" href="./media/${o}.webp" blocking="render">`).join('')
     }}-->
@@ -161,11 +161,10 @@ let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
                             </picture>
                             <h1 class="jellyfish"><span style="text-decoration: underline;">Doha</span>'s page</h1>
                             <p>hello i am dohaaa0268 and i am a super cool person yay dohaaa is so epic and everyone
-                                loves
-                                you!!!!</p>
+                                loves you!!!!</p>
                             <div>
                                 <img class="pixel" style="width:100px;height:auto"
-                                    src="data:image/gif;base64,R0lGODlhMAAoAPMAAAAAAMzMzHYwR+aeOv///+q9YLxQXouUi6Q+TLVlOlAAKC0zN2BgXyQkMQAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQJSwAOACwAAAAAMAAoAAAE/9DJSau9OOuNAf9g54UkB5zBOJ0leQLCABAp6wBpa8KFYBQzwgH2Cgx1GdhvYBgACbShAIHLISsnwbTXxEGjxIBQhTwlpggBDAEUf42AA9R6K53Sa4NBDTDExTUvM3A3ZCYFZ2sJiwkzJwdwjQAJTjhDjiEwMQAKApQFoF5xgkB8QEM0hkkIrGpoeqxxUCcyBTIAQJNeR4dneFOMi1RiuLgDiwPHCiepH5rHAimeyaCIowDHtgna243NJqxpBwucAwiwCLe429nHyY3LdEk+adGcnOd6L0PulMcLCxIsU3Pgkg0LAM6lCUBOSyeFXgjAYPQPwAItYdzIW+Fjz7gsrL86CVgmCtSATRZbKaDyRpUEJcNGTJoiiIGZRQbSwBJw4GGQjRSUYFOxToC2XNUKhAsJSUqcS/OoAFnRoOKAhnr0mGt1LEANSCfIrbJFlByABg0TwloZ0mgCsFVSNHD5EpiMlyxArtESLoYkBkMKCqJbl43LvUNpNUIkJvBBZzQ70CzghjEzaY9BaKKbkKCYBG/gUCmTmaPZpl4dXyR85eXca6MKzW1t4uWKoLRz697Nu7fv38CDCx9OvLjx4xQiAAAh+QQJSwAOACwAAAAAMAAoAAAE/9DJSau9OOutAf8gBnhh+QEBWakmOI5Eusrt9grIABDEMUqAA612GQkKAkMhyEsJRkIfcWVEFAaGQQLV9D0DPVZtlMAhqoUtuMuMiUsjxBNnMMzPQvcLFpA63h1pdwmEWwAGQX0AhgkDS4p/gCICAjoKAo0FmjtQe0tPAEs+nC4IpncIdQZnayM6VyNLi0xDgWVyADiFhG2hoVqNWgowYRy5lWVOwZppKK4JV9DAzW4npnIHCwAKA6mrOUGh0uMDWtvOxklyAinDCt6rw89a5QkLCwkKl0F+GQCpcgJoo3QJ4AsvhbRoW0Dwi6IfFnLVEZCtCoJLAoa10jSg0ogFp7fe7eBRLaI6dH9u7WFAhtCqJC8PFBwJqUgSADomiDuiRRazAtdMKYiSix9Em2eW6GygEOdAVVmuIQuQItFHSX+s5ASiDUCDgf/qXLx2KY2QEVRTNMCaC0EjEi8i4WhLSao5AAx8HBgV1x8OpSZx6XgmDozeoyfmTkq6Jk1VN6BaHJP070meBCSp+jhDpK/JrlE0h2OIdQqQteE6RVpr2hgQnRRKt55Nu7bt27hz697Nu7fv38B3RwAAOw=="
+                                    src="./media/sleep1.gif"
                                     alt="tyrantrum" width="48" height="40">
                             </div>
                             <p>
@@ -207,17 +206,6 @@ let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
                                 </div>
                             </div>
                         </picture>
-                        <noscript id="f">
-                            <style>
-                                #poster {
-                                    display: none
-                                }
-                            </style>
-                            <!--{{
-                                return(await dir('./media/movie')).filter(o=>o.endsWith('.avif')).map(o=>o.split('.avif')[0])
-                                .map(o=>`<a class="mv" target="_blank" href="./media/movie/${o}.jpg"><picture><source srcset="./media/movie/${o}.avif" type="image/avif"><source srcset="./media/movie/${o}.webp" type="image/webp"><img src="./media/movie/${o}.jpg" width="100" height="200" class="n"></picture></a>`).join('')
-                                }}-->
-                        </noscript>
                         <script nomodule>document.write(document.getElementById('f').textContent)</script>
                     </section>
                     <hr class="purple2">
@@ -283,16 +271,10 @@ let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
                 </div>
             </div>
         </main>
-        <div alt aria-hidden="true" width="30" height="30" class="anchor1 anchor star" draggable="false" id="topleft">
-        </div>
-        <div alt aria-hidden="true" width="30" height="30" class="anchor1 anchor star" draggable="false" id="topright">
-        </div>
-        <div alt aria-hidden="true" width="30" height="30" class="anchor2 anchor star" draggable="false"
-            id="bottomleft">
-        </div>
-        <div alt aria-hidden="true" width="30" height="30" class="anchor2 anchor star" draggable="false"
-            id="bottomright">
-        </div>
+        <div aria-hidden="true" class="anchor1 anchor star" id="topleft"></div>
+        <div aria-hidden="true" class="anchor1 anchor star" id="topright"></div>
+        <div aria-hidden="true" class="anchor2 anchor star" id="bottomleft"></div>
+        <div aria-hidden="true" class="anchor2 anchor star" id="bottomright"></div>
         <nav class="stuff other purple2" id="fallbackstuff"><a class="badbrowser button" href="#home"
                 data-fallback-transitions="home">Home</a><a class="badbrowser button" href="#gallery"
                 data-fallback-transitions="gallery">Gallery</a><a class="badbrowser button" href="#about"
