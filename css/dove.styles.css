@@ -471,6 +471,7 @@
       .drawing {
           border: 1px solid black;
           /* width: 300px; */
+          box-sizing: content-box;
           max-width: fit-content;
           margin-top: 5px;
           margin-bottom: 5px;
