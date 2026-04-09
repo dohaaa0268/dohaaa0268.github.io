@@ -51,8 +51,25 @@
           margin: 0
       }
 
+
+
+      ul {
+          text-align: left;
+          justify-self: center;
+      }
+
+      ul li {
+          margin-block: 10px
+      }
+
+      cite {
+          font-style: unset;
+          font-weight: bold;
+      }
+
       #vinyl {
           width: 50%;
+          height: auto;
           max-width: 200px;
           margin: auto;
           display: block;
@@ -140,7 +157,7 @@
 
       .drawMeSomething::after,
       .drawMeSomething::before {
-                  filter: hue-rotate(270deg);
+          filter: hue-rotate(270deg);
 
           background-image: url(https://addsoupbase.github.io/cute-emojis/emojis/11246-purplecrayon.gif);
           content: '';
@@ -250,6 +267,7 @@
       #stuff {
           width: 720px;
           min-height: 60px;
+          display: flex;
           overflow-y: hidden;
           max-width: 90vw;
           overflow-x: auto;
@@ -326,11 +344,12 @@
           contain: content;
           background-size: contain;
           width: 30px;
+          image-rendering: pixelated;
           height: 30px;
           background-size: contain;
           position: fixed;
           filter: hue-rotate(230deg);
-          background-image: url(data:image/gif;base64,R0lGODlhKgAqANUpAAAAAJQQc5wQc5wQe6UQe6UQhK0QhLUQjL0YlMYYlMYYnM4YpdYYpdYYrd4htechve8hxu8hzvcp1v8p3v8x5/855/9C5/9K5/9A//9S5/9j7/+E7/+M7/+U7/+c9/+l9/+t9/+19//O9//W///e///n///v///3/////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQFCgApACwAAAAAKgAqAAAG/sCUcEgsGo/IpBKJaWKW0Khz+oxai9TpdSvMarnS6YDwBSuphHHZzBSn12ysWw2HepspqiDNr5/vWQMCAgMGAWROV4BeA2MCBY9UYYtTBJaQYwUckkuVjSgEBQZTBgYFBZahdFlJlWkmlqUIpbSoppeURlQhJSgmIRkPBgeloqYIooUOlFVDriaZtNLSCAQHDtgPi0RUAyCX07MGswXi2Q8OD9qs3FMXY6Gyw+P0Bg8K6ejpEPwQnF1oMhmbhYzWgQoJ8qnr1w9ONz7xxhUgRrADPnUPGPL758zTpYH0EBwQoaCBwowb/eQRA88YLQQwTyhYYHLfOo7tnBDiY+xBtwUOIk6gOCHigwYJGb20moPK5TAECk4smJpO6Z8mgkJpLUXsAIIFIxowWLCM3VUMl3iKgglVQYepC6yexdBUKwpRa2FamBlXpS4nWuuaKtWhLQS4fv82qdt0cAcUFhXwLYtnUpNUoiLC5NAW6gIFiXOiHQDqVKkpbGFKBp3IcuACdyS3VYAgdMfFiBaplm0bILMsq2u3tnxnJZXVvX2bVQ54QPLbzY7kitNJLvW50a9Xz669e4ogAAAh+QQFCgApACwFAAUAIAAgAAAG/sCUcEgsDgfGpHJJQC6fTCd0StxQr8MNajNoYp8CoWAw/jJTyHHYnHQSChAOCYo4IBCKhYKYuPvrBwdQHHgTDg4LDYeIengJCncJU3ofDIwLCwyYCo8Knp4SUJglmYmWi5ufqp5LJSglH4YLDpaaebd6ep93SSUMDZqYDZi6eZgpm412eEWzmsCIw7meubp1Bo4IRL8NwN6lqcQKHgkHBXasRYqJ7NCptx4oHQbYCJJJs/koitzSKZ4d6vBakskbrUOnwkHCJmrYQUUOunkT4kkbFGDCLCniB9HWnimx8lwituDDsS/VwBX8gMLkgn9UdJEkqcnlv49QcKWciewmLRU8wSiR3DPtJRQD6Ih9IKLq5YIOUwoQwIYzCc6qSghQScemq1clFr8qCbAkCAAh+QQFCgApACwFAAUAHwAgAAAG/sCUcEgsChEHo3KpRCEQzCjTcEhKr0OEQYvFHqhPa3f5VCwU6DETzU6rje1EO0ooGOx2IhQtaSuiAngGd4MGHWAKHn9sUgWChB0oG1sIJUV/U4+EGwURHCUoJR0SRR1LhKh2hQclCIspmCmusUOqtoVUHAZucikdUFApCUS3qIMSWx0Ks5EcT7/BQoOqhdQGHCjQz8/ZRsa4uBxVB65PCAm/Sqgog1paVPCzrlHFgw9PYGCwbkvWWwYV4lEyRUudIC12dLXjZqoRgTrTBom41o4cByyOIBZCcAKbNiRXqBVwUIGDCBMoTJjgQOHek5DVBn0pcKLiODFMbiF5N5EcLz4uUnDZaSiN3KpoZIIZOFXgoR2cSpZdMUBgQFUCb6IMGCBAQFZAAQJ8jVJlSRAAADs=)
+          background-image: url(media/corner.gif)
       }
 
       .glow {
@@ -431,6 +450,16 @@
           text-decoration: underline;
       }
 
+      #afterfloat {
+          text-align: left;
+          margin: 0;
+      }
+@media screen and (width <= 666px) {
+    #afterfloat {
+                  text-align-last: end;
+
+    }
+}
       .button {
           --tap-highlight-color: rgba(140, 91, 193, 0.3);
           line-height: inherit;
@@ -454,9 +483,16 @@
           transition: background-color .1s LINEAR, transform .2s ease;
       }
 
-      @media screen and (width < 380px) {
-          #gohome {
-              display: none !important
+      @media screen and (width <=392px) {
+          #stuff {
+              font-size: smaller;
+              place-content: space-around;
+          }
+      }
+
+      @media screen and (width <=347px) {
+          #stuff {
+              font-size: 12px;
           }
       }
 
@@ -561,6 +597,31 @@
               /* filter: brightness(1) saturate(1); */
           }
       }
+
+      li {
+          list-style: none;
+          padding: 0 30px;
+          background-image: url(media/small.png);
+          background-image: image-set(url("media/small.webp") type("image/webp"), url("media/small.png") type("image/png"));
+          background-repeat: no-repeat;
+          background-position: 5px -1px;
+          background-size: 27px;
+      }
+
+      .inline-list li {
+          display: inline;
+          padding: revert;
+          background: none;
+      }
+
+      .inline-list {
+          padding: 0
+      }
+
+      /* 
+      li:nth-child(even)::marker {
+          color: var(--_DEEP-AQUA);
+      } */
 
       #poster {
           cursor: pointer;
