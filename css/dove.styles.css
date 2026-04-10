@@ -476,7 +476,7 @@
 
       @media screen and (width <=666px) {
           #afterfloat {
-              text-align-last: end;
+              text-align-last: center;
           }
       }
 
