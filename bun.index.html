@@ -287,8 +287,8 @@ let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
                         <!-- <h2>Send me something:</h2> -->
                         <nav id="navigate"><a role="button" class="button needsjs" href="#drawings"
                                 aria-label="View submitted drawings">View</a><a role="button" class="button needsjs"
-                                href="#paper" aria-label="Draw something">Draw</a><a role="button" class="button"
-                                href="#sendnamefield" aria-label="Message me something">Message</a></nav>
+                                href="#paper">Draw</a><a role="button" class="button"
+                                href="#sendnamefield">Message</a></nav>
                         <section class="region needsjs">
                             <h3 class="drawMeSomething">Draw something!!</h3>
                             <form enctype="text/plain" id="submitdrawing"
@@ -357,11 +357,11 @@ let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
                 draggable="false" role="tab" aria-controls="frameholder" class="goodbrowser button"
                 data-transitions="home" aria-selected="true" id="gohome">Home</button><button draggable="false"
                 role="tab" aria-controls="frameholder" class="goodbrowser button"
-                aria-label="View other peoples drawings" data-transitions="gallery"
+                data-transitions="gallery"
                 aria-selected="false">Gallery</button><button draggable="false" role="tab" aria-controls="frameholder"
-                class="goodbrowser button radio" aria-label="Movies" data-transitions="about"
+                class="goodbrowser button radio"data-transitions="about"
                 aria-selected="false">Movies</button><button draggable="false" role="tab" aria-controls="frameholder"
-                class="goodbrowser button radio" aria-label="Music" data-transitions="music"
+                class="goodbrowser button radio" data-transitions="music"
                 aria-selected="false">Music</button></div>
     </div>
     <script src="https://addsoupbase.github.io/h.js"></script>

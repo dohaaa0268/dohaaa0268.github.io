@@ -177,9 +177,8 @@
       .drawMeSomething::after,
       .drawMeSomething::before {
           filter: hue-rotate(270deg);
-
           background-image: url(https://addsoupbase.github.io/cute-emojis/emojis/11246-purplecrayon.gif);
-          content: '';
+          content: '' / "Pencil";
           height: 30px;
           width: 30px;
           position: relative;
@@ -227,7 +226,7 @@
       .jellyfish::before,
       .jellyfish::after {
           background-image: url(https://addsoupbase.github.io/cute-emojis/emojis/1225795001838211134.gif);
-          content: '';
+          content: '' / "Jellyfish";
           display: inline-block;
           vertical-align: middle;
           width: 25px;
@@ -472,13 +471,14 @@
           height: auto;
           width: 60%;
           float: left;
+          pointer-events: none;
           filter: brightness(1.1) drop-shadow(8px 8px 1px rgba(0, 0, 0, 0.564))
       }
 
       @media screen and (width <=480px) {
-        #dohr {
-            float: none;
-        }
+          #dohr {
+              float: none;
+          }
       }
 
       .button::first-letter {
