@@ -62,12 +62,13 @@
 
 
       #about {
-          background-image: image-set(url("media/sticker/clapper.webp") type("image/webp"), url("media/sticker/clapper.png") type("image/png")),
+          background-image:url("media/sticker/clapper.png"), url("media/sticker/film.png"), url("media/sticker/ticket.png");
+        background-image: image-set(url("media/sticker/clapper.webp") type("image/webp"), url("media/sticker/clapper.png") type("image/png")),
               image-set(url("media/sticker/film.webp") type("image/webp"), url("media/sticker/film.png") type("image/png")),
               image-set(url("media/sticker/ticket.webp") type("image/webp"), url("media/sticker/ticket.png") type("image/png"));
-          background-size: 360px 360px, 210px 210px, 350px 350px;
+          background-size: 360px 360px, 230px 230px, 350px 350px;
           background-attachment: local;
-          background-position: -100px 100px, calc(100% + 60px) 340px, calc(100% + 90px) -40px;
+          background-position: -100px 100px, calc(100% + 20px) 310px, calc(100% + 90px) -10px;
           background-repeat: no-repeat
       }
 
