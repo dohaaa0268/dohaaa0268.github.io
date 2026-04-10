@@ -470,7 +470,7 @@
       }
 
       #afterfloat {
-          text-align: left;
+          /* text-align: left; */
           margin: 0;
       }
 
