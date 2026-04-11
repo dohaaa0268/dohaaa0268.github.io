@@ -36,11 +36,11 @@ background.delegate({
         if (e.animationName === 'offset') this.purge(true)
     }
 })
-css.registerCSSRaw(`.jelly{background-image: url(./media/jellyfish${format})}`)
+css.insertRule(`.jelly{background-image: url(./media/jellyfish${format})}`)
 !function spawnJellyfish() {
     setTimeout(spawnJellyfish, (Math.random() * 500) + 1000)
     if (isHidden()) return
-    let jelly = $`<div aria-hidden="true" class="jelly obj obj_up" style="left: ${Math.random() * innerWidth}px; filter:hue-rotate(${Math.random() * 360}deg)"></div>`
+    $`<div aria-hidden="true" class="jelly obj obj_up" style="left: ${Math.random() * innerWidth}px; filter:hue-rotate(${Math.random() * 360}deg)"></div>`
         .setParent(background)
     // .animFrom('up', { duration: 7000, easing: 'linear', iterations: 1 })
     // .onfinish = kill
