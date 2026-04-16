@@ -1,8 +1,73 @@
 import * as v from 'https://addsoupbase.github.io/v4.js'
 import preload from 'https://addsoupbase.github.io/webcomponents/cel-runner.js'
-const { background } = v.id
+const { background, music } = v.id
 const { css } = v
 let $ = v.default
+let ctx = v.getContext('2d', 'cd', 1, 1, {}, 'paint.js')
+if (ctx) {
+    let img = $`<picture><source srcset="./media/discs.avif" type="image/avif"><img src="./media/discs.jpg"></picture>`.at(1).valueOf()
+    img.onload = () => {
+        const sourceDiscSize = 640
+        const maxDiscs = 15
+
+        const DESIRED_TILE_SIZE = 40
+        const MIN_TILE_SIZE = 20
+        const MAX_TILE_SIZE = 40
+
+        music.setCanvasBg('cd')
+        music.observe('resize', {
+            callback(e) {
+                let r = e.contentBoxSize || e.contentRect
+                let { canvas } = ctx
+                let width = r[0]?.inlineSize || r.width
+                let height = r[0]?.blockSize || r.height
+                if (!(width && height)) return
+                canvas.width = width
+                canvas.height = height
+                let baseTileSize = DESIRED_TILE_SIZE
+                const maxPossible = Math.min(width, height) * 0.3
+                if (baseTileSize > maxPossible) baseTileSize = maxPossible
+                baseTileSize = Math.min(MAX_TILE_SIZE, Math.max(MIN_TILE_SIZE, baseTileSize))
+
+                function drawDisc(index, x, y, w, h) {
+                    const srcX = (sourceDiscSize * index) % (sourceDiscSize * maxDiscs)
+                    ctx.drawImage(img, srcX, 0, sourceDiscSize, sourceDiscSize, x, y, w, h)
+                }
+                const verticalTileSize = baseTileSize
+                    , verticalCount = Math.floor(height / verticalTileSize)
+                    , totalVerticalHeight = verticalCount * verticalTileSize
+                    , verticalOffsetY = (height - totalVerticalHeight) / 2
+                for (let i = 0; i < verticalCount; i++) {
+                    const y = verticalOffsetY + i * verticalTileSize
+                    drawDisc(i, 0, y, verticalTileSize, verticalTileSize)
+                    drawDisc(i, width - verticalTileSize, y, verticalTileSize, verticalTileSize)
+                }
+                let horizontalCount = Math.floor(width / baseTileSize)
+                if (horizontalCount * baseTileSize !== width) 
+                    horizontalCount = Math.max(1, horizontalCount - 1)
+                const tileW = width / horizontalCount
+                , tileH = baseTileSize
+                for (let i = 0; i < horizontalCount; i++) {
+                    const x = i * tileW
+                    drawDisc(i, x, 0, tileW, tileH)
+                    drawDisc(i, x, height - tileH, tileW, tileH)
+                }
+            }
+        })
+    }
+}
+/*else {
+    // ITS NOT WORKING AND I DONT KNOW WHY ARGHHH
+    CSS.registerProperty({
+        name: '--cd-image',
+        syntax: '<image> | none',
+        inherits:false,
+        initialValue: 'none'
+    })
+    // for(let prefix of ['', '-webkit-'])
+    music.style.setProperty('--cd-image', `url("./media/discs.jpg")`)
+    music.style.background = `paint(cd)`
+}*/
 preload({
     src: 'media/fish.png',
     x: 4,
@@ -12,10 +77,10 @@ preload({
     x: 4,
     y: 1,
 }, */{
-    src: 'media/manta.png',
-    x: 8,
-    y: 1
-}, {
+        src: 'media/manta.png',
+        x: 8,
+        y: 1
+    }, {
     src: 'media/octopus2.png',
     x: 10,
     y: 1

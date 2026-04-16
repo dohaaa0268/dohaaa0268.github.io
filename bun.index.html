@@ -324,7 +324,7 @@ let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
                                 aria-pressed="false" tabindex="0" title="click to play a random music">
                         </picture>
                         <marquee id="musicstatus">Click the vinyl!</marquee>
-                        <audio id="vinylAudio" preload="none" controls></audio>
+                        <audio id="vinylAudio" preload="none" controls style="max-width: var(--stretch);"></audio>
                     </section>
                 </div>
             </div>
