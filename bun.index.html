@@ -356,26 +356,27 @@ let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
             var vinyl = id('vinyl')
                 , musicMarquee = id('musicstatus')
                 , playingMusic = id('vinylAudio')
-                , musicLinksAndAuthors = shuffle(Object.entries({
-                    'Iloveitiloveitiloveit by Bella Kay': 'ilpyhqb8itzrp9k59ps6c/iloveitiloveitiloveit.mp3?rlkey=ugdf1y8q2aws09jwptgzbhr2x&st=z7n66x9f',
-                    'BAILE INoLVIDABLE by Bad Bunny': 'fgybvtpkw77d3knu1inu5/BAILEINoLVIDABLE.mp3?rlkey=ebbz35p4hlfu352k3zqs6a1pa&st=lk1h7zlp',
-                    'white keys by Dominic Fike': 'gkhjl3wsdx8coeh18xj33/whitekeys.mp3?rlkey=rfopj2tjfoz7dtpoes8ktfe6n&st=2g0w3710',
-                    'NIGHTS LIKE THIS by The Kid LAROI': 'jl3bv38yq1c1ktdvwq3s2/nightslikethis.mp3?rlkey=ozb17yoerlxu4k8tzrbeslg3n&st=0bht7b6y',
-                    'Manchild by Sabrina Carpenter': '881bqmc0ws8h29p76xee0/manchild.mp3?rlkey=nvzipuel34eb1la9cfwr3lkl5&st=qsakulxj',
-                    'Diet Pepsi by Addison Rae': 'oqc1qw73cqjvatmwijumf/dietpepsi.mp3?rlkey=nr5q8rhw2j4ghwvx0evsi2axj&st=yo2w515u',
-                    'That\'s So True by Gracie Abrams': 'omzkzv1xntcm2q3wnepc2/ThatsSoTrue.mp3?rlkey=mdmo5mpwejtdj2c96oeysxqk3&st=nrl7e1u0',
-                    'NAPA by Deslocado': '7lcd41vwyxctpzj3i2ljk/NAPA.mp3?rlkey=zweazm03543njxeca12hmbbm4&st=h0zniw2d',
-                    'DtMf by Bad Bunny': 'o6n4whqgxl9nklwvci63t/DTMF.mp3?rlkey=y0enhmr2qzbj7jyidn14d7401&st=tiuw01ac',
-                    'Symphonia IX by Current Joys': '1wbqkpvtpv6wb78q7ihz9/Symphonia.mp3?rlkey=dqsxuihspozjh90ujxu56kte5&st=hpfnalbz',
-                    'house song by Searows': '7acfyvqpmw15cq0i61804/housesong.mp3?rlkey=o678qkhe7eebjefoc98xjkexv&st=b861etyk',
-                    'do i ever cross your mind by sombr': 'vqsrbw4vk1gy2cyl21upn/doievercrossyourmind.mp3?rlkey=9rrn17etk54u4rxbb0zq2994k&st=595xgds2',
-                    'let down by Radiohead': 'nqa7dq3x8irnji9yooy2o/letdown.mp3?rlkey=w00cu1irvbk5p7pevyj2pdmsp&st=6upvcj4r',
-                    'enough for you by Wisp': 'm4r8a4un66qnjuackiwzj/enoughforyou.mp3?rlkey=dqgwg8u2makxyp7mu9tbyz0zd&st=hquh5bp4',
-                    'roommates by Malcolm Todd': 'ucyfds2k3cv0ock5rn9o5/roomates.mp3?rlkey=ul7pohyvrzyjyaksajw88z6lb&st=5xnqlcy9',
-                    'art house by Malcolm Todd': 'gblrl61in3ragsjp7m7ku/art_house.mp3?rlkey=xpgenmg89vs1hvgyrsbsy90kv&st=s8q34yy2',
-                    'still save a seat for you by otuka': 'yi9m6mn2d21cqz6ys0jqc/still_save_a_seat_for_you.mp3?rlkey=xfi3u5eowlg0vmjkoutg2u4d7&st=nj3iutxo',
-                    'eien by melancholy': 'v93wu0jh0j0mynp75zd9r/eien.mp3?rlkey=vyogn4do38an2be59b9d0u4su&st=qt83kzpd'
-                }))
+                , musicLinksAndAuthors = shuffle(
+                    /*:return uneval(Object.entries({
+                                        'Iloveitiloveitiloveit by Bella Kay': 'ilpyhqb8itzrp9k59ps6c/iloveitiloveitiloveit.mp3?rlkey=ugdf1y8q2aws09jwptgzbhr2x&st=z7n66x9f',
+                                        'BAILE INoLVIDABLE by Bad Bunny': 'fgybvtpkw77d3knu1inu5/BAILEINoLVIDABLE.mp3?rlkey=ebbz35p4hlfu352k3zqs6a1pa&st=lk1h7zlp',
+                                        'white keys by Dominic Fike': 'gkhjl3wsdx8coeh18xj33/whitekeys.mp3?rlkey=rfopj2tjfoz7dtpoes8ktfe6n&st=2g0w3710',
+                                        'NIGHTS LIKE THIS by The Kid LAROI': 'jl3bv38yq1c1ktdvwq3s2/nightslikethis.mp3?rlkey=ozb17yoerlxu4k8tzrbeslg3n&st=0bht7b6y',
+                                        'Manchild by Sabrina Carpenter': '881bqmc0ws8h29p76xee0/manchild.mp3?rlkey=nvzipuel34eb1la9cfwr3lkl5&st=qsakulxj',
+                                        'Diet Pepsi by Addison Rae': 'oqc1qw73cqjvatmwijumf/dietpepsi.mp3?rlkey=nr5q8rhw2j4ghwvx0evsi2axj&st=yo2w515u',
+                                        'That\'s So True by Gracie Abrams': 'omzkzv1xntcm2q3wnepc2/ThatsSoTrue.mp3?rlkey=mdmo5mpwejtdj2c96oeysxqk3&st=nrl7e1u0',
+                                        'NAPA by Deslocado': '7lcd41vwyxctpzj3i2ljk/NAPA.mp3?rlkey=zweazm03543njxeca12hmbbm4&st=h0zniw2d',
+                                        'DtMf by Bad Bunny': 'o6n4whqgxl9nklwvci63t/DTMF.mp3?rlkey=y0enhmr2qzbj7jyidn14d7401&st=tiuw01ac',
+                                        'Symphonia IX by Current Joys': '1wbqkpvtpv6wb78q7ihz9/Symphonia.mp3?rlkey=dqsxuihspozjh90ujxu56kte5&st=hpfnalbz',
+                                        'house song by Searows': '7acfyvqpmw15cq0i61804/housesong.mp3?rlkey=o678qkhe7eebjefoc98xjkexv&st=b861etyk',
+                                        'do i ever cross your mind by sombr': 'vqsrbw4vk1gy2cyl21upn/doievercrossyourmind.mp3?rlkey=9rrn17etk54u4rxbb0zq2994k&st=595xgds2',
+                                        'let down by Radiohead': 'nqa7dq3x8irnji9yooy2o/letdown.mp3?rlkey=w00cu1irvbk5p7pevyj2pdmsp&st=6upvcj4r',
+                                        'enough for you by Wisp': 'm4r8a4un66qnjuackiwzj/enoughforyou.mp3?rlkey=dqgwg8u2makxyp7mu9tbyz0zd&st=hquh5bp4',
+                                        'roommates by Malcolm Todd': 'ucyfds2k3cv0ock5rn9o5/roomates.mp3?rlkey=ul7pohyvrzyjyaksajw88z6lb&st=5xnqlcy9',
+                                        'art house by Malcolm Todd': 'gblrl61in3ragsjp7m7ku/art_house.mp3?rlkey=xpgenmg89vs1hvgyrsbsy90kv&st=s8q34yy2',
+                                        'still save a seat for you by otuka': 'yi9m6mn2d21cqz6ys0jqc/still_save_a_seat_for_you.mp3?rlkey=xfi3u5eowlg0vmjkoutg2u4d7&st=nj3iutxo',
+                                        'eien by melancholy': 'v93wu0jh0j0mynp75zd9r/eien.mp3?rlkey=vyogn4do38an2be59b9d0u4su&st=qt83kzpd'
+}))*/)
             function shuffle(item) {
                 for (var i = 0, length = item.length; i < length; ++i) {
                     var pick = Math.floor(Math.random() * (i + 1))
