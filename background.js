@@ -3,7 +3,7 @@ import preload from 'https://addsoupbase.github.io/webcomponents/cel-runner.js'
 const { background, music } = v.id
 const { css } = v
 let $ = v.default
-let ctx = v.getContext('2d', 'cd', 1, 1)
+let ctx = v.getContext('2d', 'cd', 0,0)
 if (ctx) {
     let img = $`<picture><source srcset="./media/discs.avif" type="image/avif"><img src="./media/discs.jpg"></picture>`.at(1).valueOf()
     img.onload = () => {
@@ -88,19 +88,19 @@ preload({
     x: 14,
     y: 1
 })
-let format = await new Promise(resolve => {
-    let n = new Image
-    n.src = `data:image/avif;base64,AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADybWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAGxpYmF2aWYAAAAADnBpdG0AAAAAAAEAAAAeaWxvYwAAAABEAAABAAEAAAABAAABGgAAAB0AAAAoaWluZgAAAAAAAQAAABppbmZlAgAAAAABAABhdjAxQ29sb3IAAAAAamlwcnAAAABLaXBjbwAAABRpc3BlAAAAAAAAAAIAAAACAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQ0MAAAAABNjb2xybmNseAACAAIAAYAAAAAXaXBtYQAAAAAAAAABAAEEAQKDBAAAACVtZGF0EgAKCBgANogQEAwgMg8f8D///8WfhwB8+ErK42A=`
-    n.onload = () => resolve('.avif')
-    n.onerror = () => resolve('.png')
-})
 let isHidden = Reflect.get.bind(this, document, 'hidden', document)
 background.delegate({
     animationend(e) {
         if (e.animationName === 'offset') this.purge(true)
     }
 })
-css.insertRule(`.jelly{background-image: url(./media/jellyfish${format})}`)
+let imgset  ='image-set(url("./media/jellyfish.avif") type("image/avif"), url("./media/jellyfish.png") type("image/png"))'
+css.insertRule(
+`.jelly {
+    background-image: url("./media/jellyfish.png");
+    background-image: -webkit-${imgset};
+    background-image: ${imgset};
+}`)
 !function spawnJellyfish() {
     setTimeout(spawnJellyfish, (Math.random() * 500) + 1000)
     if (isHidden()) return

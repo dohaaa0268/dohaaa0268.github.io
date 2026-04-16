@@ -178,8 +178,8 @@ let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
                                         </span>
                                         <li><cite>Minecraft</cite></li><span>, </span>
                                         <li><cite>Clash Royale</cite></li><span>, </span>
-                                        <li><cite>Brawl Stars</cite></li><span> and </span><li><cite><abbr
-                                                    title="Call of Duty">COD</abbr> Mobile</cite></li>.
+                                        <li><cite>Brawl Stars</cite></li><span> and </span>
+                                        <li><cite><abbr title="Call of Duty">COD</abbr> Mobile</cite></li>.
                                     </ul>
                                     I'm more of a movie fan tbh, but I also watch anime and a lot of types of dramas
                                     based in other countries.
@@ -319,8 +319,9 @@ let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
                     <section class="topic needsjs" id="music" style="width: var(--stretch);">
                         <h2>Music!!</h2>
                         <picture>
+                            <!-- <source srcset="./media/vinyl.avif" type="image/avif"> -->
                             <source srcset="./media/vinyl.webp" type="image/webp">
-                            <img draggable="false" src="./media/vinyl.png" alt="vinyl" id="vinyl" role="button"
+                            <img draggable="false" src="./media/vinyl.jpg" alt="vinyl" id="vinyl" role="button"
                                 aria-pressed="false" tabindex="0" title="click to play a random music">
                         </picture>
                         <marquee id="musicstatus">Click the vinyl!</marquee>
