@@ -3,17 +3,15 @@ import preload from 'https://addsoupbase.github.io/webcomponents/cel-runner.js'
 const { background, music } = v.id
 const { css } = v
 let $ = v.default
-let ctx = v.getContext('2d', 'cd', 1, 1, {}, 'paint.js')
+let ctx = v.getContext('2d', 'cd', 1, 1)
 if (ctx) {
     let img = $`<picture><source srcset="./media/discs.avif" type="image/avif"><img src="./media/discs.jpg"></picture>`.at(1).valueOf()
     img.onload = () => {
         const sourceDiscSize = 640
-        const maxDiscs = 15
-
-        const DESIRED_TILE_SIZE = 40
-        const MIN_TILE_SIZE = 20
-        const MAX_TILE_SIZE = 40
-
+        , maxDiscs = 15
+        , DESIRED_TILE_SIZE = 40
+        , MIN_TILE_SIZE = 20
+        , MAX_TILE_SIZE = 40
         music.setCanvasBg('cd')
         music.observe('resize', {
             callback(e) {
@@ -24,13 +22,14 @@ if (ctx) {
                 if (!(width && height)) return
                 canvas.width = width
                 canvas.height = height
+                ctx.imageSmoothingQuality = 'high'
                 let baseTileSize = DESIRED_TILE_SIZE
                 const maxPossible = Math.min(width, height) * 0.3
                 if (baseTileSize > maxPossible) baseTileSize = maxPossible
                 baseTileSize = Math.min(MAX_TILE_SIZE, Math.max(MIN_TILE_SIZE, baseTileSize))
-
+                let disc = 0
                 function drawDisc(index, x, y, w, h) {
-                    const srcX = (sourceDiscSize * index) % (sourceDiscSize * maxDiscs)
+                    const srcX = (sourceDiscSize * disc++) % (sourceDiscSize * maxDiscs)
                     ctx.drawImage(img, srcX, 0, sourceDiscSize, sourceDiscSize, x, y, w, h)
                 }
                 const verticalTileSize = baseTileSize

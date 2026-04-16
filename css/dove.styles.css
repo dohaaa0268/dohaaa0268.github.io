@@ -467,13 +467,18 @@
       #music {
           width: 100%;
           height: 100%;
-          align-content: center;
-
       }
-
+      /*:
+      // causes syntax error in editor but is still parsed correctly
+      return`@supports (background-image: -moz-element(#a)) or (background: -webkit-canvas(a)) {
+          #music {
+              align-content: center;
+          }
+      }`
+      */
       #musicstatus {
           color: black;
-          text-shadow: 1px 0 0 white,-1px 0 0 white,0 1px 0 white,0 -1px 0 white;
+          text-shadow: 1px 0 0 white, -1px 0 0 white, 0 1px 0 white, 0 -1px 0 white;
       }
 
       #dohr {
