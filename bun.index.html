@@ -351,6 +351,13 @@ let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
     <script>
         !function (D, h, css) {
             'use strict'
+            function fixMarqueeChrome() {
+                var n = musicMarquee.nextSibling
+                    , p = musicMarquee.parentNode
+                p.removeChild(musicMarquee)
+                p.insertBefore(musicMarquee, n)
+                // on chrome the <marquee> doesn't move for some reason
+            }
             function id(i) { return D.getElementById(i) }
             var vinyl = id('vinyl')
                 , musicMarquee = id('musicstatus')
@@ -388,6 +395,7 @@ let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
             }
             h.on(vinyl, {
                 click: function () {
+                    // fixMarqueeChrome()
                     var pressed = this.ariaPressed === 'true'
                     this.ariaPressed = String(!pressed)
                     if (pressed) {
@@ -548,6 +556,9 @@ let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
             }
             /* }
          })*/
+        h.on(id("music"), {
+            '_topic-enter': fixMarqueeChrome
+        })
             h.on(id('about'), {
                 '_topic-enter': function () {
                     var poster = D.getElementById('poster')
@@ -640,6 +651,7 @@ let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
                     else h.on(poster, {
                         _load: doFormat
                     })
+
                     h.on(poster, {
                         animationend: function () {
                             if (this.complete) {

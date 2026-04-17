@@ -262,6 +262,13 @@
     <script>
         !function (D, h, css) {
             'use strict'
+            function fixMarqueeChrome() {
+                var n = musicMarquee.nextSibling
+                    , p = musicMarquee.parentNode
+                p.removeChild(musicMarquee)
+                p.insertBefore(musicMarquee, n)
+                // on chrome the <marquee> doesn't move for some reason
+            }
             function id(i) { return D.getElementById(i) }
             var vinyl = id('vinyl')
                 , musicMarquee = id('musicstatus')
@@ -280,6 +287,7 @@
             }
             h.on(vinyl, {
                 click: function () {
+                    // fixMarqueeChrome()
                     var pressed = this.ariaPressed === 'true'
                     this.ariaPressed = String(!pressed)
                     if (pressed) {
@@ -440,6 +448,9 @@
             }
             /* }
          })*/
+        h.on(id("music"), {
+            '_topic-enter': fixMarqueeChrome
+        })
             h.on(id('about'), {
                 '_topic-enter': function () {
                     var poster = D.getElementById('poster')
@@ -532,6 +543,7 @@
                     else h.on(poster, {
                         _load: doFormat
                     })
+
                     h.on(poster, {
                         animationend: function () {
                             if (this.complete) {
