@@ -215,7 +215,7 @@
       }
 
       input {
-        justify-self: center;
+          justify-self: center;
           caret-color: var(--_SEAFOAM);
           accent-color: var(--_SEAFOAM);
       }
@@ -470,6 +470,7 @@
           width: 100%;
           height: 100%;
       }
+
       /*:
       // causes syntax error in editor but is still parsed correctly
       return`@supports (background-image: -moz-element(#a)) or (background: -webkit-canvas(a)) {
@@ -663,6 +664,22 @@
           background-repeat: no-repeat;
           background-position: 5px -1px;
           background-size: 27px;
+      }
+
+      :root:active-view-transition #frameholder {
+          scrollbar-color: transparent transparent;
+      }
+
+      @supports (corner-shape: scoop) and (anchor-name: initial) {
+          #frameholder {
+              corner-top-shape: notch;
+              transition: scrollbar-color .1s ease-out, border-top-left-radius .3s linear, border-top-right-radius .3s linear;
+          }
+
+          :root:active-view-transition #frameholder {
+              border-top-left-radius: 15px;
+              border-top-right-radius: 15px;
+          }
       }
 
       .inline-list li {
