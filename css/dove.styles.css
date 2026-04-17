@@ -215,6 +215,7 @@
       }
 
       input {
+        justify-self: center;
           caret-color: var(--_SEAFOAM);
           accent-color: var(--_SEAFOAM);
       }
@@ -561,7 +562,7 @@
       }
 
       .drawing {
-          border: 1px solid black;
+          outline: 1px solid black;
           /* width: 300px; */
           box-sizing: content-box;
           max-width: fit-content;
@@ -666,6 +667,7 @@
 
       .inline-list li {
           display: inline;
+          display: contents;
           padding: revert;
           background: none;
       }
@@ -776,6 +778,7 @@
       .textform {
           display: inline-grid;
           gap: 8px;
+          margin-block: 15px;
           padding: 12px;
           /* background-color: rgba(173, 173, 173, 0.96); */
           border: 5px groove var(--_WHITE-3);

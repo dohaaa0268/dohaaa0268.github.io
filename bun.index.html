@@ -348,7 +348,6 @@ let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
                 data-transitions="music" aria-selected="false">Music</button></div>
     </div>
     <script src="https://addsoupbase.github.io/h.js"></script>
-    <style id="offset_thing"></style>
     <script>
         !function (D, h, css) {
             'use strict'
@@ -438,13 +437,6 @@ let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
                     }
                 }
             }, function (n) { return n.tagName !== 'BUTTON' && n.tagName !== 'A' && n.getAttribute('tabindex') > -1 })*/
-            var offset = id('offset_thing')
-            h.on(window, {
-                resize: function n() {
-                    offset.textContent = ".obj_up {--offset-path: path('M 0 " + (innerHeight * 1.2) + " L 0 -1000')} .obj_left {--offset-path: path('M -1000 0 L " + (innerWidth * 2) + " 0');}"
-                    return n
-                }()
-            })
             var CreateEvent = function () {
                 function New(type) {
                     return new Event(type)

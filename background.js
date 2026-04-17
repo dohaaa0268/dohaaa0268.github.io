@@ -2,16 +2,22 @@ import * as v from 'https://addsoupbase.github.io/v4.js'
 import preload from 'https://addsoupbase.github.io/webcomponents/cel-runner.js'
 const { background, music } = v.id
 const { css } = v
+let offset = css.createSheet()
+background.observe('resize', {
+    callback({ width, height }) {
+        offset.replaceSync(".obj_up {--offset-path: path('M 0 " + (height * 1.2) + " L 0 -1000')} .obj_left {--offset-path: path('M -1000 0 L " + (width * 2) + " 0');}")
+    }
+})
 let $ = v.default
-let ctx = v.getContext('2d', 'cd', 0,0)
+let ctx = v.getContext('2d', 'cd', 0, 0)
 if (ctx) {
     let img = $`<picture><source srcset="./media/discs.avif" type="image/avif"><img src="./media/discs.jpg"></picture>`.at(1).valueOf()
     img.onload = () => {
         const sourceDiscSize = 640
-        , maxDiscs = 15
-        , DESIRED_TILE_SIZE = 40
-        , MIN_TILE_SIZE = 20
-        , MAX_TILE_SIZE = 40
+            , maxDiscs = 15
+            , DESIRED_TILE_SIZE = 40
+            , MIN_TILE_SIZE = 20
+            , MAX_TILE_SIZE = 40
         music.setCanvasBg('cd')
         music.observe('resize', {
             callback(e) {
@@ -42,10 +48,10 @@ if (ctx) {
                     drawDisc(i, width - verticalTileSize, y, verticalTileSize, verticalTileSize)
                 }
                 let horizontalCount = Math.floor(width / baseTileSize)
-                if (horizontalCount * baseTileSize !== width) 
+                if (horizontalCount * baseTileSize !== width)
                     horizontalCount = Math.max(1, horizontalCount - 1)
                 const tileW = width / horizontalCount
-                , tileH = baseTileSize
+                    , tileH = baseTileSize
                 for (let i = 0; i < horizontalCount; i++) {
                     const x = i * tileW
                     drawDisc(i, x, 0, tileW, tileH)
@@ -94,9 +100,9 @@ background.delegate({
         if (e.animationName === 'offset') this.purge(true)
     }
 })
-let imgset  ='image-set(url("./media/jellyfish.avif") type("image/avif"), url("./media/jellyfish.png") type("image/png"))'
+let imgset = 'image-set(url("./media/jellyfish.avif") type("image/avif"), url("./media/jellyfish.png") type("image/png"))'
 css.insertRule(
-`.jelly {
+    `.jelly {
     background-image: url("./media/jellyfish.png");
     background-image: -webkit-${imgset};
     background-image: ${imgset};
