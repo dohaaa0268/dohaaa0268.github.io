@@ -1,11 +1,11 @@
 import * as v from 'https://addsoupbase.github.io/v4.js'
-import preload from 'https://addsoupbase.github.io/webcomponents/cel-runner.js'
+import preload from 'https://addsoupbase.github.io/webcomponents/slide-show.js'
 const { background, music } = v.id
 const { css } = v
 let offset = css.createSheet()
 background.observe('resize', {
     callback({ width, height }) {
-        offset.replaceSync(".obj_up {--offset-path: path('M 0 " + (height * 1.2) + " L 0 -1000')} .obj_left {--offset-path: path('M -1000 0 L " + (width * 2) + " 0');}")
+        offset.replaceSync(".obj_up {--offset-path: path('M 0 " + (height * 1.2) + " L 0 -1000')} .obj_left {--offset-path: path('M -1000 0 L " + (width*1.5) + " 0');}")
     }
 })
 let $ = v.default
@@ -75,24 +75,24 @@ if (ctx) {
 }*/
 preload({
     src: 'media/fish.png',
-    x: 4,
-    y: 1
+    framesX: 4,
+    framesY: 1
 },/* {
     src: 'media/octopus.png',
     x: 4,
     y: 1,
 }, */{
         src: 'media/manta.png',
-        x: 8,
-        y: 1
+        framesX: 8,
+        framesY: 1
     }, {
     src: 'media/octopus2.png',
-    x: 10,
-    y: 1
+    framesX: 10,
+    framesY: 1
 }, {
     src: 'media/school.png',
-    x: 14,
-    y: 1
+    framesX: 14,
+    framesY: 1
 })
 let isHidden = Reflect.get.bind(this, document, 'hidden', document)
 background.delegate({
@@ -122,10 +122,10 @@ let creatures = ['manta', 'octopus2', 'fish', 'school', //'octopus'
 
 ]
 !function spawnCreature() {
-    setTimeout(spawnCreature, (Math.random() * 1000) + 4000)
+    setTimeout(spawnCreature, (Math.random() * 1000) + 3000)
     if (isHidden()) return
     let creature = creatures[Math.floor(Math.random() * creatures.length)]
     let dir = Math.random() > .5
-    let div = $`<div aria-hidden="true" style="animation-direction: ${dir ? 'normal' : 'reverse'};top: ${Math.random() * innerHeight}px;${dir ? 'transform:scaleX(-1)' : ''}" class="obj obj_left creature"><cel-runner dura="80ms" src="media/${creature}.png" class="cr-${creature}"></cel-runner></div>`
+    let div = $`<div aria-hidden="true" style="animation-direction: ${dir ? 'normal' : 'reverse'};top: ${Math.random() * innerHeight}px;${dir ? 'transform:scaleX(-1)' : ''}" class="obj obj_left creature"><slide-show autoplay dur=".08" src="media/${creature}.png" class="cr-${creature}"></slide-show></div>`
     div.setParent(background)
 }()
