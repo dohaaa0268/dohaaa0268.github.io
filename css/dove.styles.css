@@ -568,6 +568,9 @@
           box-sizing: content-box;
           max-width: fit-content;
           margin-top: 5px;
+          width:250px;
+          height:auto;
+          max-width: 100%;
           margin-bottom: 5px;
           background-color: white;
       }
