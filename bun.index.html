@@ -274,10 +274,10 @@ let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
                         </nav>
                         <section class="region needsjs">
                             <h3 class="drawMeSomething">Draw something!!</h3>
-                            <form enctype="text/plain" id="submitdrawing"
+                            <form enctype="multipart/form-data" submitdrawing"
                                 action="https://drawing-submissions.deno.dev?user=dohaaa" method="POST"
                                 style="display: grid;">
-                                <paper-canvas name="drawing" style="width:fit-content;place-self: center;"
+                                <paper-canvas type="file" name="drawing" style="width:fit-content;place-self: center;"
                                     id="paper"></paper-canvas>
                             </form>
                             <div style="margin: 10px;display:flex;gap:10px;place-content:center">
@@ -554,9 +554,11 @@ let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
                         a = document.createElement('a'),
                         d = data[i],
                         src = d[0],
-                        date = d[1]
+                        date = d[1],
+                        alt = d[2]
                     var link = 'https://images.weserv.nl/?url=' + encodeURIComponent('https://drive.google.com/thumbnail?id=' + src + '&sz=w' + size)
                     a.appendChild(img)
+                    if (alt) img.alt = alt
                     a.setAttribute('href', link)
                     a.setAttribute('target', '_blank')
                     img.className = 'drawing'
