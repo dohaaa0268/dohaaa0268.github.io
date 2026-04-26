@@ -274,7 +274,7 @@ let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
                         </nav>
                         <section class="region needsjs">
                             <h3 class="drawMeSomething">Draw something!!</h3>
-                            <form enctype="multipart/form-data" submitdrawing"
+                            <form enctype="multipart/form-data" id="submitdrawing"
                                 action="https://drawing-submissions.deno.dev?user=dohaaa" method="POST"
                                 style="display: grid;">
                                 <paper-canvas type="file" name="drawing" style="width:fit-content;place-self: center;"
