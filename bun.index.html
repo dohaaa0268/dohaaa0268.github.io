@@ -726,26 +726,7 @@ let movie = (await dir('media/movie')).sort().at(-1).split('.')[0]
     <div aria-hidden="true" id="overlay"></div>
 </body>
 <script type="module" src="https://addsoupbase.github.io/webcomponents/paper-canvas.js"></script>
-<script type="module" src="background.js">
 </script>
-<script type="module">
-    import * as v from 'https://addsoupbase.github.io/v4.js'
-    const { paper, undo, color, brushsize } = v.id
-    undo.on({
-        click() {
-            paper.undo()
-        }
-    })
-    color.on({
-        change() {
-            paper.color = this.value
-        }
-    })
-    brushsize.on({
-        change() {
-            paper.brushsize = this.value
-        }
-    })
-</script>
-
+<script type="module" src="setup.js" data-loading="lazy"></script>
+<script type="module" data-loading="lazy" src="background.js"></script>
 </html>
